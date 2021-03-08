@@ -31,7 +31,7 @@ public class URL_Crawler {
 			
 			String final_page_num = final_page(sid1,/*sid2[sid1%100][sid2_idx]*/"252");
 			
-			for(int page_num = 1; page_num<Integer.parseInt(final_page_num); page_num++) {
+			for(int page_num = 1; page_num<Integer.parseInt(final_page_num); page_num++) { //모든 페이지 link 가져오기
 				
 				String URL = "https://news.naver.com/main/list.nhn?mode=LS2D&mid=shm&"
 						+ "sid2=" + /*sid2[sid1%100][sid2_idx]*/"252"
@@ -45,7 +45,7 @@ public class URL_Crawler {
 				
 				for(Element element : elements_test) {
 					
-					article_crawler.article_crawling(element.toString().split("href=\"")[1].split("\">")[0].replace("&amp;","&"));
+					article_crawler.article_crawling(element.toString().split("href=\"")[1].split("\">")[0].replace("&amp;","&")); //해당 링크에서 crawling
 				}
 				
 			}
