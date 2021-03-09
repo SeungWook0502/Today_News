@@ -48,7 +48,6 @@ public class URL_Crawler{
 					ArrayList<String> Article_Data = article_crawler.article_crawling(element.toString().split("href=\"")[1].split("\">")[0].replace("&amp;","&")); //해당 링크에서 crawling
 					Article_Data.add(URL);
 					Article_Data.add(/*sid2[sid1%100][sid2_idx]*/"252");
-					Article_Data.add(Integer.toString(sid1));
 					
 					Save_File(Article_Data);
 				}
