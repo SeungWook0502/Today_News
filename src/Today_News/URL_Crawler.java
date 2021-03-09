@@ -1,15 +1,18 @@
 package Today_News;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import java.io.IOException;
 
-public class URL_Crawler {
+public class URL_Crawler{
 
 	
 	static String[][] sid2 = {
@@ -22,16 +25,13 @@ public class URL_Crawler {
 	};
 		
 	
-	
-	public void select_sid2Num(int sid1) throws IOException {
+	public void select_sid2Num(int sid1) throws IOException{
 		
 		Article_Crawler article_crawler = new Article_Crawler();
-		
-		for(int sid2_idx = 0; sid2_idx < sid2[sid1%100].length; sid2_idx++) {
-			
+		for(int sid2_idx = 0; /*sid2_idx < sid2[sid1%100].length*/sid2_idx <1; sid2_idx++) {
+			System.out.println(/*sid2[sid1%100][sid2_idx]*/"252");
 			String final_page_num = final_page(sid1,/*sid2[sid1%100][sid2_idx]*/"252");
-			
-			for(int page_num = 1; page_num<Integer.parseInt(final_page_num); page_num++) { //모든 페이지 link 가져오기
+			for(int page_num = Integer.parseInt(final_page_num); page_num > 0; page_num--) { //모든 페이지 link 가져오기
 				
 				String URL = "https://news.naver.com/main/list.nhn?mode=LS2D&mid=shm&"
 						+ "sid2=" + /*sid2[sid1%100][sid2_idx]*/"252"
@@ -45,12 +45,15 @@ public class URL_Crawler {
 				
 				for(Element element : elements_test) {
 					
-					article_crawler.article_crawling(element.toString().split("href=\"")[1].split("\">")[0].replace("&amp;","&")); //해당 링크에서 crawling
+					ArrayList<String> Article_Data = article_crawler.article_crawling(element.toString().split("href=\"")[1].split("\">")[0].replace("&amp;","&")); //해당 링크에서 crawling
+					Article_Data.add(URL);
+					Article_Data.add(/*sid2[sid1%100][sid2_idx]*/"252");
+					Article_Data.add(Integer.toString(sid1));
+					
+					Save_File(Article_Data);
 				}
-				
 			}
 		}
-		
 	}
 	
 	public String final_page(int sid1,String sid2) throws IOException { //마지막 페이지번호 가져오기
@@ -68,4 +71,18 @@ public class URL_Crawler {
 		return elements_nextPage.toString().split("<strong>")[1].split("</strong>")[0];
 	}
 	
+	public void Save_File(List<String> Article_Data) throws IOException{
+		
+		File Article_Data_File = new File("Article_Data.txt");
+		
+		BufferedWriter filewriter = new BufferedWriter(new FileWriter(Article_Data_File,true));
+		
+		for(String data : Article_Data) {
+			filewriter.write(data+",");
+		}
+		filewriter.write("\n");
+		filewriter.flush();
+		filewriter.close();
+		
+	}
 }
