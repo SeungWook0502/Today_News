@@ -23,13 +23,13 @@ public class MainApp {
 ////				+ "&date="
 //				+ "&page="+1000000;
 		
-		String URL = "https://news.naver.com/main/list.nhn?mode=LS2D&sid2=252&sid1=102&mid=shm&date=20210311&page=8";
+//		String URL = "https://news.naver.com/main/list.nhn?mode=LS2D&sid2=252&sid1=102&mid=shm&date=20210311&page=8";
 		
-		System.out.println("URL :: " + URL);
+//		System.out.println("URL :: " + URL);
 		
 		URL_Crawler url_crawler = new URL_Crawler();
 		
-		Mk_File();
+		Mk_File(); //File initialization
 		
 //		for(int i=0;i<sid1.length;i++) {
 //			System.out.println(/*sid1[i]*/102);
@@ -81,7 +81,7 @@ public class MainApp {
 //		}
 	}
 	
-	public static void Mk_File() throws IOException{
+	public static void Mk_File() throws IOException{ //File initialization
 
 		File Article_Data_File = new File("Article_Data.txt");
 		

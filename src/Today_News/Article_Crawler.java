@@ -24,16 +24,16 @@ public class Article_Crawler {
 		
 		ArrayList<String> Article_TTT = new ArrayList<String>();
 
-		Article_TTT.add(URL);
-		Article_TTT.add(elements_article_title.toString().split("<h3 id=\"articleTitle\">")[1].split("</h3>")[0]); //제목
-		Article_TTT.add(elements_article_time.toString().split("<span class=\"t11\">")[1].split("</span")[0]); //기사입력 시간
+		Article_TTT.add(URL); //Article URL
+		Article_TTT.add(elements_article_title.toString().split("<h3 id=\"articleTitle\">")[1].split("</h3>")[0]); //Article Title
+		Article_TTT.add(elements_article_time.toString().split("<span class=\"t11\">")[1].split("</span")[0]); //Article Upload Time
 		
 //		System.out.println(URL);
 
 		String delet_tag = "[<].*[>]";
 		for(Element element : elements_article_text) { //내용
 			
-			Article_TTT.add(element.toString().replaceAll(delet_tag, "").replace("function _flash_removeCallback() {}", "").replace("// flash 오류를 우회하기 위한 함수 추가", "").replaceAll("\n",""));
+			Article_TTT.add(element.toString().replaceAll(delet_tag, "").replace("function _flash_removeCallback() {}", "").replace("// flash 오류를 우회하기 위한 함수 추가", "").replaceAll("\n","").replaceAll("|", "")); //Article Content
 //			System.out.println(element.toString().replaceAll(delet_tag, "").replace("function _flash_removeCallback() {}", "").replace("// flash 오류를 우회하기 위한 함수 추가", "").replaceAll("\n",""));
 		}
 		

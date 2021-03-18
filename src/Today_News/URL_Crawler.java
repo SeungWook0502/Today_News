@@ -28,11 +28,11 @@ public class URL_Crawler{
 	public void select_sid2Num(int sid1) throws IOException{
 		
 		Article_Crawler article_crawler = new Article_Crawler();
-		for(int sid2_idx = 0; /*sid2_idx < sid2[sid1%100].length*/sid2_idx <1; sid2_idx++) {
+		for(int sid2_idx = 0; /*sid2_idx < sid2[sid1%100].length*/sid2_idx <1; sid2_idx++) { //sid2 loop
 //			System.out.println(/*sid2[sid1%100][sid2_idx]*/"252");
-			String final_page_num = final_page(sid1,/*sid2[sid1%100][sid2_idx]*/"252");
+			String final_page_num = final_page(sid1,/*sid2[sid1%100][sid2_idx]*/"252"); //get Final Page number
 			
-			Page_loop: for(int page_num = 1; page_num < Integer.parseInt(final_page_num); page_num++) { //모든 페이지 link 가져오기
+			Page_loop: for(int page_num = 1; page_num < Integer.parseInt(final_page_num); page_num++) { //Page loop
 				
 				String URL = "https://news.naver.com/main/list.nhn?mode=LS2D&mid=shm&"
 						+ "sid2=" + /*sid2[sid1%100][sid2_idx]*/"252"
@@ -42,12 +42,12 @@ public class URL_Crawler{
 				
 				Document doc = Jsoup.connect(URL).get();
 				
-				Elements Article_URL = doc.select("div.content div.list_body ul li dl"); //Aticle URL
+				Elements Article_List_URL = doc.select("div.content div.list_body ul li dl"); //Aticle URL
 				
-				for(Element element : Article_URL) {
-					if(Check_Upload_Time(element.toString().split("<span class=\"date")[1].split(">")[1])) {break Page_loop; }
-					ArrayList<String> Article_Data = article_crawler.article_crawling(element.toString().split("href=\"")[1].split("\">")[0].replace("&amp;","&")); //해당 링크에서 crawling
-					Article_Data.add(/*sid2[sid1%100][sid2_idx]*/"252");
+				for(Element element : Article_List_URL) { //Article List loop
+					if(Check_Upload_Time(element.toString().split("<span class=\"date")[1].split(">")[1])) {break Page_loop; } //Upload Time > 6 => break Page loop
+					ArrayList<String> Article_Data = article_crawler.article_crawling(element.toString().split("href=\"")[1].split("\">")[0].replace("&amp;","&")); //Crawling to Article
+					Article_Data.add(/*sid2[sid1%100][sid2_idx]*/"252"); //Store sid2 number
 					
 					Save_File(Article_Data);
 				}
@@ -55,9 +55,8 @@ public class URL_Crawler{
 		}
 	}
 	
-	public String final_page(int sid1,String sid2) throws IOException { //마지막 페이지번호 가져오기
+	public String final_page(int sid1,String sid2) throws IOException { //get last Page number
 		
-		int final_page_num = 0;
 		String URL = "https://news.naver.com/main/list.nhn?mode=LS2D&mid=shm&"
 				+ "sid2=" + sid2
 				+ "&sid1=" + sid1
@@ -77,7 +76,7 @@ public class URL_Crawler{
 		BufferedWriter filewriter = new BufferedWriter(new FileWriter(Article_Data_File,true));
 		
 		for(String data : Article_Data) {
-			filewriter.write(data+",");
+			filewriter.write(data+"|");
 		}
 		filewriter.write("\n");
 		filewriter.flush();
