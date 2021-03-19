@@ -29,13 +29,17 @@ public class MainApp {
 		
 		URL_Crawler url_crawler = new URL_Crawler();
 		
-		Mk_File(); //File initialization
+//		Mk_File(); //File initialization
+		
+		ArrayList<ArrayList<Article_Class>> Article = new ArrayList<ArrayList<Article_Class>>();
 		
 //		for(int i=0;i<sid1.length;i++) {
 //			System.out.println(/*sid1[i]*/102);
-			url_crawler.select_sid2Num(/*sid1[i]*/102);
+			Article.add(url_crawler.select_sid2Num(/*sid1[i]*/102));
 //		}
 		
+//		------------- Android쪽으로 넘겨주기 -------------
+			
 		//1. Document를 가져온다.
 //		Document doc = Jsoup.connect(URL).get();
 		

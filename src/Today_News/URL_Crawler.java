@@ -25,20 +25,27 @@ public class URL_Crawler{
 	};
 		
 	
-	public void select_sid2Num(int sid1) throws IOException{
+	public ArrayList<Article_Class> select_sid2Num(int sid1) throws IOException{
+		
+		ArrayList<Article_Class> Article_ArrayList = new ArrayList<Article_Class>(); //return 될 sid2 1개 객체
 		
 		Article_Crawler article_crawler = new Article_Crawler();
 		for(int sid2_idx = 0; /*sid2_idx < sid2[sid1%100].length*/sid2_idx <1; sid2_idx++) { //sid2 loop
+			
+			
 //			System.out.println(/*sid2[sid1%100][sid2_idx]*/"252");
 			String final_page_num = final_page(sid1,/*sid2[sid1%100][sid2_idx]*/"252"); //get Final Page number
 			
 			Page_loop: for(int page_num = 1; page_num < Integer.parseInt(final_page_num); page_num++) { //Page loop
+				
+				Article_Class article_class = new Article_Class();	//sid2 하위 1개 기사
 				
 				String URL = "https://news.naver.com/main/list.nhn?mode=LS2D&mid=shm&"
 						+ "sid2=" + /*sid2[sid1%100][sid2_idx]*/"252"
 						+ "&sid1=" + sid1
 //						+ "&date="
 						+ "&page="+page_num;
+				
 				
 				Document doc = Jsoup.connect(URL).get();
 				
@@ -47,12 +54,21 @@ public class URL_Crawler{
 				for(Element element : Article_List_URL) { //Article List loop
 					if(Check_Upload_Time(element.toString().split("<span class=\"date")[1].split(">")[1])) {break Page_loop; } //Upload Time > 6 => break Page loop
 					ArrayList<String> Article_Data = article_crawler.article_crawling(element.toString().split("href=\"")[1].split("\">")[0].replace("&amp;","&")); //Crawling to Article
-					Article_Data.add(/*sid2[sid1%100][sid2_idx]*/"252"); //Store sid2 number
+					article_class.setSid2(/*sid2[sid1%100][sid2_idx]*/"252"); //Store sid2 number
+					article_class.setURL(Article_Data.get(0)); //Store URL
+					article_class.setTitle(Article_Data.get(1)); //Store Title
+					article_class.setTime(Article_Data.get(2)); //Store Time
+//					article_class.setContent(Article_Data.get(3)); //Store Content -> 3줄요약 class추가해서 해당 메소드로 content내용 수정해야함
 					
-					Save_File(Article_Data);
+					Title_Analysis title_analysis = new Title_Analysis();
+					article_class.setKeyword(title_analysis.Text_Analysis(article_class.getTitle())); //Store Keyword
+					
+					Article_ArrayList.add(article_class); //add article_class from article_arraylist
+//					Save_File(Article_Data);
 				}
 			}
 		}
+		return Article_ArrayList;
 	}
 	
 	public String final_page(int sid1,String sid2) throws IOException { //get last Page number
