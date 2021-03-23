@@ -32,8 +32,8 @@ public class Article_Crawler {
 
 		String delet_tag = "[<].*[>]";
 		for(Element element : elements_article_text) { //내용
-			
-			Article_TTT.add(element.toString().replaceAll(delet_tag, "").replace("function _flash_removeCallback() {}", "").replace("// flash 오류를 우회하기 위한 함수 추가", "").replaceAll("\n","").replaceAll("|", "")); //Article Content
+			Article_Summarizer article_summarizer = new Article_Summarizer();
+			Article_TTT.add(article_summarizer.summarize(element.toString().replaceAll(delet_tag, "").replace("function _flash_removeCallback() {}", "").replace("// flash 오류를 우회하기 위한 함수 추가", "").replaceAll("\n","").replaceAll("|", ""))); //Article Content
 //			System.out.println(element.toString().replaceAll(delet_tag, "").replace("function _flash_removeCallback() {}", "").replace("// flash 오류를 우회하기 위한 함수 추가", "").replaceAll("\n",""));
 		}
 		

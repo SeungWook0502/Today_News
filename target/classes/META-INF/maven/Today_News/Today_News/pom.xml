@@ -24,10 +24,15 @@
 	</repositories>
 	
 	<dependencies>
-	  <dependency>
-	    <groupId>com.github.shin285</groupId>
-	    <artifactId>KOMORAN</artifactId>
-	    <version>3.3.4</version>
-	  </dependency>
+		<dependency>
+	    	<groupId>com.github.shin285</groupId>
+		    <artifactId>KOMORAN</artifactId>
+		    <version>3.3.4</version>
+		</dependency>
+		<dependency>	
+			<groupId>com.github.tuguri8</groupId>
+			<artifactId>korean-summarizer</artifactId>
+			<version>0.1.2</version>
+		</dependency>
 	</dependencies>
 </project>
