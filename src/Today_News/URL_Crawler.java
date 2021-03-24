@@ -15,7 +15,7 @@ import org.jsoup.select.Elements;
 public class URL_Crawler{
 
 	
-	static String[][] sid2 = {
+	static String[][] sid2 = { //Sid2 value
 			{"264","265","268","266","267","269"}, //정치
 			{"259","258","261","771","260","262","310","263"}, //경제
 			{"249","250","251","254","252","59b","255","256","276","257"}, //사회
@@ -52,7 +52,9 @@ public class URL_Crawler{
 				Elements Article_List_URL = doc.select("div.content div.list_body ul li dl"); //Aticle URL
 				
 				for(Element element : Article_List_URL) { //Article List loop
+					
 					if(Check_Upload_Time(element.toString().split("<span class=\"date")[1].split(">")[1])) {break Page_loop; } //Upload Time > 6 => break Page loop
+					
 					ArrayList<String> Article_Data = article_crawler.article_crawling(element.toString().split("href=\"")[1].split("\">")[0].replace("&amp;","&")); //Crawling to Article
 					article_class.setSid2(/*sid2[sid1%100][sid2_idx]*/"252"); //Store sid2 number
 					article_class.setURL(Article_Data.get(0)); //Store URL
@@ -60,7 +62,7 @@ public class URL_Crawler{
 					article_class.setTime(Article_Data.get(2)); //Store Time
 //					article_class.setContent(Article_Data.get(3)); //Store Content -> 3줄요약 class추가해서 해당 메소드로 content내용 수정해야함
 					
-					Title_Analysis title_analysis = new Title_Analysis();
+					Title_Analysis title_analysis = new Title_Analysis(); //Extract Keyword
 					article_class.setKeyword(title_analysis.Text_Analysis(article_class.getTitle())); //Store Keyword
 					
 					Article_ArrayList.add(article_class); //add article_class from article_arraylist
@@ -77,15 +79,15 @@ public class URL_Crawler{
 				+ "sid2=" + sid2
 				+ "&sid1=" + sid1
 //				+ "&date="
-				+ "&page="+100000;
+				+ "&page="+100000; //Over Page Number
 		
 		Document doc = Jsoup.connect(URL).get();
 		Elements elements_nextPage = doc.select("div.content div.paging strong");
 				
-		return elements_nextPage.toString().split("<strong>")[1].split("</strong>")[0];
+		return elements_nextPage.toString().split("<strong>")[1].split("</strong>")[0]; //return last page number
 	}
 	
-	public void Save_File(List<String> Article_Data) throws IOException{
+	public void Save_File(List<String> Article_Data) throws IOException{//Save Text to Article //No use
 		
 		File Article_Data_File = new File("Article_Data.txt");
 		

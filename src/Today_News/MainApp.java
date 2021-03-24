@@ -15,7 +15,7 @@ public class MainApp {
 	
 	public static void main(String[] args) throws IOException {
 
-		int[] sid1 = {100,101,102,103,104,105};
+		int[] sid1 = {100,101,102,103,104,105}; //Sid1 value
 		
 //		String URL = "https://news.naver.com/main/list.nhn?mode=LS2D&mid=shm&"
 //				+ "sid2=" + 263
@@ -27,15 +27,15 @@ public class MainApp {
 		
 //		System.out.println("URL :: " + URL);
 		
-		URL_Crawler url_crawler = new URL_Crawler();
+		URL_Crawler url_crawler = new URL_Crawler(); //URL Crawler
 		
 //		Mk_File(); //File initialization
 		
-		ArrayList<ArrayList<Article_Class>> Article = new ArrayList<ArrayList<Article_Class>>();
+		ArrayList<ArrayList<Article_Class>> Article = new ArrayList<ArrayList<Article_Class>>(); //News Data variable
 		
-//		for(int i=0;i<sid1.length;i++) {
+//		for(int i=0;i<sid1.length;i++) { //Sending Sid1 values
 //			System.out.println(/*sid1[i]*/102);
-			Article.add(url_crawler.select_sid2Num(/*sid1[i]*/102));
+			Article.add(url_crawler.select_sid2Num(/*sid1[i]*/102)); //Send Sid1 value
 //		}
 		
 //		------------- Android쪽으로 넘겨주기 -------------
@@ -85,7 +85,7 @@ public class MainApp {
 //		}
 	}
 	
-	public static void Mk_File() throws IOException{ //File initialization
+	public static void Mk_File() throws IOException{ //File initialization //No use
 
 		File Article_Data_File = new File("Article_Data.txt");
 		

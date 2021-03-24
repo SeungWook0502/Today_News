@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public class Article_Class {
 
-	String Title;
-	String Content;
-	String Time;
-	String URL;
-	String sid2;
-	ArrayList<String> Keyword = new ArrayList<String>();
+	String Title; //제목
+	String Content; //내용
+	String Time; //개시 시간
+	String URL; //URL
+	String sid2; //Sid2
+	ArrayList<String> Keyword = new ArrayList<String>(); //Keyword //Expect to Modify
 	
 	public String getURL() {
 		return URL;
