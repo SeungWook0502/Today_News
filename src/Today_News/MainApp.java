@@ -10,12 +10,13 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.w3c.dom.Text;
 
 public class MainApp {
 	
 	public static void main(String[] args) throws IOException {
 
-		int[] sid1 = {100,101,102,103,104,105}; //Sid1 value
+		int[] sid1 = {100,101/*,102,103,104,105*/}; //Sid1 value
 		
 //		String URL = "https://news.naver.com/main/list.nhn?mode=LS2D&mid=shm&"
 //				+ "sid2=" + 263
@@ -32,11 +33,24 @@ public class MainApp {
 //		Mk_File(); //File initialization
 		
 		ArrayList<ArrayList<Article_Class>> Article = new ArrayList<ArrayList<Article_Class>>(); //News Data variable
+		ArrayList<TextRank_Class> TextRank = new ArrayList<TextRank_Class>();
 		
-//		for(int i=0;i<sid1.length;i++) { //Sending Sid1 values
+		for(int i=0;i<sid1.length;i++) { //Sending Sid1 values
 //			System.out.println(/*sid1[i]*/102);
-			Article.add(url_crawler.select_sid2Num(/*sid1[i]*/102)); //Send Sid1 value
-//		}
+			Article.add(url_crawler.select_sid2Num(sid1[i]/*102*/, TextRank)); //Send Sid1 value
+		}
+		
+		for(int a=0;a<Article.size();a++) {
+			for(int b=0;b<Article.get(a).size();b++) {
+				
+				System.out.println(Article.get(a).get(b).getTitle()+"\t"+Article.get(a).get(b).getSid2());
+			}
+		}
+		for(int a=0;a<TextRank.size();a++) {
+			if(TextRank.get(a).getKeyword_Rank()!=0) {
+				System.out.println(TextRank.get(a).getKeyword()+" "+" "+TextRank.get(a).getSid2());
+			}
+		}
 		
 //		------------- Android쪽으로 넘겨주기 -------------
 			
