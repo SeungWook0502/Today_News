@@ -4,19 +4,16 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.*;
 import java.util.ArrayList;
-import java.util.Iterator;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-import org.w3c.dom.Text;
 
 public class MainApp {
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
 
-		int[] sid1 = {100,101/*,102,103,104,105*/}; //Sid1 value
+		int[] sid1 = {100,101,102,103,104,105}; //Sid1 value
+		LocalTime startTime = LocalTime.now();
+		System.out.println(startTime);
 		
 //		String URL = "https://news.naver.com/main/list.nhn?mode=LS2D&mid=shm&"
 //				+ "sid2=" + 263
@@ -51,7 +48,8 @@ public class MainApp {
 				System.out.println(TextRank.get(a).getKeyword()+" "+" "+TextRank.get(a).getSid2());
 			}
 		}
-		
+		LocalTime endTime = LocalTime.now();
+		System.out.println(String.valueOf(endTime.getMinute()-startTime.getMinute())+"분"+String.valueOf(endTime.getSecond()-startTime.getSecond())+"초");
 //		------------- Android쪽으로 넘겨주기 -------------
 			
 		//1. Document를 가져온다.

@@ -13,7 +13,8 @@ import java.io.IOException;
 
 public class Article_Crawler {
 
-	public ArrayList<String> article_crawling(String URL) throws IOException {
+	public ArrayList<String> article_crawling(String URL) throws Exception{
+		
 		
 		Document doc = Jsoup.connect(URL).get();
 
@@ -23,9 +24,17 @@ public class Article_Crawler {
 		
 		
 		ArrayList<String> Article_TTT = new ArrayList<String>();
+		try {
+			Article_TTT.add(URL); //Article URL
 
-		Article_TTT.add(URL); //Article URL
+		}catch (ArrayIndexOutOfBoundsException exception) {
+			Article_TTT.add("https://www.naver.com/");
+		}
+		try {
 		Article_TTT.add(elements_article_title.toString().split("<h3 id=\"articleTitle\">")[1].split("</h3>")[0]); //Article Title
+		}catch (ArrayIndexOutOfBoundsException exception){ //...같은 특수기호로 인한 예외처리
+			Article_TTT.add("제목없음"); //Article Title
+		}
 		Article_TTT.add(elements_article_time.toString().split("<span class=\"t11\">")[1].split("</span")[0]); //Article Upload Time
 		
 //		System.out.println(URL);
@@ -36,8 +45,10 @@ public class Article_Crawler {
 			Article_TTT.add(article_summarizer.summarize(element.toString().replaceAll(delet_tag, "").replace("function _flash_removeCallback() {}", "").replace("// flash 오류를 우회하기 위한 함수 추가", "").replaceAll("\n","").replaceAll("|", ""))); //Article Content (1.remove tag 2.summarize)
 //			System.out.println(element.toString().replaceAll(delet_tag, "").replace("function _flash_removeCallback() {}", "").replace("// flash 오류를 우회하기 위한 함수 추가", "").replaceAll("\n",""));
 		}
+
 		
 		return Article_TTT;
+		
 	}
 	
 }
