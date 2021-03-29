@@ -66,23 +66,28 @@ public class URL_Crawler{
 					article_class.setTitle(Article_Data.get(1)); //Store Title
 					System.out.println(sid2[sid1%100][sid2_idx]+"- "+Article_Data.get(1));
 					article_class.setTime(Article_Data.get(2)); //Store Time
-					article_class.setContent(Article_Data.get(3)); //Store Content -> 3줄요약 class추가해서 해당 메소드로 content내용 수정해야함
-					
+					try {
+						article_class.setContent(Article_Data.get(3)); //Store Content -> 3줄요약 class추가해서 해당 메소드로 content내용 수정해야함 -> Article_Crawler에서 완료
+					}catch(ArrayIndexOutOfBoundsException exception) {
+						System.out.println(Article_Data.get(3));
+						article_class.setContent("내용없음");
+					}
 					Title_Analysis title_analysis = new Title_Analysis(); //Extract Keyword
 					article_class.setKeyword(title_analysis.Text_Analysis(article_class.getTitle())); //Store Keyword
 					
+					Save_File(article_class.getTitle(),sid2[sid1%100][sid2_idx]);
 					
-					for(String keyword : title_analysis.Text_Analysis(article_class.getTitle())) {
-//						TextRank_Analysis textrank_analysis = new TextRank_Analysis();
-//						textrank_analysis.TextRanking(KeywordRank, keyword,sid2[sid1%100][sid2_idx]);
-						for(TextRank_Class textrank_class : KeywordRank) {
-							textrank_class.setKeyword(keyword);
-							textrank_class.setSid2(sid2[sid1%100][sid2_idx]);
-						}
-					}
+//					for(String keyword : title_analysis.Text_Analysis(article_class.getTitle())) {
+////						TextRank_Analysis textrank_analysis = new TextRank_Analysis();
+////						textrank_analysis.TextRanking(KeywordRank, keyword,sid2[sid1%100][sid2_idx]);
+//						for(TextRank_Class textrank_class : KeywordRank) {
+//							textrank_class.setKeyword(keyword);
+//							textrank_class.setSid2(sid2[sid1%100][sid2_idx]);
+//						}
+//					}
 					
 					Article_ArrayList.add(article_class); //add article_class from article_arraylist
-//					Save_File(Article_Data);
+					
 
 					LocalTime endTime = LocalTime.now();
 					System.out.println(String.valueOf(endTime.getMinute()-startTime.getMinute())+"분"+String.valueOf(endTime.getSecond()-startTime.getSecond())+"초"+String.valueOf(endTime.getNano()-startTime.getNano())+"나노초");
@@ -109,15 +114,13 @@ public class URL_Crawler{
 		else {return 2;}
 	}
 	
-	public void Save_File(List<String> Article_Data) throws IOException{//Save Text to Article //No use
+	public void Save_File(String Content,String sid2) throws IOException{//Save Text to Article //No use
 		
 		File Article_Data_File = new File("Article_Data.txt");
 		
 		BufferedWriter filewriter = new BufferedWriter(new FileWriter(Article_Data_File,true));
 		
-		for(String data : Article_Data) {
-			filewriter.write(data+"|");
-		}
+		filewriter.write(sid2+"|"+Content);
 		filewriter.write("\n");
 		filewriter.flush();
 		filewriter.close();

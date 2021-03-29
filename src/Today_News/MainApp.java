@@ -27,7 +27,7 @@ public class MainApp {
 		
 		URL_Crawler url_crawler = new URL_Crawler(); //URL Crawler
 		
-//		Mk_File(); //File initialization
+		Mk_File(); //File initialization
 		
 		ArrayList<ArrayList<Article_Class>> Article = new ArrayList<ArrayList<Article_Class>>(); //News Data variable
 		ArrayList<TextRank_Class> TextRank = new ArrayList<TextRank_Class>();
