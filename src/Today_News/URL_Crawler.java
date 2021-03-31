@@ -56,7 +56,7 @@ public class URL_Crawler{
 				
 				for(Element element : Article_List_URL) { //Article List loop
 
-					LocalTime startTime = LocalTime.now();
+//					LocalTime startTime = LocalTime.now();
 					
 					if(Check_Upload_Time(element.toString().split("<span class=\"date")[1].split(">")[1])) {break Page_loop; } //Upload Time > 1hour => break Page loop
 					Article_Class article_class = new Article_Class();	//sid2 하위 1개 기사
@@ -70,6 +70,8 @@ public class URL_Crawler{
 						article_class.setContent(Article_Data.get(3)); //Store Content -> 3줄요약 class추가해서 해당 메소드로 content내용 수정해야함 -> Article_Crawler에서 완료
 					}catch(ArrayIndexOutOfBoundsException exception) {
 						System.out.println(Article_Data.get(3));
+						article_class.setContent("내용없음");
+					}catch(IndexOutOfBoundsException exception) {
 						article_class.setContent("내용없음");
 					}
 					Title_Analysis title_analysis = new Title_Analysis(); //Extract Keyword
@@ -89,8 +91,8 @@ public class URL_Crawler{
 					Article_ArrayList.add(article_class); //add article_class from article_arraylist
 					
 
-					LocalTime endTime = LocalTime.now();
-					System.out.println(String.valueOf(endTime.getMinute()-startTime.getMinute())+"분"+String.valueOf(endTime.getSecond()-startTime.getSecond())+"초"+String.valueOf(endTime.getNano()-startTime.getNano())+"나노초");
+//					LocalTime endTime = LocalTime.now();
+//					System.out.println(String.valueOf(endTime.getMinute()-startTime.getMinute())+"분"+String.valueOf(endTime.getSecond()-startTime.getSecond())+"초"+String.valueOf(endTime.getNano()-startTime.getNano())+"나노초");
 				}
 			}
 		}

@@ -44,7 +44,7 @@ public class Article_Crawler {
 			System.out.println("-----------------Exception Time----------------");
 			Article_TTT.add("2000.01.01");
 		}
-		
+
 //		System.out.println(URL);
 
 		String[] delet_txt = {"&#x[0-9]{4};","&[a-z]{4}|&[a-z]{3}|&[a-z]{2}","[<].*[>]"};
