@@ -1,16 +1,16 @@
-package com.example.todaynews.ui.gallery;
+package com.example.todaynews.ui.keyword;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GalleryViewModel extends ViewModel {
+public class KeywordViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public GalleryViewModel() {
+    public KeywordViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
+        mText.setValue("This is Keyword fragment");
     }
 
     public LiveData<String> getText() {

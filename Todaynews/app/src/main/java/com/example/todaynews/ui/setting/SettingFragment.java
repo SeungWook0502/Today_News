@@ -1,4 +1,4 @@
-package com.example.todaynews.ui.slideshow;
+package com.example.todaynews.ui.setting;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.todaynews.R;
 
-public class SlideshowFragment extends Fragment {
+public class SettingFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
+    private SettingViewModel settingViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        slideshowViewModel =
-                new ViewModelProvider(this).get(SlideshowViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
-        final TextView textView = root.findViewById(R.id.text_slideshow);
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        settingViewModel =
+                new ViewModelProvider(this).get(SettingViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_setting, container, false);
+        final TextView textView = root.findViewById(R.id.text_setting);
+        settingViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

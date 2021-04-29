@@ -6,13 +6,35 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bebbbcd-d266-4876-aec6-34805a39b069" name="Default Changelist" comment="" />
+    <list default="true" id="9bebbbcd-d266-4876-aec6-34805a39b069" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/ui/gallery/GalleryFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/ui/keyword/KeywordFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/ui/gallery/GalleryViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/ui/keyword/KeywordViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/ui/home/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/ui/home/HomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/ui/home/HomeViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/ui/home/HomeViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/ui/slideshow/SlideshowFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/ui/setting/SettingFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/ui/slideshow/SlideshowViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/ui/setting/SettingViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_menu_gallery.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_menu_keyword.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_menu_slideshow.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_menu_setting.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_bar_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_bar_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_gallery.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_keyword.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_slideshow.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_setting.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Pixel_2_API_29123]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -22,7 +44,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1rqXa94hWkpBCKCGVuZ1IAa24Kc" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -30,11 +54,24 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android-custom-viewC:/Users/a98k9/Documents/Today_News/Todaynews/app/src/main/java/com/example/todaynews/ui/TextWall.java_SELECTED" value="TextWall" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../test" />
+    <property name="last_opened_file_path" value="$USER_HOME$/AndroidStudioProjects/test2" />
+    <property name="multi-representation-previewC:/Users/a98k9/Documents/Today_News/Todaynews/app/src/main/java/com/example/todaynews/ui/TextWall.java_selected" value="Custom views" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.todaynews" />
+    </key>
+    <key name="android.template.1650050824">
+      <recent name="com.example.todaynews" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.todaynews.ui" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -44,7 +81,7 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="Todaynews.app" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -116,6 +153,34 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="690" y="299" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1619711625792">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="299" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619711625792" />
+    <state x="742" y="387" width="547" height="274" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1619711636179">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="742" y="387" width="547" height="274" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1619711636179" />
+    <state x="367" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1619709631017">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="367" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619709631017" />
+    <state x="540" y="275" key="AndroidCreateResourceDirectoryDialog" timestamp="1619710802538">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="540" y="275" key="AndroidCreateResourceDirectoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619710802538" />
+    <state x="540" y="275" key="AndroidCreateResourceFileDialog" timestamp="1619711783902">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="540" y="275" key="AndroidCreateResourceFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619711783902" />
+    <state x="804" y="327" key="AndroidCreateXmlResourceDialog" timestamp="1619711814177">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="804" y="327" key="AndroidCreateXmlResourceDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619711814177" />
+    <state x="578" y="282" key="FileChooserDialogImpl" timestamp="1619705569896">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="578" y="282" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1619705569896" />
     <state x="674" y="424" key="Github.ShareDialog" timestamp="1619704741004">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -124,5 +189,13 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="516" y="232" key="Github.UntrackedFilesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619704754448" />
+    <state x="603" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1619705662198">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="603" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1619705662198" />
+    <state x="506" y="125" width="584" height="804" key="find.popup" timestamp="1619705691883">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="506" y="125" width="584" height="804" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1619705691883" />
   </component>
 </project>
