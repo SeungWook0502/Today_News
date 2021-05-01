@@ -14,10 +14,6 @@ import com.example.todaynews.TextItem;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Created by Squirrelhuan on 2017/7/21.
- */
-
 public class TextWall extends FrameLayout implements ViewTreeObserver.OnGlobalLayoutListener {
 
     private int[] colors = {R.color.red, R.color.orange, R.color.yellow, R.color.green, R.color.cyan, R.color.blue, R.color.purple};
