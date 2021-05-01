@@ -22,7 +22,6 @@ public class Loading extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loading);
-
         //여기다가 서버에서 데이터 받아옴
         checkSelfPermission();
 
