@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.todaynews.ui.home.HomeFragment"
+        android:name="com.example.todaynews.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_keyword"
-        android:name="com.example.todaynews.ui.keyword.KeywordFragment"
-        android:label="@string/menu_keyword"
-        tools:layout="@layout/fragment_keyword" />
+        android:id="@+id/nav_scarp"
+        android:name="com.example.todaynews.ScarpFragment"
+        android:label="@string/menu_scarp"
+        tools:layout="@layout/fragment_scarp" />
 
     <fragment
         android:id="@+id/nav_setting"
-        android:name="com.example.todaynews.ui.setting.SettingFragment"
+        android:name="com.example.todaynews.SettingFragment"
         android:label="@string/menu_setting"
         tools:layout="@layout/fragment_setting" />
 </navigation>
