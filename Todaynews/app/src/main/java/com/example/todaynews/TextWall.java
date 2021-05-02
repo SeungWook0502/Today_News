@@ -1,6 +1,7 @@
 package com.example.todaynews;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,7 +82,8 @@ public class TextWall extends FrameLayout implements ViewTreeObserver.OnGlobalLa
             textView.setEms((i-count)*-1);
             textView.setTextSize((i-count)*-8);
             textView.setTextColor(context.getResources().getColor(items.get(i).getFrontColor()));
-            //객체 크기 보기
+
+            //객체 크기 보기(배경색)
             textView.setBackgroundColor(colors[i]);
 
 
@@ -90,7 +92,11 @@ public class TextWall extends FrameLayout implements ViewTreeObserver.OnGlobalLa
             textView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, ((TextItem) view.getTag()).getValue(), Toast.LENGTH_SHORT).show();
+                    //터치시 화면전환부분 데이터 전송 필요!
+                    Intent intent = new Intent(context,Article.class);
+                    context.startActivity(intent);
+
+                    //Toast.makeText(context, ((TextItem) view.getTag()).getValue(), Toast.LENGTH_SHORT).show();
                 }
             });
             addView(textView);
@@ -140,9 +146,6 @@ public class TextWall extends FrameLayout implements ViewTreeObserver.OnGlobalLa
         return sizes;
     }
 
-    /**
-     * 排序
-     */
     List<TextItem> sortTextItem(List<TextItem> items) {
         int count = items.size();
         for (int i = 0; i < count; i++) {

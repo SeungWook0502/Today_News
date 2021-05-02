@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
-
     <com.example.todaynews.TextWall
         android:id="@+id/tw_test"
         android:layout_width="400dp"

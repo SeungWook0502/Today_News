@@ -35,10 +35,8 @@ public class TextTagsAdapter extends TagsAdapter {
 
     @Override
     public View getView(final Context context, final int position, ViewGroup parent) {
+        //데이터 입력파트
         String[] name = {"비트코인", "LH"};
-        /*int[] name={R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher,
-                R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher,
-                R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher};*/
         Random rand = new Random();
         int randNum = rand.nextInt(2);
 
@@ -52,8 +50,8 @@ public class TextTagsAdapter extends TagsAdapter {
             @Override
             public void onClick(View v) {
                 Log.e("Click", "Tag " + position + " clicked.");
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse("https://www.naver.com/"+ name[1]));
+                //정보 넘겨주는 코드 필요!
+                Intent i = new Intent(context,Article.class);
                 context.startActivity(i);
             }
         });

@@ -66,7 +66,7 @@
     <property name="android-custom-viewC:/Users/a98k9/gradle/caches/modules-2/files-2.1/com.moxun/tagcloudlib/1.1.0/901ff2c2801cae6bc713fedcc7c7bb4f261a0d86/tagcloudlib-1.1.0-sources.jar!/com/moxun/tagcloudlib/view/TagCloudView.java_SELECTED" value="TagCloudView" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
+    <property name="last_opened_file_path" value="$USER_HOME$/AndroidStudioProjects/MyApplicationasdasd" />
     <property name="multi-representation-previewC:/Users/a98k9/Documents/Today_News/Todaynews/app/src/main/java/com/example/todaynews/TextWall.java_selected" value="Custom views" />
     <property name="multi-representation-previewC:/Users/a98k9/Documents/Today_News/Todaynews/app/src/main/java/com/example/todaynews/ui/TextWall.java_selected" value="Custom views" />
     <property name="multi-representation-previewC:/Users/a98k9/gradle/caches/modules-2/files-2.1/com.moxun/tagcloudlib/1.1.0/901ff2c2801cae6bc713fedcc7c7bb4f261a0d86/tagcloudlib-1.1.0-sources.jar!/com/moxun/tagcloudlib/view/TagCloudView.java_selected" value="Custom views" />
@@ -74,22 +74,25 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="android.template.-1268949539">
+    <key name="android.template.1650050824">
       <recent name="com.example.todaynews" />
-      <recent name="com.example.todaynews.ui.setting" />
+    </key>
+    <key name="android.template.-574666937">
+      <recent name="com.example.todaynews" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.example.todaynews" />
     </key>
-    <key name="android.template.1650050824">
-      <recent name="com.example.todaynews" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\a98k9\Documents\Today_News\Todaynews\app\src\main\res\layout" />
+      <recent name="C:\Users\a98k9\Documents\Today_News\Todaynews\app\src\main\res\menu" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.todaynews.ui" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\a98k9\Documents\Today_News\Todaynews\app\src\main\res\layout" />
-      <recent name="C:\Users\a98k9\Documents\Today_News\Todaynews\app\src\main\res\menu" />
+    <key name="android.template.-1268949539">
+      <recent name="com.example.todaynews" />
+      <recent name="com.example.todaynews.ui.setting" />
     </key>
   </component>
   <component name="RunManager">
@@ -204,10 +207,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="69" y="91" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1619884886006" />
-    <state x="578" y="282" key="FileChooserDialogImpl" timestamp="1619873768653">
+    <state x="578" y="282" key="FileChooserDialogImpl" timestamp="1619946766932">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="578" y="282" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1619873768653" />
+    <state x="578" y="282" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1619946766932" />
     <state x="674" y="424" key="Github.ShareDialog" timestamp="1619704741004">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -216,22 +219,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="516" y="232" key="Github.UntrackedFilesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619704754448" />
-    <state width="913" height="238" key="GridCell.Tab.0.bottom" timestamp="1619884886080">
+    <state width="1876" height="232" key="GridCell.Tab.0.bottom" timestamp="1619956940337">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="913" height="238" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1619884886080" />
-    <state width="913" height="238" key="GridCell.Tab.0.center" timestamp="1619884886080">
+    <state width="1876" height="232" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1619956940337" />
+    <state width="1876" height="232" key="GridCell.Tab.0.center" timestamp="1619956940337">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="913" height="238" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1619884886080" />
-    <state width="913" height="238" key="GridCell.Tab.0.left" timestamp="1619884886080">
+    <state width="1876" height="232" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1619956940337" />
+    <state width="1876" height="232" key="GridCell.Tab.0.left" timestamp="1619956940337">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="913" height="238" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1619884886080" />
-    <state width="913" height="238" key="GridCell.Tab.0.right" timestamp="1619884886080">
+    <state width="1876" height="232" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1619956940337" />
+    <state width="1876" height="232" key="GridCell.Tab.0.right" timestamp="1619956940337">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="913" height="238" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1619884886080" />
+    <state width="1876" height="232" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1619956940337" />
     <state x="603" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1619884893758">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
