@@ -38,7 +38,7 @@ public class Article extends AppCompatActivity {
         lt_id.setAdapter(adapter);
 
         for (int i = 1; i < 100; i++) {
-            data.add(String.valueOf(i));
+            data.add("기사내용" + String.valueOf(i));
         }
         adapter.notifyDataSetChanged();
 
@@ -63,6 +63,7 @@ public class Article extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Intent intent = new Intent(Article.this,Summary.class);
+            intent.putExtra("menu_select",1);
             startActivity(intent);
         }
 

@@ -9,32 +9,9 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bebbbcd-d266-4876-aec6-34805a39b069" name="Default Changelist" comment="android project">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/HomeFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/ScarpFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/SettingFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+    <list default="true" id="9bebbbcd-d266-4876-aec6-34805a39b069" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/ui/gallery/GalleryFragment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/ui/gallery/GalleryViewModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/ui/home/HomeFragment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/ui/home/HomeViewModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/ui/slideshow/SlideshowFragment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/ui/slideshow/SlideshowViewModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_menu_gallery.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_menu_scarp.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_menu_slideshow.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_menu_setting.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_bar_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_bar_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_gallery.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_scarp.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_slideshow.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_setting.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/ScarpFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/ScarpFragment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +43,7 @@
     <property name="android-custom-viewC:/Users/a98k9/gradle/caches/modules-2/files-2.1/com.moxun/tagcloudlib/1.1.0/901ff2c2801cae6bc713fedcc7c7bb4f261a0d86/tagcloudlib-1.1.0-sources.jar!/com/moxun/tagcloudlib/view/TagCloudView.java_SELECTED" value="TagCloudView" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/AndroidStudioProjects/MyApplicationasdasd" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="multi-representation-previewC:/Users/a98k9/Documents/Today_News/Todaynews/app/src/main/java/com/example/todaynews/TextWall.java_selected" value="Custom views" />
     <property name="multi-representation-previewC:/Users/a98k9/Documents/Today_News/Todaynews/app/src/main/java/com/example/todaynews/ui/TextWall.java_selected" value="Custom views" />
     <property name="multi-representation-previewC:/Users/a98k9/gradle/caches/modules-2/files-2.1/com.moxun/tagcloudlib/1.1.0/901ff2c2801cae6bc713fedcc7c7bb4f261a0d86/tagcloudlib-1.1.0-sources.jar!/com/moxun/tagcloudlib/view/TagCloudView.java_selected" value="Custom views" />
@@ -74,6 +51,10 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\a98k9\Documents\Today_News\Todaynews\app\src\main\res\layout" />
+      <recent name="C:\Users\a98k9\Documents\Today_News\Todaynews\app\src\main\res\menu" />
+    </key>
     <key name="android.template.1650050824">
       <recent name="com.example.todaynews" />
     </key>
@@ -82,10 +63,6 @@
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.example.todaynews" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\a98k9\Documents\Today_News\Todaynews\app\src\main\res\layout" />
-      <recent name="C:\Users\a98k9\Documents\Today_News\Todaynews\app\src\main\res\menu" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.todaynews.ui" />
@@ -172,6 +149,14 @@
       <option name="presentableId" value="Default" />
       <updated>1619704654563</updated>
     </task>
+    <task id="LOCAL-00001" summary="android project">
+      <created>1619960558527</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1619960558527</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -203,10 +188,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="804" y="327" key="AndroidCreateXmlResourceDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619711814177" />
-    <state x="69" y="91" key="CommitChangelistDialog2" timestamp="1619884886006">
+    <state x="69" y="91" key="CommitChangelistDialog2" timestamp="1619960557855">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="69" y="91" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1619884886006" />
+    <state x="69" y="91" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1619960557855" />
     <state x="578" y="282" key="FileChooserDialogImpl" timestamp="1619946766932">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -219,22 +204,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="516" y="232" key="Github.UntrackedFilesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619704754448" />
-    <state width="1876" height="232" key="GridCell.Tab.0.bottom" timestamp="1619956940337">
+    <state width="1876" height="229" key="GridCell.Tab.0.bottom" timestamp="1619959298999">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="232" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1619956940337" />
-    <state width="1876" height="232" key="GridCell.Tab.0.center" timestamp="1619956940337">
+    <state width="1876" height="229" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1619959298999" />
+    <state width="1876" height="229" key="GridCell.Tab.0.center" timestamp="1619959298998">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="232" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1619956940337" />
-    <state width="1876" height="232" key="GridCell.Tab.0.left" timestamp="1619956940337">
+    <state width="1876" height="229" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1619959298998" />
+    <state width="1876" height="229" key="GridCell.Tab.0.left" timestamp="1619959298998">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="232" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1619956940337" />
-    <state width="1876" height="232" key="GridCell.Tab.0.right" timestamp="1619956940337">
+    <state width="1876" height="229" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1619959298998" />
+    <state width="1876" height="229" key="GridCell.Tab.0.right" timestamp="1619959298998">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="232" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1619956940337" />
+    <state width="1876" height="229" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1619959298998" />
     <state x="603" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1619884893758">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

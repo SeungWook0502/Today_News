@@ -51,27 +51,18 @@ public class DisplaySetting extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        //return super.onOptionsItemSelected(item);
-        switch (item.getItemId()) {
-            case R.id.save:
-                try {
-                    FileOutputStream fos = openFileOutput
-                            ("myfile.txt", Context.MODE_PRIVATE);
-                    PrintWriter out = new PrintWriter(fos);
-                    out.println(select);
-                    out.close();
-                    super.onBackPressed();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return true;
-
-            default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
-                Toast.makeText(getApplicationContext(), "나머지 버튼 클릭됨", Toast.LENGTH_LONG).show();
-                return super.onOptionsItemSelected(item);
-
+        if (item.getItemId() == R.id.save) {
+            try {
+                FileOutputStream fos = openFileOutput
+                        ("myfile.txt", Context.MODE_PRIVATE);
+                PrintWriter out = new PrintWriter(fos);
+                out.println(select);
+                out.close();
+                super.onBackPressed();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+        return true;
     }
 }
