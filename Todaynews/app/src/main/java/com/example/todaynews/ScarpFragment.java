@@ -40,6 +40,7 @@ public class ScarpFragment extends Fragment {
 
         list.setAdapter(simpleAdapter);
 
+        //나중에 sql입력
         for (int i = 1; i < 100; i++) {
             list_item = new HashMap<String, String>();
             list_item.put("item 1", "키워드 " + String.valueOf(i));
@@ -56,9 +57,9 @@ public class ScarpFragment extends Fragment {
 
     AdapterView.OnItemLongClickListener long_listener = new AdapterView.OnItemLongClickListener() {
         @Override
-        public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+        public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
             Intent intent = new Intent(getContext(), PopupActivity.class);
-            intent.putExtra("data", "Test Popup");
+            intent.putExtra("position", position);
             startActivityForResult(intent, 1);
             return true;
         }
@@ -69,7 +70,14 @@ public class ScarpFragment extends Fragment {
         if (requestCode == 1) {
             //데이터 받기
             String result = data.getStringExtra("result");
-            Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();
+            if(result.equals("yes")) {
+                int position = data.getIntExtra("position", 0);
+                //나중에 sql삭제
+                Toast.makeText(getContext(), Integer.toString(position), Toast.LENGTH_SHORT).show();
+            }
+            else{
+                Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

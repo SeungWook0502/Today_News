@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 public class PopupActivity extends Activity {
 
+    int position=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +23,7 @@ public class PopupActivity extends Activity {
 
         //데이터 가져오기
         Intent intent = getIntent();
-        String data = intent.getStringExtra("data");
+        position = intent.getIntExtra("position",0);
     }
 
     //확인 버튼 클릭
@@ -29,6 +31,7 @@ public class PopupActivity extends Activity {
         //데이터 전달하기
         Intent intent = new Intent();
         intent.putExtra("result", "yes");
+        intent.putExtra("position", position);
         setResult(RESULT_OK, intent);
 
         //액티비티(팝업) 닫기
