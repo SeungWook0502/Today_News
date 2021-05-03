@@ -36,9 +36,9 @@ public class TextTagsAdapter extends TagsAdapter {
     @Override
     public View getView(final Context context, final int position, ViewGroup parent) {
         //데이터 입력파트
-        String[] name = {"비트코인", "LH"};
+        String[] name = {"비트코인", "LH", "박범계", "대검", "한명숙", "투기", "근로중"};
         Random rand = new Random();
-        int randNum = rand.nextInt(2);
+        int randNum = rand.nextInt(7);
 
         TextView tv = new TextView(context);
 
@@ -48,11 +48,12 @@ public class TextTagsAdapter extends TagsAdapter {
         tv.setGravity(Gravity.CENTER);
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 Log.e("Click", "Tag " + position + " clicked.");
                 //정보 넘겨주는 코드 필요!
-                Intent i = new Intent(context,Article.class);
-                context.startActivity(i);
+                Intent intent = new Intent(context,Article.class);
+                intent.putExtra("title", tv.getText());
+                context.startActivity(intent);
             }
         });
         return tv;

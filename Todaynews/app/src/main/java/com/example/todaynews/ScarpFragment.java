@@ -90,6 +90,7 @@ public class ScarpFragment extends Fragment {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Intent intent = new Intent(getContext(), Summary.class);
+            intent.putExtra("title", data.get(position).get("item 1"));
             startActivity(intent);
         }
 

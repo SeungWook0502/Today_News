@@ -22,9 +22,10 @@ public class Summary extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summary);
         menu_select = getIntent().getIntExtra("menu_select",0);
+        String title = getIntent().getStringExtra("title");
         Toolbar toolbar = findViewById(R.id.summary_toolbar);
         //타이틀 받아오기
-        toolbar.setTitle("비트코인");
+        toolbar.setTitle(title);
         setSupportActionBar(toolbar);
     }
 

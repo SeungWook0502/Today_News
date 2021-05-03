@@ -19,6 +19,7 @@ import java.util.List;
 public class Article extends AppCompatActivity {
 
     private ListView lt_id;
+    private String title;
     List<String> data = new ArrayList<>();
 
     @Override
@@ -27,8 +28,9 @@ public class Article extends AppCompatActivity {
         setContentView(R.layout.activity_article);
 
         Toolbar toolbar = findViewById(R.id.article_toolbar);
-        //타이틀 받아오기
-        toolbar.setTitle("비트코인");
+
+        title = getIntent().getStringExtra("title");
+        toolbar.setTitle(title);
         setSupportActionBar(toolbar);
 
         lt_id = findViewById(R.id.lt_id);
@@ -64,6 +66,7 @@ public class Article extends AppCompatActivity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Intent intent = new Intent(Article.this,Summary.class);
             intent.putExtra("menu_select",1);
+            intent.putExtra("title", title);
             startActivity(intent);
         }
 

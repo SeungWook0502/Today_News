@@ -92,11 +92,9 @@ public class TextWall extends FrameLayout implements ViewTreeObserver.OnGlobalLa
             textView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //터치시 화면전환부분 데이터 전송 필요!
                     Intent intent = new Intent(context,Article.class);
+                    intent.putExtra("title", ((TextItem) view.getTag()).getValue());
                     context.startActivity(intent);
-
-                    //Toast.makeText(context, ((TextItem) view.getTag()).getValue(), Toast.LENGTH_SHORT).show();
                 }
             });
             addView(textView);
