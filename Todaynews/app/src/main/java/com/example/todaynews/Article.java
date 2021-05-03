@@ -7,6 +7,7 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -40,7 +41,7 @@ public class Article extends AppCompatActivity {
         lt_id.setAdapter(adapter);
 
         for (int i = 1; i < 100; i++) {
-            data.add("기사내용" + String.valueOf(i));
+            data.add("기사 타이틀" + String.valueOf(i));
         }
         adapter.notifyDataSetChanged();
 
@@ -64,11 +65,18 @@ public class Article extends AppCompatActivity {
         //네번재 파리미터 : 클릭된 아이템의 아이디(특별한 설정이 없다면 세번째 파라이터인 position과 같은 값)
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Intent intent = new Intent(Article.this,Summary.class);
-            intent.putExtra("menu_select",1);
+            Intent intent = new Intent(Article.this, Summary.class);
+            intent.putExtra("menu_select", 1);
             intent.putExtra("title", title);
             startActivity(intent);
         }
-
     };
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.save) {
+            Toast.makeText(this, "갱신", Toast.LENGTH_SHORT).show();
+        }
+        return true;
+    }
 }

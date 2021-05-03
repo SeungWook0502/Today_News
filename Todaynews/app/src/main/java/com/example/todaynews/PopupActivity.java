@@ -42,7 +42,6 @@ public class PopupActivity extends Activity {
         Intent intent = new Intent();
         intent.putExtra("result", "no");
         setResult(RESULT_OK, intent);
-
         finish();
     }
 
@@ -57,7 +56,6 @@ public class PopupActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        finish();
         return;
     }
 }

@@ -44,7 +44,7 @@ public class ScarpFragment extends Fragment {
         for (int i = 1; i < 100; i++) {
             list_item = new HashMap<String, String>();
             list_item.put("item 1", "키워드 " + String.valueOf(i));
-            list_item.put("item 2", "기사내용 " + String.valueOf(i));
+            list_item.put("item 2", "기사타이틀 " + String.valueOf(i));
             data.add(list_item);
         }
         simpleAdapter.notifyDataSetChanged();
