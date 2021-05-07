@@ -53,7 +53,7 @@ public class Article extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.custom_toolbar, menu);
         //없앨수도 있음 예정
-        menu.getItem(0).setTitle("갱신");
+        menu.getItem(0).setTitle("음성으로 듣기");
         return true;
     }
 
@@ -75,7 +75,7 @@ public class Article extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         //return super.onOptionsItemSelected(item);
         if (item.getItemId() == R.id.save) {
-            Toast.makeText(this, "갱신", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "음성으로 듣기", Toast.LENGTH_SHORT).show();
         }
         return true;
     }

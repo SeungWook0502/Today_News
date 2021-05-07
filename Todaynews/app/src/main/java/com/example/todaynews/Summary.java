@@ -16,17 +16,22 @@ import java.io.PrintWriter;
 
 public class Summary extends AppCompatActivity {
     int menu_select;
-
+    private DBOpenHelper mDBOpenHelper;
+    private String title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summary);
         menu_select = getIntent().getIntExtra("menu_select",0);
-        String title = getIntent().getStringExtra("title");
+        title = getIntent().getStringExtra("title");
         Toolbar toolbar = findViewById(R.id.summary_toolbar);
         //타이틀 받아오기
         toolbar.setTitle(title);
         setSupportActionBar(toolbar);
+
+        mDBOpenHelper = new DBOpenHelper(this);
+        mDBOpenHelper.open();
+        mDBOpenHelper.create();
     }
 
     @Override
@@ -42,7 +47,13 @@ public class Summary extends AppCompatActivity {
         //return super.onOptionsItemSelected(item);
         if (menu_select == 1) {
             if (item.getItemId() == R.id.save) {
-                Toast.makeText(this,"menu_select = 1",Toast.LENGTH_SHORT).show();
+                try {
+                    mDBOpenHelper.insertColumn(title,"기사타이틀123","3줄요약123","http://123.123");
+                    Toast.makeText(this,"스크랩 성공",Toast.LENGTH_SHORT).show();
+                }catch (Exception e){
+                    Toast.makeText(this,"스크랩 실패",Toast.LENGTH_SHORT).show();
+                }
+
             }
         }
         return true;

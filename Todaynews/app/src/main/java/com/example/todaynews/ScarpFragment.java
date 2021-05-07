@@ -1,6 +1,7 @@
 package com.example.todaynews;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +27,10 @@ public class ScarpFragment extends Fragment {
 
     private ListView list;
     final ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String, String>>();
+    final ArrayList<String> no = new ArrayList<String>();
     HashMap<String, String> list_item;
+    private DBOpenHelper mDBOpenHelper;
+    private SimpleAdapter simpleAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -34,23 +38,21 @@ public class ScarpFragment extends Fragment {
 
         list = root.findViewById(R.id.list);
 
-        SimpleAdapter simpleAdapter = new SimpleAdapter(root.getContext(), data, android.R.layout.simple_list_item_2,
+        simpleAdapter = new SimpleAdapter(root.getContext(), data, android.R.layout.simple_list_item_2,
                 new String[]{"item 1", "item 2"},
                 new int[]{android.R.id.text1, android.R.id.text2});
 
         list.setAdapter(simpleAdapter);
 
-        //나중에 sql입력
-        for (int i = 1; i < 100; i++) {
-            list_item = new HashMap<String, String>();
-            list_item.put("item 1", "키워드 " + String.valueOf(i));
-            list_item.put("item 2", "기사타이틀 " + String.valueOf(i));
-            data.add(list_item);
-        }
-        simpleAdapter.notifyDataSetChanged();
 
         list.setOnItemLongClickListener(long_listener);
         list.setOnItemClickListener(listener);
+
+        mDBOpenHelper = new DBOpenHelper(root.getContext());
+        mDBOpenHelper.open();
+        mDBOpenHelper.create();
+
+        showDatabase();
 
         return root;
     }
@@ -59,7 +61,7 @@ public class ScarpFragment extends Fragment {
         @Override
         public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
             Intent intent = new Intent(getContext(), PopupActivity.class);
-            intent.putExtra("position", position);
+            intent.putExtra("position", String.valueOf(no.get(position)));
             startActivityForResult(intent, 1);
             return true;
         }
@@ -70,12 +72,11 @@ public class ScarpFragment extends Fragment {
         if (requestCode == 1) {
             //데이터 받기
             String result = data.getStringExtra("result");
-            if(result.equals("yes")) {
+            if (result.equals("yes")) {
                 int position = data.getIntExtra("position", 0);
                 //나중에 sql삭제
                 Toast.makeText(getContext(), Integer.toString(position), Toast.LENGTH_SHORT).show();
-            }
-            else{
+            } else {
                 Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();
             }
         }
@@ -93,6 +94,22 @@ public class ScarpFragment extends Fragment {
             intent.putExtra("title", data.get(position).get("item 1"));
             startActivity(intent);
         }
-
     };
+
+    public void showDatabase() {
+        Cursor iCursor = mDBOpenHelper.setFirst();
+        data.clear();
+        no.clear();
+        while (iCursor.moveToNext()) {
+            String tempIndex = iCursor.getString(iCursor.getColumnIndex("_id"));
+            String tempKeyword = iCursor.getString(iCursor.getColumnIndex("keyword"));
+            String tempArticle_title = iCursor.getString(iCursor.getColumnIndex("article_title"));
+            list_item = new HashMap<String, String>();
+            list_item.put("item 1", tempIndex + ":" + tempKeyword);
+            list_item.put("item 2", tempArticle_title);
+            no.add(tempIndex);
+            data.add(list_item);
+        }
+        simpleAdapter.notifyDataSetChanged();
+    }
 }
