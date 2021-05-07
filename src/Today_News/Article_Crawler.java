@@ -16,11 +16,11 @@ public class Article_Crawler {
 	public ArrayList<String> article_crawling(String URL) throws Exception{
 		
 		
-		Document doc = Jsoup.connect(URL).get();
+		Document doc = Jsoup.connect(URL).get(); // get Article page document
 
-		Elements elements_article_text = doc.select("div.content div._article_body_contents");
-		Elements elements_article_title = doc.select("div.content div.article_header div.article_info h3");
-		Elements elements_article_time = doc.select("div.content div.article_header div.article_info div.sponsor span.t11");
+		Elements elements_article_text = doc.select("div.content div._article_body_contents"); //Article Content
+		Elements elements_article_title = doc.select("div.content div.article_header div.article_info h3"); //Article Title
+		Elements elements_article_time = doc.select("div.content div.article_header div.article_info div.sponsor span.t11"); //Article upload time
 		
 		
 		ArrayList<String> Article_TTT = new ArrayList<String>();
@@ -47,7 +47,7 @@ public class Article_Crawler {
 
 //		System.out.println(URL);
 
-		String[] delet_txt = {"&#x[0-9]{4};","&[a-z]{4}|&[a-z]{3}|&[a-z]{2}","[<].*[>]"};
+		String[] delet_txt = {"&#x[0-9]{4};","&[a-z]{4}|&[a-z]{3}|&[a-z]{2}","[<].*[>]"}; //document text 제거용 정규식
 		
 		try {
 		for(Element element : elements_article_text) { //내용

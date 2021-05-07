@@ -13,12 +13,8 @@ public class Title_Analysis {
 	public ArrayList<String> Text_Analysis(String Content_Text) {
 		
 	    Komoran komoran = new Komoran(DEFAULT_MODEL.FULL); //Make Komoran Object of Wiki model
-//	    String strToAnalyze = "고민정·남인순·진선미 사퇴…'피해호소인' 소나기 피하려는 與";
 	
 	    KomoranResult analyzeResultList = komoran.analyze(Content_Text); //Analysis Text -> return Keyword List
-//	    KomoranResult analyzeResultList = komoran.analyze(strToAnalyze);
-	
-//	    System.out.println(analyzeResultList.getPlainText());
 	
 	    List<Token> tokenList = analyzeResultList.getTokenList(); //Store Keywords to List
 	    ArrayList<String> keyWord = new ArrayList<String>();

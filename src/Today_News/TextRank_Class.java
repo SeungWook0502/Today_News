@@ -2,34 +2,28 @@ package Today_News;
 
 public class TextRank_Class {
 
-	String Keyword; 	//키워드
-	int Keyword_Rank=0;	//키워드 랭크
-	String sid2;		//sid2
+	String Keyword_word; 	//키워드
+	int Keyword_Count=0;	//키워드 누적
 	
+
 	public TextRank_Class(String Keyword) {
-		this.Keyword = Keyword;
+		this.Keyword_word = Keyword;
 	}
 	
 	public String getKeyword() {
-		return Keyword;
+		return Keyword_word;
 	}
 	public void setKeyword(String keyword) {
-		Keyword = keyword;
+		Keyword_word = keyword;
 	}
 	public int getKeyword_Rank() {
-		return Keyword_Rank;
+		return Keyword_Count;
 	}
 	public void setKeyword_Rank() {
-		Keyword_Rank = 0;
+		Keyword_Count = 0;
 	}
 	public void addKeyword_Rank() {
-		Keyword_Rank += 1;
-	}
-	public String getSid2() {
-		return sid2;
-	}
-	public void setSid2(String sid2) {
-		this.sid2 = sid2;
+		Keyword_Count += 1;
 	}
 
 }
