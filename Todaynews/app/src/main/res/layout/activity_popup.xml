@@ -19,9 +19,6 @@
             android:layout_width="match_parent"
             android:layout_height="53dp" />
     </LinearLayout>
-    <!-- //end 타이틀바 -->
-
-    <!-- Notice -->
     <LinearLayout
         android:padding="24dp"
         android:orientation="vertical"
@@ -38,14 +35,12 @@
             android:layout_height="wrap_content"
             android:text="삭제하시겠습니까?"/>
     </LinearLayout>
-    <!-- Notice -->
 
     <View
         android:background="#66bdbdbd"
         android:layout_width="match_parent"
         android:layout_height="1dp" />
 
-    <!-- 닫기 버튼 -->
     <LinearLayout
         android:orientation="horizontal"
         android:gravity="center"

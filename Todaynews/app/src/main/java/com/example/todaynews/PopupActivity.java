@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PopupActivity extends Activity {
 
@@ -24,6 +25,9 @@ public class PopupActivity extends Activity {
         //데이터 가져오기
         Intent intent = getIntent();
         position = intent.getIntExtra("position",0);
+
+        TextView txtText = findViewById(R.id.txtText);
+        txtText.setText(Integer.toString(position));
     }
 
     //확인 버튼 클릭

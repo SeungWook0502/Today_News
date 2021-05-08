@@ -61,7 +61,7 @@ public class ScarpFragment extends Fragment {
         @Override
         public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
             Intent intent = new Intent(getContext(), PopupActivity.class);
-            intent.putExtra("position", String.valueOf(no.get(position)));
+            intent.putExtra("position", Integer.parseInt(no.get(position)));
             startActivityForResult(intent, 1);
             return true;
         }
@@ -74,7 +74,8 @@ public class ScarpFragment extends Fragment {
             String result = data.getStringExtra("result");
             if (result.equals("yes")) {
                 int position = data.getIntExtra("position", 0);
-                //나중에 sql삭제
+                mDBOpenHelper.deleteColumn(position);
+                showDatabase();
                 Toast.makeText(getContext(), Integer.toString(position), Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();
@@ -105,7 +106,7 @@ public class ScarpFragment extends Fragment {
             String tempKeyword = iCursor.getString(iCursor.getColumnIndex("keyword"));
             String tempArticle_title = iCursor.getString(iCursor.getColumnIndex("article_title"));
             list_item = new HashMap<String, String>();
-            list_item.put("item 1", tempIndex + ":" + tempKeyword);
+            list_item.put("item 1", tempKeyword);
             list_item.put("item 2", tempArticle_title);
             no.add(tempIndex);
             data.add(list_item);
