@@ -16,17 +16,14 @@ public class MainApp {
 	public static void main(String[] args) throws Exception {
 
 		int[] sid1 = {100,101,102,103,104,105}; //Sid1 value
-//		LocalTime startTime = LocalTime.now();
 		
 		URL_Crawler url_crawler = new URL_Crawler(); //URL Crawler
 		
-//		Mk_File(); //File initialization
-		
 		ArrayList<ArrayList<Article_Class>> Article = new ArrayList<ArrayList<Article_Class>>(); //News Data variable
-		ArrayList<TextRank_Class> TextRank = new ArrayList<TextRank_Class>();
+		ArrayList<TextRank_Class> Keyword_List = new ArrayList<TextRank_Class>();
 		
 		for(int i=0;i<sid1.length;i++) { //Sending Sid1 values
-			Article.add(url_crawler.select_sid2Num(sid1[i]/*102*/, TextRank)); //Send Sid1 value
+			Article.add(url_crawler.select_sid2Num(sid1[i]/*102*/, Keyword_List)); //Send Sid1 value
 		}
 		
 		MainApp mainApp = new MainApp();
@@ -41,25 +38,11 @@ public class MainApp {
 				}
 			}
 		}
-		for(int Keyword_Count = 0; Keyword_Count < TextRank.size(); Keyword_Count++) {
-			mainApp.SendDB_Keyword_Rank(TextRank.get(Keyword_Count).Keyword_word,TextRank.get(Keyword_Count).Keyword_Count);
+		for(int Keyword_Count = 0; Keyword_Count < Keyword_List.size(); Keyword_Count++) {
+			mainApp.SendDB_Keyword_Rank(Keyword_List.get(Keyword_Count).Keyword_word,Keyword_List.get(Keyword_Count).Keyword_Count);
+			System.out.print(Keyword_List.get(Keyword_Count).Keyword_word+"-");
+			System.out.println(Keyword_List.get(Keyword_Count).Keyword_Count);
 		}
-		
-		
-//		for(int a=0;a<Article.size();a++) { //Check article list
-//			for(int b=0;b<Article.get(a).size();b++) {
-//				
-//				System.out.println(Article.get(a).get(b).getTitle()+"\t"+Article.get(a).get(b).getSid2());
-//			}
-//		}
-//		for(int a=0;a<TextRank.size();a++) { //Check Keyword list
-//			if(TextRank.get(a).getKeyword_Rank()!=0) {
-//				System.out.println(TextRank.get(a).getKeyword()+" "+" "+TextRank.get(a).getSid2());
-//			}
-//		}
-//		LocalTime endTime = LocalTime.now();
-//		System.out.println(String.valueOf(endTime.getMinute()-startTime.getMinute())+"Ка"+String.valueOf(endTime.getSecond()-startTime.getSecond())+"УЪ");
-//		
 	}
 	
 	public void SendDB_Article(String Article_Title, String Article_Content, String Article_Sidnum, String Article_URL) { //Insert_Article
@@ -77,7 +60,7 @@ public class MainApp {
 	        br.close();
 	        
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("SendDB Error - Article");
 		}
 	}
 	
@@ -96,7 +79,7 @@ public class MainApp {
 	        br.close();
 	        
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("SendDB Error - Keyword_List");
 		}
 	}
 	
@@ -116,17 +99,7 @@ public class MainApp {
 	        br.close();
 	        
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("SendDB Error - Keyword_Rank");
 		}
 	}
-	
-//	public void Mk_File() throws IOException{ //File initialization //No use
-//
-//		File Article_Data_File = new File("Article_Data.txt");
-//		
-//		BufferedWriter filewriter = new BufferedWriter(new FileWriter(Article_Data_File));
-//		
-//		filewriter.close();
-//	}
-	
 }

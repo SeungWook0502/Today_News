@@ -8,12 +8,8 @@
 
   $connect = mysqli_connect($db_host,$db_user,$db_passwd,$db_name);
 
-  $Article_Title = $_GET['Article_Title'];
-  $Article_Content = $_GET['Article_Content'];
-  $Article_Sidnum = $_GET['Article_Sidnum'];
-  $Article_URL = $_GET['Article_URL'];
 
-  $query = "insert into Article(Article_Title,Article_Content,Article_Sidnum,Article_URL) values ('$Article_Title','$Article_Content','$Article_Sidnum','$Article_URL')";
+  $query = "delete from Keyword_Rank";
   $result = mysqli_query($connect, $query);
      
   $response = array();

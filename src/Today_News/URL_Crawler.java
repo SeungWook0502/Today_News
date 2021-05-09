@@ -40,7 +40,6 @@ public class URL_Crawler{
 			Page_loop: for(int page_num = 1; page_num < final_page_num; page_num++) { //Page loop
 				System.out.println("["+page_num+"/"+final_page_num+"]"); //check page/final page
 				
-				
 				String URL = "https://news.naver.com/main/list.nhn?mode=LS2D&mid=shm&"
 						+ "sid2=" + sid2[sid1%100][sid2_idx]/*"252"*/
 						+ "&sid1=" + sid1
@@ -53,7 +52,6 @@ public class URL_Crawler{
 				Elements Article_List_URL = doc.select("div.content div.list_body ul li dl"); //get Article list URL
 				
 				for(Element element : Article_List_URL) { //Article List loop
-
 					
 					if(Check_Upload_Time(element.toString().split("<span class=\"date")[1].split(">")[1])) {break Page_loop; } //Upload Time > 1hour => break Page loop
 					Article_Class article_class = new Article_Class();	//sid2 하위 1개 기사
@@ -78,10 +76,11 @@ public class URL_Crawler{
 					article_class.setArticle_Keyword(title_analysis.Text_Analysis(article_class.getArticle_Title())); //Store Keyword
 					
 					ArrayList<String> Title_Keywords = title_analysis.Text_Analysis(article_class.getArticle_Title());
-					TextRank_Analysis textrank_analysis = new TextRank_Analysis();
+					
 					for(int keyword_Count=0; keyword_Count < Title_Keywords.size(); keyword_Count++) {
-						textrank_analysis.TextRanking(Keyword_List, Title_Keywords.get(keyword_Count)); //title keyword count
+						TextRanking(Keyword_List, Title_Keywords.get(keyword_Count)); //title keyword count
 					}
+					System.out.println(Keyword_List.size());
 					
 					Article_ArrayList.add(article_class); //add article_class from article_arraylist
 					
@@ -108,19 +107,6 @@ public class URL_Crawler{
 		else {return 2;}
 	}
 	
-//	public void Save_File(String Content,String sid2) throws IOException{//Save Text to Article //No use
-//		
-//		File Article_Data_File = new File("Article_Data.txt");
-//		
-//		BufferedWriter filewriter = new BufferedWriter(new FileWriter(Article_Data_File,true));
-//		
-//		filewriter.write(sid2+"|"+Content);
-//		filewriter.write("\n");
-//		filewriter.flush();
-//		filewriter.close();
-//		
-//	}
-	
 	public boolean Check_Upload_Time(String Upload_Time) { //N시간전 기사 확인
 		
 		if(Upload_Time.contains("분")) {
@@ -129,12 +115,28 @@ public class URL_Crawler{
 		}
 		else if(Upload_Time.contains("시간")) {
 //			if(2>Integer.parseInt(Upload_Time.split("시간")[0])) {
-//				System.out.println("OK");
 //				return false;
 //			}
 			return true;
 		}
-//		System.out.println("NO");
 		return true;
+	}
+	public void TextRanking(ArrayList<TextRank_Class> Keyword_List,String keyword) {
+		
+		boolean newKeyword=true;
+		
+		for(int i = 0; i < Keyword_List.size(); i++) { //compare keyword list to keyword
+				
+			if(Keyword_List.get(i).getKeyword().equals(keyword)) {
+				
+				Keyword_List.get(i).addKeyword_Rank();
+				newKeyword = false;
+				break;
+			}
+		}
+		if(newKeyword) {
+			TextRank_Class textrank_class = new TextRank_Class(keyword);
+			Keyword_List.add(textrank_class);
+		}
 	}
 }

@@ -11,16 +11,11 @@ public class Content_Analysis {
 
 	public void Text_Analysis(String Content_Text) {
 	    Komoran komoran = new Komoran(DEFAULT_MODEL.FULL);
-	    String strToAnalyze = "고민정·남인순·진선미 사퇴…'피해호소인' 소나기 피하려는 與";
 	
-//	    KomoranResult analyzeResultList = komoran.analyze(Content_Text);
-	    KomoranResult analyzeResultList = komoran.analyze(strToAnalyze);
-	
-//	    System.out.println(analyzeResultList.getPlainText());
+	    KomoranResult analyzeResultList = komoran.analyze(Content_Text);
 	
 	    List<Token> tokenList = analyzeResultList.getTokenList();
 	    for (Token token : tokenList) {
-	//        System.out.format("(%2d, %2d) %s/%s\n", token.getBeginIndex(), token.getEndIndex(), token.getMorph(), token.getPos());
 	        if(token.getPos().equals("NNP")) {
 	        	System.out.println(token.getMorph()+token.getPos());
 	        

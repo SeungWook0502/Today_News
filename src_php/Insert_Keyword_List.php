@@ -8,14 +8,17 @@
 
   $connect = mysqli_connect($db_host,$db_user,$db_passwd,$db_name);
 
-  $data_stream = "'".$_POST["Keyword_Word"]."','".$_POST['Keyword_Sidnum']."','".$_POST['Keyword_URL']."'";
-  $query = "insert into Keyword_List(Keyword_Word,Keyword_Sidnum,Keyword_URL) values (".$data_stream.")";
+  $Keyword_Word = $_GET['Keyword_Word'];
+  $Keyword_Sidnum = $_GET['Keyword_Sidnum'];
+  $Keyword_URL = $_GET['Keyword_URL'];
+
+  $query = "insert into Keyword_List(Keyword_Word,Keyword_Sidnum,Keyword_URL) values ('$Keyword_Word','$Keyword_Sidnum','$Keyword_URL')";
   $result = mysqli_query($connect, $query);
      
-  if($result)
-    echo "1";
-  else
-    echo "-1";
+  $response = array();
+  $response["success"] = true;
+  
+  echo json_encode($response);
      
   mysqli_close($connect);
 

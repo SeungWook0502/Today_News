@@ -20,10 +20,10 @@ public class Title_Analysis {
 	    ArrayList<String> keyWord = new ArrayList<String>();
 	    
 	    for (Token token : tokenList) { 
-	//        System.out.format("(%2d, %2d) %s/%s\n", token.getBeginIndex(), token.getEndIndex(), token.getMorph(), token.getPos());
 	        if(token.getPos().equals("NNP")) { //Expect NNP(고유명사) keyword
-//	        	System.out.println(token.getMorph()+token.getPos());
-	        	keyWord.add(token.getMorph()); //Append Keyword
+	        	if(token.getPos().length()!=1) {
+	        		keyWord.add(token.getMorph()); //Append Keyword
+	        	}
 	        }        
         }
 	    return keyWord;
