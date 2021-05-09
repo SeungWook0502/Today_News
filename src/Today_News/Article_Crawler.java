@@ -26,23 +26,22 @@ public class Article_Crawler {
 		ArrayList<String> Article_TTT = new ArrayList<String>();
 		try {
 			Article_TTT.add(URL); //Article URL
-
 		}catch (ArrayIndexOutOfBoundsException exception) {
 			System.out.println("-----------------Exception URL----------------");
 			System.out.println(URL);
-			Article_TTT.add("https://www.naver.com/");
+			Article_TTT.add(null);
 		}
 		try {
 		Article_TTT.add(elements_article_title.toString().split("<h3 id=\"articleTitle\">")[1].split("</h3>")[0]); //Article Title
 		}catch (ArrayIndexOutOfBoundsException exception){ //...같은 특수기호로 인한 예외처리
 			System.out.println("-----------------Exception Title----------------");
-			Article_TTT.add("제목없음"); //Article Title
+			Article_TTT.add(null); //Article Title
 		}
 		try {
 			Article_TTT.add(elements_article_time.toString().split("<span class=\"t11\">")[1].split("</span")[0]); //Article Upload Time
 		}catch(ArrayIndexOutOfBoundsException exception) {
 			System.out.println("-----------------Exception Time----------------");
-			Article_TTT.add("2000.01.01");
+			Article_TTT.add(null);
 		}
 
 		String[] delet_txt = {"&#x[0-9]{4};","&[a-z]{4}|&[a-z]{3}|&[a-z]{2}","[<].*[>]"}; //document text 제거용 정규식
@@ -55,7 +54,7 @@ public class Article_Crawler {
 		}
 		}catch(ArrayIndexOutOfBoundsException exception) {
 			System.out.println("-----------------Exception Content----------------");
-			Article_TTT.add("내용없음");
+			Article_TTT.add(null);
 		}
 
 		

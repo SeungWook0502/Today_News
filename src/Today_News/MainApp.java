@@ -40,8 +40,6 @@ public class MainApp {
 		}
 		for(int Keyword_Count = 0; Keyword_Count < Keyword_List.size(); Keyword_Count++) {
 			mainApp.SendDB_Keyword_Rank(Keyword_List.get(Keyword_Count).Keyword_word,Keyword_List.get(Keyword_Count).Keyword_Count);
-			System.out.print(Keyword_List.get(Keyword_Count).Keyword_word+"-");
-			System.out.println(Keyword_List.get(Keyword_Count).Keyword_Count);
 		}
 	}
 	
@@ -52,11 +50,6 @@ public class MainApp {
 			connect.setUseCaches(false);
 			InputStream is = connect.getInputStream();
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
-	        char[] buff = new char[512];
-	        int len = -1;
-	        while( (len = br.read(buff)) != -1) {
-	           System.out.print(new String(buff, 0, len));
-	        }
 	        br.close();
 	        
 		} catch (Exception e) {
@@ -71,11 +64,6 @@ public class MainApp {
 			connect.setUseCaches(false);
 			InputStream is = connect.getInputStream();
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
-	        char[] buff = new char[512];
-	        int len = -1;
-	        while( (len = br.read(buff)) != -1) {
-	           System.out.print(new String(buff, 0, len));
-	        }
 	        br.close();
 	        
 		} catch (Exception e) {
@@ -91,11 +79,6 @@ public class MainApp {
 			connect.setUseCaches(false);
 			InputStream is = connect.getInputStream();
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
-	        char[] buff = new char[512];
-	        int len = -1;
-	        while( (len = br.read(buff)) != -1) {
-	           System.out.print(new String(buff, 0, len));
-	        }
 	        br.close();
 	        
 		} catch (Exception e) {

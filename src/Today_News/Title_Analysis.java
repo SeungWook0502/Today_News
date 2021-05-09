@@ -21,7 +21,7 @@ public class Title_Analysis {
 	    
 	    for (Token token : tokenList) { 
 	        if(token.getPos().equals("NNP")) { //Expect NNP(고유명사) keyword
-	        	if(token.getPos().length()!=1) {
+	        	if(token.getMorph().length()!=1) {
 	        		keyWord.add(token.getMorph()); //Append Keyword
 	        	}
 	        }        

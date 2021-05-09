@@ -66,10 +66,9 @@ public class URL_Crawler{
 					try {
 						article_class.setArticle_Content(Article_Data.get(3)); //Store Content -> 3줄요약 class추가해서 해당 메소드로 content내용 수정해야함 -> Article_Crawler에서 완료
 					}catch(ArrayIndexOutOfBoundsException exception) {
-						System.out.println(Article_Data.get(3));
-						article_class.setArticle_Content("내용없음");
+						article_class.setArticle_Content(null);
 					}catch(IndexOutOfBoundsException exception) {
-						article_class.setArticle_Content("내용없음");
+						article_class.setArticle_Content(null);
 					}
 					
 					Title_Analysis title_analysis = new Title_Analysis(); //Extract Keyword
@@ -82,7 +81,9 @@ public class URL_Crawler{
 					}
 					System.out.println(Keyword_List.size());
 					
-					Article_ArrayList.add(article_class); //add article_class from article_arraylist
+					if(!article_class.getArticle_Title().equals(null)&&!article_class.getArticle_Content().equals(null)&&!article_class.getArticle_URL().equals(null)) {
+						Article_ArrayList.add(article_class); //add article_class from article_arraylist
+					}
 					
 				}
 			}
