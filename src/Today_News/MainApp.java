@@ -23,7 +23,9 @@ public class MainApp {
 		ArrayList<ArrayList<Article_Class>> Article = new ArrayList<ArrayList<Article_Class>>(); //News Data variable
 		ArrayList<TextRank_Class> Keyword_List = new ArrayList<TextRank_Class>();
 		
-		mainApp.Delete_Article("Article");
+		mainApp.Delete_DBData("Article");
+		mainApp.Delete_DBData("Keyword_List");
+		mainApp.Delete_DBData("Keyword_Rank");
 		
 		for(int i=0;i<sid1.length;i++) { //Sending Sid1 values
 			Article.add(url_crawler.select_sid2Num(sid1[i]/*102*/, Keyword_List)); //Send Sid1 value
@@ -88,9 +90,9 @@ public class MainApp {
 		}
 	}
 	
-	public void Delete_Article(String Table_Name) {
+	public void Delete_DBData(String Table_Name) {
 		try {
-			URL url = new URL("http://todaynews.dothome.co.kr/Delete_Article.php"+"?"+URLEncoder.encode("Table") + "=" + URLEncoder.encode(Table_Name));
+			URL url = new URL("http://todaynews.dothome.co.kr/Delete_DBData.php" + "?" + URLEncoder.encode("Table") + "=" + URLEncoder.encode(Table_Name));
 			URLConnection connect = url.openConnection(); //url¿¬°á
 			connect.setUseCaches(false);
 			InputStream is = connect.getInputStream();
