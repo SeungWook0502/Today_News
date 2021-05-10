@@ -22,21 +22,26 @@ public class Article_Crawler {
 		Elements elements_article_title = doc.select("div.content div.article_header div.article_info h3"); //Article Title
 		Elements elements_article_time = doc.select("div.content div.article_header div.article_info div.sponsor span.t11"); //Article upload time
 		
-		
 		ArrayList<String> Article_TTT = new ArrayList<String>();
+		
+		 //Article URL//
 		try {
-			Article_TTT.add(URL); //Article URL
+			Article_TTT.add(URL);
 		}catch (ArrayIndexOutOfBoundsException exception) {
 			System.out.println("-----------------Exception URL----------------");
 			System.out.println(URL);
 			Article_TTT.add(null);
 		}
+		
+		 //Article Title//
 		try {
 		Article_TTT.add(elements_article_title.toString().split("<h3 id=\"articleTitle\">")[1].split("</h3>")[0]); //Article Title
 		}catch (ArrayIndexOutOfBoundsException exception){ //...같은 특수기호로 인한 예외처리
 			System.out.println("-----------------Exception Title----------------");
-			Article_TTT.add(null); //Article Title
+			Article_TTT.add(null);
 		}
+		
+		//Article Upload Time
 		try {
 			Article_TTT.add(elements_article_time.toString().split("<span class=\"t11\">")[1].split("</span")[0]); //Article Upload Time
 		}catch(ArrayIndexOutOfBoundsException exception) {
@@ -44,12 +49,11 @@ public class Article_Crawler {
 			Article_TTT.add(null);
 		}
 
+		//Article Content + Summarizer
 		String[] delet_txt = {"&#x[0-9]{4};","&[a-z]{4}|&[a-z]{3}|&[a-z]{2}","[<].*[>]"}; //document text 제거용 정규식
-		
 		try {
 		for(Element element : elements_article_text) { //내용
 			Article_Summarizer article_summarizer = new Article_Summarizer();
-				
 				Article_TTT.add(article_summarizer.summarize(element.toString().replaceAll(delet_txt[2], "").replace("function _flash_removeCallback() {}", "").replace("// flash 오류를 우회하기 위한 함수 추가", "").replaceAll("\n","").replaceAll("|", "").replace("&nbsp;","").replaceAll(delet_txt[1], "").replaceAll(delet_txt[0],""))); //Article Content (1.remove tag 2.summarize)
 		}
 		}catch(ArrayIndexOutOfBoundsException exception) {

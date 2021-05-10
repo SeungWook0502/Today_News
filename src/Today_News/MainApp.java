@@ -23,15 +23,17 @@ public class MainApp {
 		ArrayList<ArrayList<Article_Class>> Article = new ArrayList<ArrayList<Article_Class>>(); //News Data variable
 		ArrayList<TextRank_Class> Keyword_List = new ArrayList<TextRank_Class>();
 		
+		//Reset DB//
 		mainApp.Delete_DBData("Article");
 		mainApp.Delete_DBData("Keyword_List");
 		mainApp.Delete_DBData("Keyword_Rank");
 		
+		//Crawling//
 		for(int i=0;i<sid1.length;i++) { //Sending Sid1 values
 			Article.add(url_crawler.select_sid2Num(sid1[i]/*102*/, Keyword_List)); //Send Sid1 value
 		}
 		
-		
+		//Store DB//
 		for(int sid1_Count = 0; sid1_Count < Article.size(); sid1_Count++) {
 			for(int sid2_Count = 0; sid2_Count < Article.get(sid1_Count).size(); sid2_Count++) {
 				
@@ -47,6 +49,7 @@ public class MainApp {
 		}
 	}
 	
+	//Method
 	public void Insert_Article(String Article_Title, String Article_Content, String Article_Sidnum, String Article_URL) { //Insert_Article
 		try {
 			URL url = new URL("http://todaynews.dothome.co.kr/Insert_Article.php" + "?" + URLEncoder.encode("Article_Title") + "=" + URLEncoder.encode(Article_Title,"UTF-8")+"&"+URLEncoder.encode("Article_Content") + "=" + URLEncoder.encode(Article_Content,"UTF-8")+"&"+URLEncoder.encode("Article_Sidnum") + "=" + URLEncoder.encode(Article_Sidnum,"UTF-8")+"&"+URLEncoder.encode("Article_URL") + "=" + URLEncoder.encode(Article_URL,"UTF-8"));
@@ -90,7 +93,7 @@ public class MainApp {
 		}
 	}
 	
-	public void Delete_DBData(String Table_Name) {
+	public void Delete_DBData(String Table_Name) { //Delete_Data
 		try {
 			URL url = new URL("http://todaynews.dothome.co.kr/Delete_DBData.php" + "?" + URLEncoder.encode("Table") + "=" + URLEncoder.encode(Table_Name));
 			URLConnection connect = url.openConnection(); //url¿¬°á

@@ -9,7 +9,7 @@ public class Article_Class {
 	String Article_Time; //개시 시간
 	String Article_URL; //URL
 	String Article_sid2; //Sid2
-	ArrayList<String> Article_Keyword = new ArrayList<String>(); //Keyword //Expect to Modify
+	ArrayList<String> Article_Keyword = new ArrayList<String>(); //Keyword
 	
 	public String getArticle_Title() {
 		return Article_Title;

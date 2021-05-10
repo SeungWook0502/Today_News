@@ -12,6 +12,11 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import kr.co.shineware.nlp.komoran.constant.DEFAULT_MODEL;
+import kr.co.shineware.nlp.komoran.core.Komoran;
+import kr.co.shineware.nlp.komoran.model.KomoranResult;
+import kr.co.shineware.nlp.komoran.model.Token;
+
 public class URL_Crawler{
 
 	
@@ -27,16 +32,13 @@ public class URL_Crawler{
 	
 	public ArrayList<Article_Class> select_sid2Num(int sid1, ArrayList<TextRank_Class> Keyword_List) throws Exception{
 		
-		
-		System.out.println("sid1-\t\t"+sid1); //check Sid1
+//		System.out.println("sid1-\t\t"+sid1); //check Sid1
 		ArrayList<Article_Class> Article_ArrayList = new ArrayList<Article_Class>(); //return 될 sid2 1개 객체
 		
 		Article_Crawler article_crawler = new Article_Crawler();
 		for(int sid2_idx = 0; sid2_idx < sid2[sid1%100].length; sid2_idx++) { //sid2 loop
-			System.out.println("sid2-\t"+sid2[sid1%100][sid2_idx]); //check Sid2
-			
+//			System.out.println("sid2-\t"+sid2[sid1%100][sid2_idx]); //check Sid2
 			int final_page_num = final_page(sid1,sid2[sid1%100][sid2_idx]/*"252"*/); //get Final Page number
-			
 			Page_loop: for(int page_num = 1; page_num < final_page_num; page_num++) { //Page loop
 //				System.out.println("["+page_num+"/"+final_page_num+"]"); //check page/final page
 				
@@ -56,22 +58,18 @@ public class URL_Crawler{
 					if(Check_Upload_Time(element.toString().split("<span class=\"date")[1].split(">")[1])) {break Page_loop; } //Upload Time > 1hour => break Page loop
 					Article_Class article_class = new Article_Class();	//sid2 하위 1개 기사
 					ArrayList<String> Article_Data = article_crawler.article_crawling(element.toString().split("href=\"")[1].split("\">")[0].replace("&amp;","&")); //Crawling to Article
-					if(!Article_Data.get(0).equals(null)&&!Article_Data.get(1).equals(null)&&!Article_Data.get(2).equals(null)) {
+					if(!Article_Data.get(0).equals(null)&&!Article_Data.get(1).equals(null)&&!Article_Data.get(2).equals(null)) { //Non-exception Data
 						
 						article_class.setArticle_sid2(sid2[sid1%100][sid2_idx]/*"252"*/); //Store sid2
 						article_class.setArticle_URL(Article_Data.get(0)); //Store URL
 						article_class.setArticle_Title(Article_Data.get(1)); //Store Title
-						
-						System.out.println(sid2[sid1%100][sid2_idx]+"- "+Article_Data.get(1)); //check Sid2 + Title
-						
+//						System.out.println(sid2[sid1%100][sid2_idx]+"- "+Article_Data.get(1)); //check Sid2 + Title
 						article_class.setArticle_Time(Article_Data.get(2)); //Store Time
 						article_class.setArticle_Content(Article_Data.get(3)); //Store Content -> 3줄요약 class추가해서 해당 메소드로 content내용 수정해야함 -> Article_Crawler에서 완료
 						
-						Title_Analysis title_analysis = new Title_Analysis(); //Extract Keyword
-						article_class.setArticle_Keyword(title_analysis.Text_Analysis(article_class.getArticle_Title())); //Store Keyword
-						
-						ArrayList<String> Title_Keywords = title_analysis.Text_Analysis(article_class.getArticle_Title());
-						
+						//Keyword//
+						article_class.setArticle_Keyword(Keyword_Expect(article_class.getArticle_Title())); //Store Keyword
+						ArrayList<String> Title_Keywords = Keyword_Expect(article_class.getArticle_Title());
 						for(int keyword_Count=0; keyword_Count < Title_Keywords.size(); keyword_Count++) {
 							TextRanking(Keyword_List, Title_Keywords.get(keyword_Count)); //title keyword count
 						}
@@ -85,6 +83,7 @@ public class URL_Crawler{
 		return Article_ArrayList;
 	}
 	
+	//Method//
 	public int final_page(int sid1,String sid2) throws IOException { //get last Page number
 		
 		String URL = "https://news.naver.com/main/list.nhn?mode=LS2D&mid=shm&"
@@ -116,22 +115,40 @@ public class URL_Crawler{
 		}
 		return true;
 	}
-	public void TextRanking(ArrayList<TextRank_Class> Keyword_List,String keyword) {
+	
+	public void TextRanking(ArrayList<TextRank_Class> Keyword_List,String keyword) { //Keyword Back of Words
 		
 		boolean newKeyword=true;
 		
 		for(int i = 0; i < Keyword_List.size(); i++) { //compare keyword list to keyword
 				
-			if(Keyword_List.get(i).getKeyword().equals(keyword)) {
-				
+			if(Keyword_List.get(i).getKeyword().equals(keyword)) { //List's keyword
 				Keyword_List.get(i).addKeyword_Rank();
 				newKeyword = false;
 				break;
 			}
 		}
-		if(newKeyword) {
+		if(newKeyword) { //New Keyword
 			TextRank_Class textrank_class = new TextRank_Class(keyword);
 			Keyword_List.add(textrank_class);
 		}
 	}
+	
+	public ArrayList<String> Keyword_Expect(String Content_Text) { //Extract keyword from text
+		
+	    Komoran komoran = new Komoran(DEFAULT_MODEL.FULL); //Make KOMORAN Object of WiKi model
+	
+	    KomoranResult analyzeResultList = komoran.analyze(Content_Text); //Analysis Text -> return Keyword List
+	    List<Token> tokenList = analyzeResultList.getTokenList(); //Store Keywords to List
+	    ArrayList<String> keyWord = new ArrayList<String>();
+	    
+	    for (Token token : tokenList) { 
+	        if(token.getPos().equals("NNP")) { //Extract NNP(고유명사) keyword
+	        	if(token.getMorph().length()!=1) {
+	        		keyWord.add(token.getMorph()); //Append Keyword
+	        	}
+	        }        
+        }
+	    return keyWord;
+    }
 }
