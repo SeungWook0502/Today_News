@@ -8,8 +8,9 @@
 
   $connect = mysqli_connect($db_host,$db_user,$db_passwd,$db_name);
 
+  $Table = $_GET['Article_Title'];
 
-  $query = "delete from Article";
+  $query = "delete from $Table";
   $result = mysqli_query($connect, $query);
      
   $response = array();

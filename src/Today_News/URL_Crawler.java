@@ -38,7 +38,7 @@ public class URL_Crawler{
 			int final_page_num = final_page(sid1,sid2[sid1%100][sid2_idx]/*"252"*/); //get Final Page number
 			
 			Page_loop: for(int page_num = 1; page_num < final_page_num; page_num++) { //Page loop
-				System.out.println("["+page_num+"/"+final_page_num+"]"); //check page/final page
+//				System.out.println("["+page_num+"/"+final_page_num+"]"); //check page/final page
 				
 				String URL = "https://news.naver.com/main/list.nhn?mode=LS2D&mid=shm&"
 						+ "sid2=" + sid2[sid1%100][sid2_idx]/*"252"*/
@@ -56,32 +56,26 @@ public class URL_Crawler{
 					if(Check_Upload_Time(element.toString().split("<span class=\"date")[1].split(">")[1])) {break Page_loop; } //Upload Time > 1hour => break Page loop
 					Article_Class article_class = new Article_Class();	//sid2 하위 1개 기사
 					ArrayList<String> Article_Data = article_crawler.article_crawling(element.toString().split("href=\"")[1].split("\">")[0].replace("&amp;","&")); //Crawling to Article
-					article_class.setArticle_sid2(sid2[sid1%100][sid2_idx]/*"252"*/); //Store sid2
-					article_class.setArticle_URL(Article_Data.get(0)); //Store URL
-					article_class.setArticle_Title(Article_Data.get(1)); //Store Title
-					
-					System.out.println(sid2[sid1%100][sid2_idx]+"- "+Article_Data.get(1)); //check Sid2 + Title
-					
-					article_class.setArticle_Time(Article_Data.get(2)); //Store Time
-					try {
+					if(!Article_Data.get(0).equals(null)&&!Article_Data.get(1).equals(null)&&!Article_Data.get(2).equals(null)) {
+						
+						article_class.setArticle_sid2(sid2[sid1%100][sid2_idx]/*"252"*/); //Store sid2
+						article_class.setArticle_URL(Article_Data.get(0)); //Store URL
+						article_class.setArticle_Title(Article_Data.get(1)); //Store Title
+						
+						System.out.println(sid2[sid1%100][sid2_idx]+"- "+Article_Data.get(1)); //check Sid2 + Title
+						
+						article_class.setArticle_Time(Article_Data.get(2)); //Store Time
 						article_class.setArticle_Content(Article_Data.get(3)); //Store Content -> 3줄요약 class추가해서 해당 메소드로 content내용 수정해야함 -> Article_Crawler에서 완료
-					}catch(ArrayIndexOutOfBoundsException exception) {
-						article_class.setArticle_Content(null);
-					}catch(IndexOutOfBoundsException exception) {
-						article_class.setArticle_Content(null);
-					}
-					
-					Title_Analysis title_analysis = new Title_Analysis(); //Extract Keyword
-					article_class.setArticle_Keyword(title_analysis.Text_Analysis(article_class.getArticle_Title())); //Store Keyword
-					
-					ArrayList<String> Title_Keywords = title_analysis.Text_Analysis(article_class.getArticle_Title());
-					
-					for(int keyword_Count=0; keyword_Count < Title_Keywords.size(); keyword_Count++) {
-						TextRanking(Keyword_List, Title_Keywords.get(keyword_Count)); //title keyword count
-					}
-					System.out.println(Keyword_List.size());
-					
-					if(!article_class.getArticle_Title().equals(null)&&!article_class.getArticle_Content().equals(null)&&!article_class.getArticle_URL().equals(null)) {
+						
+						Title_Analysis title_analysis = new Title_Analysis(); //Extract Keyword
+						article_class.setArticle_Keyword(title_analysis.Text_Analysis(article_class.getArticle_Title())); //Store Keyword
+						
+						ArrayList<String> Title_Keywords = title_analysis.Text_Analysis(article_class.getArticle_Title());
+						
+						for(int keyword_Count=0; keyword_Count < Title_Keywords.size(); keyword_Count++) {
+							TextRanking(Keyword_List, Title_Keywords.get(keyword_Count)); //title keyword count
+						}
+						
 						Article_ArrayList.add(article_class); //add article_class from article_arraylist
 					}
 					
