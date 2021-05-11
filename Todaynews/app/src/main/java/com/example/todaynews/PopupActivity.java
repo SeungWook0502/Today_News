@@ -27,7 +27,7 @@ public class PopupActivity extends Activity {
         position = intent.getIntExtra("position",0);
 
         TextView txtText = findViewById(R.id.txtText);
-        txtText.setText(Integer.toString(position));
+        txtText.setText("정말 삭제하시겠습니까?");
     }
 
     //확인 버튼 클릭

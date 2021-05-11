@@ -17,9 +17,8 @@ import java.util.Random;
 
 public class TextWall extends FrameLayout implements ViewTreeObserver.OnGlobalLayoutListener {
 
-    private int[] colors = {R.color.red, R.color.orange, R.color.yellow, R.color.green, R.color.cyan, R.color.blue, R.color.purple};
+    private int[] colors = {R.color.red, R.color.orange, R.color.yellow, R.color.green, R.color.cyan, R.color.blue, R.color.purple, R.color.yellow, R.color.green, R.color.cyan};
     private int width, height;
-    Random random = new Random();
 
     public TextWall(Context context) {
         super(context);
@@ -58,20 +57,18 @@ public class TextWall extends FrameLayout implements ViewTreeObserver.OnGlobalLa
 
     public void setData(List<TextItem> items, final Context context) {
         count = items.size();
-       // int[] temp_left = new int[10];
-       // int[] temp_top = new int[10];
 
         //위치 고정
-        int[] temp_left = {40, 40, 40, 40, 40, 40, 40};
-        int[] temp_top = {10, 200, 370, 520, 650, 760, 850};
+        int[] temp_left = {40, 40, 40, 40, 40, 40, 40, 40, 40, 40};
+        int[] temp_top = {10, 200, 370, 520, 650, 760, 850, 920, 970, 1000};
 
         //1.우선순위정렬
         items = sortTextItem(items);
+
         //2.글자크기 정렬
-        int[] frontSizes = generateFrontSize(items.size());
         for (int i = 0; i < count; i++) {
             TextItem temp = items.get(i);
-            temp.setFrontSize(frontSizes[i]);
+            temp.setFrontSize(i);
             temp.setFrontColor(colors[i]);
             items.set(i, temp);
         }
@@ -79,8 +76,8 @@ public class TextWall extends FrameLayout implements ViewTreeObserver.OnGlobalLa
         for (int i = count - 1; i >= 0; i--) {
             TextView textView = new TextView(context);
             textView.setText(items.get(i).getValue());
-            textView.setEms((i-count)*-1);
-            textView.setTextSize((i-count)*-8);
+            //textView.setEms((i - count) * -1);
+            textView.setTextSize((i - count) * -5);
             textView.setTextColor(context.getResources().getColor(items.get(i).getFrontColor()));
 
             //객체 크기 보기(배경색)
@@ -92,7 +89,7 @@ public class TextWall extends FrameLayout implements ViewTreeObserver.OnGlobalLa
             textView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(context,Article.class);
+                    Intent intent = new Intent(context, Article.class);
                     intent.putExtra("title", ((TextItem) view.getTag()).getValue());
                     context.startActivity(intent);
                 }
@@ -115,33 +112,6 @@ public class TextWall extends FrameLayout implements ViewTreeObserver.OnGlobalLa
             textView.setLayoutParams(marginParams);
         }
         TextView tv = null;
-        }
-
-
-    public static void setMargins(View v, int l, int t, int r, int b) {
-        if (v.getLayoutParams() instanceof MarginLayoutParams) {
-            MarginLayoutParams p = (MarginLayoutParams) v.getLayoutParams();
-            p.setMargins(l, t, r, b);
-            v.requestLayout();
-        }
-    }
-
-    private int[] generateFrontSize(int count) {
-        int[] sizes = new int[count];
-        for (int i = 0; i < count; i++) {
-            random = new Random();
-            sizes[i] = (random.nextInt(6) * 5 + 12);
-        }
-        for (int i = 0; i < count; i++) {
-            for (int j = 0; j < count; j++) {
-                if (sizes[i] > sizes[j]) {
-                    int c = sizes[i];
-                    sizes[i] = sizes[j];
-                    sizes[j] = c;
-                }
-            }
-        }
-        return sizes;
     }
 
     List<TextItem> sortTextItem(List<TextItem> items) {
