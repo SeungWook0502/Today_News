@@ -9,6 +9,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class MainApp {
@@ -23,30 +25,29 @@ public class MainApp {
 		ArrayList<ArrayList<Article_Class>> Article = new ArrayList<ArrayList<Article_Class>>(); //News Data variable
 		ArrayList<TextRank_Class> Keyword_List = new ArrayList<TextRank_Class>();
 		
-		//Reset DB//
-		mainApp.Delete_DBData("Article");
-		mainApp.Delete_DBData("Keyword_List");
-		mainApp.Delete_DBData("Keyword_Rank");
-		
 		//Crawling//
 		for(int i=0;i<sid1.length;i++) { //Sending Sid1 values
 			Article.add(url_crawler.select_sid2Num(sid1[i]/*102*/, Keyword_List)); //Send Sid1 value
 		}
 		
+		//Reset DB//
+		mainApp.Delete_DBData("Article"); //Delete_Data
+		mainApp.Delete_DBData("Keyword_List"); //Delete_Data
+		mainApp.Delete_DBData("Keyword_Rank"); //Delete_Data
+		
 		//Store DB//
 		for(int sid1_Count = 0; sid1_Count < Article.size(); sid1_Count++) {
-			for(int sid2_Count = 0; sid2_Count < Article.get(sid1_Count).size(); sid2_Count++) {
-				
+			for(int sid2_Count = 0; sid2_Count < Article.get(sid1_Count).size(); sid2_Count++) { //Insert_Article
 				mainApp.Insert_Article(Article.get(sid1_Count).get(sid2_Count).getArticle_Title(),Article.get(sid1_Count).get(sid2_Count).getArticle_Content(),Article.get(sid1_Count).get(sid2_Count).getArticle_sid2(),Article.get(sid1_Count).get(sid2_Count).getArticle_URL());
-				for(int Article_Keyword_Count = 0; Article_Keyword_Count < Article.get(sid1_Count).get(sid2_Count).Article_Keyword.size(); Article_Keyword_Count++) {
-					
+				for(int Article_Keyword_Count = 0; Article_Keyword_Count < Article.get(sid1_Count).get(sid2_Count).Article_Keyword.size(); Article_Keyword_Count++) { //Insert_Keyword_List
 					mainApp.Insert_Keyword_List(Article.get(sid1_Count).get(sid2_Count).Article_Keyword.get(Article_Keyword_Count), Article.get(sid1_Count).get(sid2_Count).getArticle_sid2(), Article.get(sid1_Count).get(sid2_Count).getArticle_URL());
 				}
 			}
 		}
-		for(int Keyword_Count = 0; Keyword_Count < Keyword_List.size(); Keyword_Count++) {
+		for(int Keyword_Count = 0; Keyword_Count < Keyword_List.size(); Keyword_Count++) { //Insert_Keyword_Rank
 			mainApp.Insert_Keyword_Rank(Keyword_List.get(Keyword_Count).Keyword_word,Keyword_List.get(Keyword_Count).Keyword_Count);
 		}
+		mainApp.Insert_Data_State();
 	}
 	
 	//Method
@@ -61,6 +62,7 @@ public class MainApp {
 	        
 		} catch (Exception e) {
 			System.out.println("Insert Error - Article");
+			System.out.println(Article_Title+Article_Content+Article_Sidnum+Article_URL);
 		}
 	}
 	
@@ -75,6 +77,7 @@ public class MainApp {
 	        
 		} catch (Exception e) {
 			System.out.println("Insert Error - Keyword_List");
+			System.out.println(Keyword_Word+Keyword_Sidnum+Keyword_URL);
 		}
 	}
 	
@@ -90,6 +93,24 @@ public class MainApp {
 	        
 		} catch (Exception e) {
 			System.out.println("Insert Error - Keyword_Rank");
+			System.out.println(Keyword_Word+Keyword_Count);
+		}
+	}
+	
+	public void Insert_Data_State() { //Insert_Data_State
+		DateTimeFormatter SQL_DateTime_Form = DateTimeFormatter.ofPattern("YYYY-MM-dd"+"%20"+"HH:MM:ss");
+		LocalDateTime Data_Upload_DateTime = LocalDateTime.now();
+		try {
+			URL url = new URL("http://todaynews.dothome.co.kr/Insert_Data_State.php" + "?"+ URLEncoder.encode("Data_Upload_DateTime") + "=" + Data_Upload_DateTime.format(SQL_DateTime_Form).toString() + "&" + URLEncoder.encode("State_Code") + "=" + 0 );
+			URLConnection connect = url.openConnection(); //url¿¬°á
+			connect.setUseCaches(false);
+			InputStream is = connect.getInputStream();
+			BufferedReader br = new BufferedReader(new InputStreamReader(is));
+	        br.close();
+	        
+		}catch(Exception e) {
+			System.out.println("Insert Error - State_code");
+			System.out.println(Data_Upload_DateTime.format(SQL_DateTime_Form).toString());
 		}
 	}
 	
@@ -104,7 +125,7 @@ public class MainApp {
 	        
 		}catch(Exception e) {
 			System.out.println("Delete Error - Article");
+			System.out.println(Table_Name);
 		}
-		
 	}
 }

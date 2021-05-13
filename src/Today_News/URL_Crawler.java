@@ -32,15 +32,15 @@ public class URL_Crawler{
 	
 	public ArrayList<Article_Class> select_sid2Num(int sid1, ArrayList<TextRank_Class> Keyword_List) throws Exception{
 		
-//		System.out.println("sid1-\t\t"+sid1); //check Sid1
+		System.out.println("sid1-\t\t"+sid1); //check Sid1
 		ArrayList<Article_Class> Article_ArrayList = new ArrayList<Article_Class>(); //return 될 sid2 1개 객체
 		
 		Article_Crawler article_crawler = new Article_Crawler();
 		for(int sid2_idx = 0; sid2_idx < sid2[sid1%100].length; sid2_idx++) { //sid2 loop
-//			System.out.println("sid2-\t"+sid2[sid1%100][sid2_idx]); //check Sid2
+			System.out.println("sid2-\t"+sid2[sid1%100][sid2_idx]); //check Sid2
 			int final_page_num = final_page(sid1,sid2[sid1%100][sid2_idx]/*"252"*/); //get Final Page number
 			Page_loop: for(int page_num = 1; page_num < final_page_num; page_num++) { //Page loop
-//				System.out.println("["+page_num+"/"+final_page_num+"]"); //check page/final page
+				System.out.println("["+page_num+"/"+final_page_num+"]"); //check page/final page
 				
 				String URL = "https://news.naver.com/main/list.nhn?mode=LS2D&mid=shm&"
 						+ "sid2=" + sid2[sid1%100][sid2_idx]/*"252"*/
@@ -58,12 +58,12 @@ public class URL_Crawler{
 					if(Check_Upload_Time(element.toString().split("<span class=\"date")[1].split(">")[1])) {break Page_loop; } //Upload Time > 1hour => break Page loop
 					Article_Class article_class = new Article_Class();	//sid2 하위 1개 기사
 					ArrayList<String> Article_Data = article_crawler.article_crawling(element.toString().split("href=\"")[1].split("\">")[0].replace("&amp;","&")); //Crawling to Article
-					if(!Article_Data.get(0).equals(null)&&!Article_Data.get(1).equals(null)&&!Article_Data.get(2).equals(null)) { //Non-exception Data
+					if(!Article_Data.get(0).equals("Non")&&!Article_Data.get(1).equals("Non")&&!Article_Data.get(2).equals("Non")) { //Non-exception Data
 						
 						article_class.setArticle_sid2(sid2[sid1%100][sid2_idx]/*"252"*/); //Store sid2
 						article_class.setArticle_URL(Article_Data.get(0)); //Store URL
 						article_class.setArticle_Title(Article_Data.get(1)); //Store Title
-//						System.out.println(sid2[sid1%100][sid2_idx]+"- "+Article_Data.get(1)); //check Sid2 + Title
+						System.out.println(sid2[sid1%100][sid2_idx]+"- "+Article_Data.get(1)); //check Sid2 + Title
 						article_class.setArticle_Time(Article_Data.get(2)); //Store Time
 						article_class.setArticle_Content(Article_Data.get(3)); //Store Content -> 3줄요약 class추가해서 해당 메소드로 content내용 수정해야함 -> Article_Crawler에서 완료
 						
@@ -75,6 +75,8 @@ public class URL_Crawler{
 						}
 						
 						Article_ArrayList.add(article_class); //add article_class from article_arraylist
+					}else {
+						System.out.println("Error - "+Article_Data.get(0));
 					}
 					
 				}
@@ -104,7 +106,6 @@ public class URL_Crawler{
 	public boolean Check_Upload_Time(String Upload_Time) { //N시간전 기사 확인
 		
 		if(Upload_Time.contains("분")) {
-//			System.out.println("OK");
 			return false;
 		}
 		else if(Upload_Time.contains("시간")) {
