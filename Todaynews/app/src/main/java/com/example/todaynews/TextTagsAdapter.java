@@ -28,19 +28,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-
 public class TextTagsAdapter extends TagsAdapter {
     private List<String> dataSet = new ArrayList<>();
-    ArrayList<String> keyword = new ArrayList<String>();
-
-
-    public TextTagsAdapter(String[] str, @NonNull String... data) {
+    int i=0;
+    public TextTagsAdapter(@NonNull String... data) {
         dataSet.clear();
         Collections.addAll(dataSet, data);
-        keyword.clear();
-        for (int i = 0; i < 10; i++) {
-            keyword.add(str[i]);
-        }
     }
 
     @Override
@@ -51,20 +44,14 @@ public class TextTagsAdapter extends TagsAdapter {
     @Override
     public View getView(final Context context, final int position, ViewGroup parent) {
         //데이터 입력파트
-
-        String texts[] = new String[10];
-
-        for (int i = 0; i < 10; i++) {
-            texts[i] = keyword.get(i);
-        }
-        Random rand = new Random();
-        int randNum = rand.nextInt(10);
+        if(i==10)
+            i=0;
 
         TextView tv = new TextView(context);
 
         ViewGroup.MarginLayoutParams lp = new ViewGroup.MarginLayoutParams(200, 200);
         tv.setLayoutParams(lp);
-        tv.setText(texts[randNum]);
+        tv.setText(dataSet.get(i++));
         tv.setGravity(Gravity.CENTER);
         tv.setOnClickListener(new View.OnClickListener() {
             @Override

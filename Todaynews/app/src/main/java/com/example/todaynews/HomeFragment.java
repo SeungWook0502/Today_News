@@ -50,7 +50,7 @@ public class HomeFragment extends Fragment {
 
     private KeywordDBOpenHelper mDBOpenHelper;
     View root = null;
-    String[] texts = new String[10];
+    String[] texts = {"로딩중","로딩중","로딩중","로딩중","로딩중","로딩중","로딩중","로딩중","로딩중","로딩중"};
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -80,6 +80,7 @@ public class HomeFragment extends Fragment {
             root = inflater.inflate(R.layout.fragment_home, container, false);
         } else if (select == 2) {
             root = inflater.inflate(R.layout.fragment_home2, container, false);
+            showDisplay();
         }
 
         Handler handler = new Handler();
@@ -89,13 +90,13 @@ public class HomeFragment extends Fragment {
                 for (int i =0;i<10;i++){
                     texts[i] = keyword.get(i);
                 }
-                showDatabase();
+                showDisplay();
             }
-        }, 1000); //딜레이 타임 조절
+        }, 500); //딜레이 타임 조절
         return root;
     }
 
-    public View showDatabase() {
+    public View showDisplay() {
         if (select == 1) {
             textWall = (TextWall) root.findViewById(R.id.tw_test);
             textWall.post(new Runnable() {
@@ -115,7 +116,7 @@ public class HomeFragment extends Fragment {
 
         } else if (select == 2) {
             tagCloudView = (TagCloudView) root.findViewById(R.id.tag_cloud);
-            TextTagsAdapter tagsAdapter = new TextTagsAdapter(texts, new String[10]);
+            TextTagsAdapter tagsAdapter = new TextTagsAdapter(texts);
             tagCloudView.setAdapter(tagsAdapter);
         }
         return root;

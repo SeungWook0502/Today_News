@@ -5,9 +5,13 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.FileOutputStream;
@@ -18,20 +22,43 @@ public class Summary extends AppCompatActivity {
     int menu_select;
     private DBOpenHelper mDBOpenHelper;
     private String title;
+    private String Article_Title;
+    private String Article_Content;
+    private String Article_URL;
+    private TextView article_title;
+    private TextView article_content;
+    private Button url_start;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summary);
         menu_select = getIntent().getIntExtra("menu_select",0);
         title = getIntent().getStringExtra("title");
+        Article_Title = getIntent().getStringExtra("Article_Title");
+        Article_Content = getIntent().getStringExtra("Article_Content");
+        Article_URL = getIntent().getStringExtra("Article_URL");
+
+        article_title = findViewById(R.id.article_title);
+        article_content = findViewById(R.id.article_content);
+        url_start = findViewById(R.id.url_start);
+
         Toolbar toolbar = findViewById(R.id.summary_toolbar);
-        //타이틀 받아오기
         toolbar.setTitle(title);
         setSupportActionBar(toolbar);
 
         mDBOpenHelper = new DBOpenHelper(this);
         mDBOpenHelper.open();
         mDBOpenHelper.create();
+
+        article_title.setText(Article_Title);
+        article_content.setText(Article_Content);
+        url_start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent url = new Intent(Intent.ACTION_VIEW, Uri.parse(Article_URL));
+                startActivity(url);
+            }
+        });
     }
 
     @Override
@@ -48,7 +75,7 @@ public class Summary extends AppCompatActivity {
         if (menu_select == 1) {
             if (item.getItemId() == R.id.save) {
                 try {
-                    mDBOpenHelper.insertColumn(title,"기사타이틀123","3줄요약123","http://123.123");
+                    mDBOpenHelper.insertColumn(title,Article_Title,Article_Content,Article_URL);
                     Toast.makeText(this,"스크랩 성공",Toast.LENGTH_SHORT).show();
                 }catch (Exception e){
                     Toast.makeText(this,"스크랩 실패",Toast.LENGTH_SHORT).show();
