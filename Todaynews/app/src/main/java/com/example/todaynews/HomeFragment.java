@@ -92,7 +92,7 @@ public class HomeFragment extends Fragment {
                 }
                 showDisplay();
             }
-        }, 500); //딜레이 타임 조절
+        }, 1000); //딜레이 타임 조절
         return root;
     }
 

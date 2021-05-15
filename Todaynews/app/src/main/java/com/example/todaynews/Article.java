@@ -59,7 +59,7 @@ public class Article extends AppCompatActivity {
         task = new phpDown();
 
         try {
-            task.execute("http://todaynews.dothome.co.kr/Search_Article.php?Keyword_Word="+title);
+            task.execute("http://todaynews.dothome.co.kr/Search_Article.php?Keyword_Word=\""+title+"\"");
         } catch (Exception e) {
             e.printStackTrace();
             task.cancel(true);
@@ -73,6 +73,7 @@ public class Article extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.custom_toolbar, menu);
         //없앨수도 있음 예정
         menu.getItem(0).setTitle("음성으로 듣기");
+        adapter.notifyDataSetChanged();
         return true;
     }
 
@@ -143,13 +144,13 @@ public class Article extends AppCompatActivity {
                 Article_URL.clear();
                 Article_Emotion.clear();
                 JSONObject jsonObject = new JSONObject(str);
-                JSONArray keywordArray = jsonObject.getJSONArray("Article_List");
-                for (int i = 0; i < keywordArray.length(); i++) {
-                    JSONObject keywordObject = keywordArray.getJSONObject(i);
-                    Article_Title.add(keywordObject.getString("Article_Title"));
-                    Article_Content.add(keywordObject.getString("Article_Content"));
-                    Article_URL.add(keywordObject.getString("Article_URL"));
-                    Article_Emotion.add(keywordObject.getString("Article_Emotion"));
+                JSONArray ArticleArray = jsonObject.getJSONArray("Article_List");
+                for (int i = 0; i < ArticleArray.length(); i++) {
+                    JSONObject articleObject = ArticleArray.getJSONObject(i);
+                    Article_Title.add(articleObject.getString("Article_Title"));
+                    Article_Content.add(articleObject.getString("Article_Content"));
+                    Article_URL.add(articleObject.getString("Keyword_URL"));
+                    //Article_Emotion.add(articleObject.getString("Article_Emotion"));
                 }
             } catch (Exception e) {
                 e.printStackTrace();

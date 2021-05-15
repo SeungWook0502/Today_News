@@ -75,4 +75,8 @@ public class DBOpenHelper {
         Cursor c = mDB.rawQuery( "SELECT * FROM scarp ORDER BY " + 1 + ";", null);
         return c;
     }
+
+    public Cursor selectColumns(){
+        return mDB.query(ScarpDB.CreateDB._TABLENAME0, null, null, null, null, null, null);
+    }
 }

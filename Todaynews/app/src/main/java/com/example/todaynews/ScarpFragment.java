@@ -93,6 +93,8 @@ public class ScarpFragment extends Fragment {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Intent intent = new Intent(getContext(), Summary.class);
             intent.putExtra("title", data.get(position).get("item 1"));
+            intent.putExtra("menu_select", 2);
+            intent.putExtra("position", no.get(position));
             startActivity(intent);
         }
     };

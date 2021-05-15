@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -33,16 +34,13 @@ public class Summary extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summary);
         menu_select = getIntent().getIntExtra("menu_select",0);
-        title = getIntent().getStringExtra("title");
-        Article_Title = getIntent().getStringExtra("Article_Title");
-        Article_Content = getIntent().getStringExtra("Article_Content");
-        Article_URL = getIntent().getStringExtra("Article_URL");
 
         article_title = findViewById(R.id.article_title);
         article_content = findViewById(R.id.article_content);
         url_start = findViewById(R.id.url_start);
-
         Toolbar toolbar = findViewById(R.id.summary_toolbar);
+
+        title = getIntent().getStringExtra("title");
         toolbar.setTitle(title);
         setSupportActionBar(toolbar);
 
@@ -50,8 +48,30 @@ public class Summary extends AppCompatActivity {
         mDBOpenHelper.open();
         mDBOpenHelper.create();
 
-        article_title.setText(Article_Title);
-        article_content.setText(Article_Content);
+        if(menu_select==1) {
+            Article_Title = getIntent().getStringExtra("Article_Title");
+            Article_Content = getIntent().getStringExtra("Article_Content");
+            Article_URL = getIntent().getStringExtra("Article_URL");
+
+            article_title.setText(Article_Title);
+            article_content.setText(Article_Content);
+        }
+        else if(menu_select==2){
+            String position = getIntent().getStringExtra("position");
+            Cursor iCursor = mDBOpenHelper.setFirst();
+
+            while(iCursor.moveToNext()){
+                String tempID = iCursor.getString(iCursor.getColumnIndex("_id"));
+                String tempTitle = iCursor.getString(iCursor.getColumnIndex("article_title"));
+                String tempContent = iCursor.getString(iCursor.getColumnIndex("article_content"));
+                Article_URL = iCursor.getString(iCursor.getColumnIndex("article_url"));
+                if(tempID.equals(position)){
+                    article_title.setText(tempTitle);
+                    article_content.setText(tempContent);
+                }
+            }
+        }
+
         url_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

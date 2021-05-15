@@ -37,6 +37,7 @@
     <Button
         android:id="@+id/url_start"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="URL로 이동"/>
 
 </LinearLayout>
