@@ -1,20 +1,18 @@
 package com.example.todaynews;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
+import android.speech.tts.TextToSpeech;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -25,11 +23,16 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+
+import static android.speech.tts.TextToSpeech.ERROR;
 
 public class Article extends AppCompatActivity {
 
     private ListView lt_id;
     private String title;
+    private TextToSpeech tts;
+    private int count=0;
     List<String> Article_Title = new ArrayList<>();
     List<String> Article_Content = new ArrayList<>();
     List<String> Article_URL = new ArrayList<>();
@@ -64,16 +67,23 @@ public class Article extends AppCompatActivity {
             e.printStackTrace();
             task.cancel(true);
             task = new phpDown();
-            task.execute("http://todaynews.dothome.co.kr/Search_Article.php?Keyword_Word="+title);
+            task.execute("http://todaynews.dothome.co.kr/Search_Article.php?Keyword_Word=\""+title+"\"");
         }
+
+        tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if(status != ERROR) {
+                    tts.setLanguage(Locale.KOREAN);
+                }
+            }
+        });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.custom_toolbar, menu);
-        //없앨수도 있음 예정
         menu.getItem(0).setTitle("음성으로 듣기");
-        adapter.notifyDataSetChanged();
         return true;
     }
 
@@ -98,7 +108,11 @@ public class Article extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         //return super.onOptionsItemSelected(item);
         if (item.getItemId() == R.id.save) {
-            Toast.makeText(this, "음성으로 듣기", Toast.LENGTH_SHORT).show();
+            for (int i = 0; i<count; i++){
+                tts.speak(Article_Title.get(i)+"  ",TextToSpeech.QUEUE_ADD, null);
+                tts.speak(Article_Content.get(i)+"     ", TextToSpeech.QUEUE_ADD, null);
+            }
+
         }
         return true;
     }
@@ -151,7 +165,9 @@ public class Article extends AppCompatActivity {
                     Article_Content.add(articleObject.getString("Article_Content"));
                     Article_URL.add(articleObject.getString("Keyword_URL"));
                     //Article_Emotion.add(articleObject.getString("Article_Emotion"));
+                    count++;
                 }
+
             } catch (Exception e) {
                 e.printStackTrace();
             }

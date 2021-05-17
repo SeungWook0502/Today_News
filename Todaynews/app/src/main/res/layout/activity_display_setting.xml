@@ -41,6 +41,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="행성" />
+
+        <RadioButton
+            android:id="@+id/display_rbt3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="태그 클라우드" />
     </RadioGroup>
 
 

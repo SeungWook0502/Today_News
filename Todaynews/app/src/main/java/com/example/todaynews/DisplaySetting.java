@@ -1,16 +1,14 @@
 package com.example.todaynews;
 
-import androidx.annotation.IdRes;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.RadioGroup;
-import android.widget.Toast;
+
+import androidx.annotation.IdRes;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -39,6 +37,8 @@ public class DisplaySetting extends AppCompatActivity {
                 select = 1;
             } else if (i == R.id.display_rbt2) {
                 select = 2;
+            }else if (i == R.id.display_rbt3) {
+                select = 3;
             }
         }
     };

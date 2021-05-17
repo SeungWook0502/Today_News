@@ -24,7 +24,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class FavoriteFragment extends Fragment {
     phpDown task;
     ArrayList<String> keyword = new ArrayList<String>();
     private TextWall textWall;
@@ -103,7 +103,7 @@ public class HomeFragment extends Fragment {
             tagCloudView.setAdapter(tagsAdapter);
         } else if (select == 3) {
             int weight = 40;
-                       WordCloudView wordCloudView = root.findViewById(R.id.wcv);
+            WordCloudView wordCloudView = root.findViewById(R.id.wcv);
 
             for (int i = 0; i < 10; i++) {
                 wordCloudView.addTextView(texts[i], weight);
