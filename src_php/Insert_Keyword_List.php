@@ -12,7 +12,7 @@
   $Keyword_Sidnum = $_GET['Keyword_Sidnum'];
   $Keyword_URL = $_GET['Keyword_URL'];
 
-  $query = "insert into Keyword_List(Keyword_Word,Keyword_Sidnum,Keyword_URL) values ('$Keyword_Word','$Keyword_Sidnum','$Keyword_URL')";
+  $query = "INSERT into Keyword_List(Keyword_Word,Keyword_Sidnum,Keyword_URL) values ('$Keyword_Word','$Keyword_Sidnum','$Keyword_URL')";
   $result = mysqli_query($connect, $query);
      
   $response = array();

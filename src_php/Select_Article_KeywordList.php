@@ -8,10 +8,8 @@
 
   $connect = mysqli_connect($db_host,$db_user,$db_passwd,$db_name);
 
-  $Data_Upload_DateTime = $_GET['Data_Upload_DateTime'];
-  $State_Code = $_GET['State_Code'];
+  $query = "SELECT Article.Article_Title, Article.Article_Content, Keyword_List.Keyword_Word, Keyword_List.Keyword_URL from Article join Keyword_List on Article.Article_URL = Keyword_List.Keyword_URL";
 
-  $query = "INSERT into Data_State(Data_Upload_DateTime,State_Code) values ('$Data_Upload_DateTime','$State_Code')";
   $result = mysqli_query($connect, $query);
      
   $response = array();

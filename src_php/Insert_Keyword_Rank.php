@@ -11,7 +11,7 @@
   $Keyword_Word = $_GET['Keyword_Word'];
   $Keyword_Count = $_GET['Keyword_Count'];
 
-  $query = "insert into Keyword_Rank(Keyword_Word,Keyword_Count) values ('$Keyword_Word','$Keyword_Count')";
+  $query = "INSERT into Keyword_Rank(Keyword_Word,Keyword_Count) values ('$Keyword_Word','$Keyword_Count')";
   $result = mysqli_query($connect, $query);
      
   $response = array();

@@ -13,7 +13,7 @@
   $Article_Sidnum = $_GET['Article_Sidnum'];
   $Article_URL = $_GET['Article_URL'];
 
-  $query = "insert into Article(Article_Title,Article_Content,Article_Sidnum,Article_URL) values ('$Article_Title','$Article_Content','$Article_Sidnum','$Article_URL')";
+  $query = "INSERT into Article(Article_Title,Article_Content,Article_Sidnum,Article_URL) values ('$Article_Title','$Article_Content','$Article_Sidnum','$Article_URL')";
   $result = mysqli_query($connect, $query);
      
   $response = array();

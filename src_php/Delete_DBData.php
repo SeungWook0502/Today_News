@@ -10,7 +10,7 @@
 
   $Table = $_GET['Table'];
 
-  $query = "delete from $Table";
+  $query = "DELETE from $Table";
   $result = mysqli_query($connect, $query);
      
   $response = array();

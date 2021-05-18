@@ -98,7 +98,7 @@ public class MainApp {
 	}
 	
 	public void Insert_Data_State() { //Insert_Data_State
-		DateTimeFormatter SQL_DateTime_Form = DateTimeFormatter.ofPattern("YYYY-MM-dd"+"%20"+"HH:MM:ss");
+		DateTimeFormatter SQL_DateTime_Form = DateTimeFormatter.ofPattern("YYYY-MM-dd"+"%20"+"HH:MM:ss"); //MySQL DateTime pattern
 		LocalDateTime Data_Upload_DateTime = LocalDateTime.now();
 		try {
 			URL url = new URL("http://todaynews.dothome.co.kr/Insert_Data_State.php" + "?"+ URLEncoder.encode("Data_Upload_DateTime") + "=" + Data_Upload_DateTime.format(SQL_DateTime_Form).toString() + "&" + URLEncoder.encode("State_Code") + "=" + 0 );

@@ -8,10 +8,10 @@
 
   $connect = mysqli_connect($db_host,$db_user,$db_passwd,$db_name);
 
-  $Data_Upload_DateTime = $_GET['Data_Upload_DateTime'];
-  $State_Code = $_GET['State_Code'];
+  $Keyword_Emotion = $_GET['Keyword_Emotion'];
+  $Keyword_URL = $_GET['Keyword_URL'];
 
-  $query = "INSERT into Data_State(Data_Upload_DateTime,State_Code) values ('$Data_Upload_DateTime','$State_Code')";
+  $query = "UPDATE Keyword_List set Keyword_Emotion = '$Keyword_Emotion' where Keyword_URL = '$Keyword_URL'";
   $result = mysqli_query($connect, $query);
      
   $response = array();
