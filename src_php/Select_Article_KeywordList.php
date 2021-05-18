@@ -11,11 +11,19 @@
   $query = "SELECT Article.Article_Title, Article.Article_Content, Keyword_List.Keyword_Word, Keyword_List.Keyword_URL from Article join Keyword_List on Article.Article_URL = Keyword_List.Keyword_URL";
 
   $result = mysqli_query($connect, $query);
-     
-  $response = array();
-  $response["success"] = true;
-  
-  echo json_encode($response);
+
+  if($result){
+    while($row=mysqli_fetch_array($result)){
+      array_push($data,array('Article_Title'=>$row[0], 'Article_Content'=>$row[1], 'Keyword_Word'=>$row[2], 'Keyword_URL'=>$row[3])
+    }
+    header('Content-Type: application/json; charset=utf8');
+
+    $json = json_encode(array("Article_List"=>$data), JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE);
+
+    echo $json;
+  }
+  // $response = array();
+  // $response["success"] = true;
    
   mysqli_close($connect);
 
