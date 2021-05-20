@@ -29,16 +29,16 @@ import java.util.Locale;
 import static android.speech.tts.TextToSpeech.ERROR;
 
 public class Article extends AppCompatActivity {
-
     private ListView lt_id;
     private String title;
     private TextToSpeech tts;
     private int count = 0;
+    int pause = 0;
     List<String> Article_Title = new ArrayList<>();
     List<String> Article_Content = new ArrayList<>();
     List<String> Article_URL = new ArrayList<>();
     List<String> Article_Emotion = new ArrayList<>();
-    int[] sid = {100,101,102,103,104,105};
+    int[] sid = {100, 101, 102, 103, 104, 105};
     phpDown task;
     ArrayAdapter<String> adapter;
 
@@ -54,7 +54,6 @@ public class Article extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         lt_id = findViewById(R.id.lt_id);
-
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Article_Title);
         lt_id.setAdapter(adapter);
@@ -77,10 +76,10 @@ public class Article extends AppCompatActivity {
 
             try {
                 BufferedReader br = new BufferedReader(new FileReader("/data/data/com.example.todaynews/files/keywordfile.txt"));
-                for(int i =0;i<6;i++) {
+                for (int i = 0; i < 6; i++) {
                     String readStr = br.readLine();
                     sid[i] = Integer.parseInt(readStr);
-                    sid[i] = sid[i]==1? (100+i):0;
+                    sid[i] = sid[i] == 1 ? (100 + i) : 0;
                 }
                 br.close();
             } catch (Exception e) {
@@ -135,9 +134,17 @@ public class Article extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         //return super.onOptionsItemSelected(item);
         if (item.getItemId() == R.id.save) {
-            for (int i = 0; i < count; i++) {
-                tts.speak(Article_Title.get(i) + "  ", TextToSpeech.QUEUE_ADD, null);
-                tts.speak(Article_Content.get(i) + "     ", TextToSpeech.QUEUE_ADD, null);
+            if (pause == 0) {
+                item.setTitle("정지");
+                pause = 1;
+                for (int i = 0; i < count; i++) {
+                    tts.speak(Article_Title.get(i) + "  ", TextToSpeech.QUEUE_ADD, null);
+                    tts.speak(Article_Content.get(i) + "     ", TextToSpeech.QUEUE_ADD, null);
+                }
+            } else {
+                item.setTitle("음성으로 듣기");
+                tts.stop();
+                pause = 0;
             }
         }
         return true;

@@ -30,10 +30,11 @@
             android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".Summary"/>
         <activity android:name=".Article"/>
-        <activity android:name=".KeywordSetting" />
+        <activity android:name=".KeywordSetting"
+            android:label="KeywordSetting"/>
         <activity
             android:name=".DisplaySetting"
-            android:label="화면설정"/>
+            android:label="DisplaySetting"/>
         <activity android:name=".Loading">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

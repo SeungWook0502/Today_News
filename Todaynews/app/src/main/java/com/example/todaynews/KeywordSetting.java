@@ -77,12 +77,17 @@ public class KeywordSetting extends AppCompatActivity {
                 FileOutputStream fos = openFileOutput
                         ("keywordfile.txt", Context.MODE_PRIVATE);
                 PrintWriter out = new PrintWriter(fos);
-                out.println(sid100.isChecked()==true? 1:0);
-                out.println(sid101.isChecked()==true? 1:0);
-                out.println(sid102.isChecked()==true? 1:0);
-                out.println(sid103.isChecked()==true? 1:0);
-                out.println(sid104.isChecked()==true? 1:0);
-                out.println(sid105.isChecked()==true? 1:0);
+                if (sid100.isChecked() == false && sid101.isChecked() == false && sid102.isChecked() == false && sid103.isChecked() == false && sid104.isChecked() == false && sid105.isChecked() == false) {
+                    for (int i = 0; i < 6; i++)
+                        out.println(1);
+                } else {
+                    out.println(sid100.isChecked() == true ? 1 : 0);
+                    out.println(sid101.isChecked() == true ? 1 : 0);
+                    out.println(sid102.isChecked() == true ? 1 : 0);
+                    out.println(sid103.isChecked() == true ? 1 : 0);
+                    out.println(sid104.isChecked() == true ? 1 : 0);
+                    out.println(sid105.isChecked() == true ? 1 : 0);
+                }
                 out.close();
                 super.onBackPressed();
             } catch (IOException e) {
