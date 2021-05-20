@@ -8,17 +8,14 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.todaynews.TextItem;
 
 import java.util.List;
-import java.util.Random;
 
 public class TextWall extends FrameLayout implements ViewTreeObserver.OnGlobalLayoutListener {
 
     private int[] colors = {R.color.red, R.color.orange, R.color.yellow, R.color.green, R.color.cyan, R.color.blue, R.color.purple, R.color.yellow, R.color.green, R.color.cyan};
     private int width, height;
+    private int select_keyword;
 
     public TextWall(Context context) {
         super(context);
@@ -26,6 +23,7 @@ public class TextWall extends FrameLayout implements ViewTreeObserver.OnGlobalLa
 
     public TextWall(Context context, AttributeSet attrs) {
         super(context, attrs);
+
     }
 
     public TextWall(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -34,6 +32,9 @@ public class TextWall extends FrameLayout implements ViewTreeObserver.OnGlobalLa
 
     private boolean isFirst = true;
 
+    public void setSelect_keyword(int select_keyword){
+        this.select_keyword = select_keyword;
+    }
     public void onGlobalLayout() {
         if (isFirst) {
             height = getHeight();
@@ -91,6 +92,7 @@ public class TextWall extends FrameLayout implements ViewTreeObserver.OnGlobalLa
                 public void onClick(View view) {
                     Intent intent = new Intent(context, Article.class);
                     intent.putExtra("title", ((TextItem) view.getTag()).getValue());
+                    intent.putExtra("select_keyword",select_keyword);
                     context.startActivity(intent);
                 }
             });

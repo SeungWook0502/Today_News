@@ -18,6 +18,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -32,12 +33,12 @@ public class Article extends AppCompatActivity {
     private ListView lt_id;
     private String title;
     private TextToSpeech tts;
-    private int count=0;
+    private int count = 0;
     List<String> Article_Title = new ArrayList<>();
     List<String> Article_Content = new ArrayList<>();
     List<String> Article_URL = new ArrayList<>();
     List<String> Article_Emotion = new ArrayList<>();
-
+    int[] sid = {100,101,102,103,104,105};
     phpDown task;
     ArrayAdapter<String> adapter;
 
@@ -61,19 +62,45 @@ public class Article extends AppCompatActivity {
 
         task = new phpDown();
 
-        try {
-            task.execute("http://todaynews.dothome.co.kr/Search_Article.php?Keyword_Word=\""+title+"\"");
-        } catch (Exception e) {
-            e.printStackTrace();
-            task.cancel(true);
-            task = new phpDown();
-            task.execute("http://todaynews.dothome.co.kr/Search_Article.php?Keyword_Word=\""+title+"\"");
+        int select_keyword = getIntent().getIntExtra("select_keyword", 1);
+
+        if (select_keyword == 1) {
+            try {
+                task.execute("http://todaynews.dothome.co.kr/Search_Article.php?Keyword_Word=\"" + title + "\"");
+            } catch (Exception e) {
+                e.printStackTrace();
+                task.cancel(true);
+                task = new phpDown();
+                task.execute("http://todaynews.dothome.co.kr/Search_Article.php?Keyword_Word=\"" + title + "\"");
+            }
+        } else {
+
+            try {
+                BufferedReader br = new BufferedReader(new FileReader("/data/data/com.example.todaynews/files/keywordfile.txt"));
+                for(int i =0;i<6;i++) {
+                    String readStr = br.readLine();
+                    sid[i] = Integer.parseInt(readStr);
+                    sid[i] = sid[i]==1? (100+i):0;
+                }
+                br.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
+                task.execute("http://todaynews.dothome.co.kr/Search_FavoriteArticle.php?Keyword_Word=\"" + title + "\"&Keyword_Sidnum1=\"" + sid[0] + "\"&Keyword_Sidnum2=\"" + sid[1] + "\"&Keyword_Sidnum3=\"" + sid[2] + "\"&Keyword_Sidnum4=\"" + sid[3] + "\"&Keyword_Sidnum5=\"" + sid[4] + "\"&Keyword_Sidnum6=\"" + sid[5] + "\"");
+            } catch (Exception e) {
+                e.printStackTrace();
+                task.cancel(true);
+                task = new phpDown();
+                task.execute("http://todaynews.dothome.co.kr/Search_FavoriteArticle.php?Keyword_Word=\"" + title + "\"&Keyword_Sidnum1=\"" + sid[0] + "\"&Keyword_Sidnum2=\"" + sid[1] + "\"&Keyword_Sidnum3=\"" + sid[2] + "\"&Keyword_Sidnum4=\"" + sid[3] + "\"&Keyword_Sidnum5=\"" + sid[4] + "\"&Keyword_Sidnum6=\"" + sid[5] + "\"");
+            }
         }
 
         tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
-                if(status != ERROR) {
+                if (status != ERROR) {
                     tts.setLanguage(Locale.KOREAN);
                 }
             }
@@ -108,11 +135,10 @@ public class Article extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         //return super.onOptionsItemSelected(item);
         if (item.getItemId() == R.id.save) {
-            for (int i = 0; i<count; i++){
-                tts.speak(Article_Title.get(i)+"  ",TextToSpeech.QUEUE_ADD, null);
-                tts.speak(Article_Content.get(i)+"     ", TextToSpeech.QUEUE_ADD, null);
+            for (int i = 0; i < count; i++) {
+                tts.speak(Article_Title.get(i) + "  ", TextToSpeech.QUEUE_ADD, null);
+                tts.speak(Article_Content.get(i) + "     ", TextToSpeech.QUEUE_ADD, null);
             }
-
         }
         return true;
     }

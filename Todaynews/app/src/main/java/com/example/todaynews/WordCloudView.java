@@ -27,6 +27,7 @@ public class WordCloudView extends FrameLayout implements View.OnClickListener {
 
     Random random = new Random();
     HashSet<View> placed = new HashSet<>();
+    int select_keyword;
 
     public WordCloudView(@NonNull Context context) {
         this(context, null);
@@ -38,6 +39,9 @@ public class WordCloudView extends FrameLayout implements View.OnClickListener {
 
     public WordCloudView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+    }
+    public void setSelect_keyword(int select_keyword){
+        this.select_keyword = select_keyword;
     }
 
     @Override
@@ -150,6 +154,7 @@ public class WordCloudView extends FrameLayout implements View.OnClickListener {
             Log.e("chao", "click " + ((TextView) v).getText());
             Intent intent = new Intent(getContext(), Article.class);
             intent.putExtra("title", ((TextView) v).getText());
+            intent.putExtra("select_keyword", select_keyword);
             getContext().startActivity(intent);
         }
     }

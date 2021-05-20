@@ -3,9 +3,6 @@ package com.example.todaynews;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Handler;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -16,24 +13,18 @@ import androidx.annotation.NonNull;
 
 import com.moxun.tagcloudlib.view.TagsAdapter;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 public class TextTagsAdapter extends TagsAdapter {
     private List<String> dataSet = new ArrayList<>();
     int i=0;
-    public TextTagsAdapter(@NonNull String... data) {
+    int select_keyword;
+    public TextTagsAdapter(@NonNull String[] data,  int select_keyword) {
         dataSet.clear();
         Collections.addAll(dataSet, data);
+        this.select_keyword=select_keyword;
     }
 
     @Override
@@ -60,6 +51,7 @@ public class TextTagsAdapter extends TagsAdapter {
                 //정보 넘겨주는 코드 필요!
                 Intent intent = new Intent(context, Article.class);
                 intent.putExtra("title", tv.getText());
+                intent.putExtra("select_keyword", select_keyword);
                 context.startActivity(intent);
             }
         });

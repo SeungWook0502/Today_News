@@ -51,12 +51,12 @@ public class HomeFragment extends Fragment {
         task = new phpDown();
 
         try {
-            task.execute("http://todaynews.dothome.co.kr/find_keyword.php");
+            task.execute("http://todaynews.dothome.co.kr/Find_Keyword.php");
         } catch (Exception e) {
             e.printStackTrace();
             task.cancel(true);
             task = new phpDown();
-            task.execute("http://todaynews.dothome.co.kr/find_keyword.php");
+            task.execute("http://todaynews.dothome.co.kr/Find_Keyword.php");
         }
 
         if (select == 1) {
@@ -72,8 +72,12 @@ public class HomeFragment extends Fragment {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < 10; i++) {
-                    texts[i] = keyword.get(i);
+                try {
+                    for (int i = 0; i < 10; i++) {
+                        texts[i] = keyword.get(i);
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
                 }
                 showDisplay();
             }
@@ -84,6 +88,7 @@ public class HomeFragment extends Fragment {
     public View showDisplay() {
         if (select == 1) {
             textWall = (TextWall) root.findViewById(R.id.tw_test);
+            textWall.setSelect_keyword(1);
             textWall.post(new Runnable() {
                 @Override
                 public void run() {
@@ -99,12 +104,12 @@ public class HomeFragment extends Fragment {
             });
         } else if (select == 2) {
             tagCloudView = (TagCloudView) root.findViewById(R.id.tag_cloud);
-            TextTagsAdapter tagsAdapter = new TextTagsAdapter(texts);
+            TextTagsAdapter tagsAdapter = new TextTagsAdapter(texts, 1);
             tagCloudView.setAdapter(tagsAdapter);
         } else if (select == 3) {
             int weight = 40;
-                       WordCloudView wordCloudView = root.findViewById(R.id.wcv);
-
+            WordCloudView wordCloudView = root.findViewById(R.id.wcv);
+            wordCloudView.setSelect_keyword(1);
             for (int i = 0; i < 10; i++) {
                 wordCloudView.addTextView(texts[i], weight);
                 if (i % 3 == 2)
