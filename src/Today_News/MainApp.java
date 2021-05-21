@@ -38,9 +38,9 @@ public class MainApp {
 		//Store DB//
 		for(int sid1_Count = 0; sid1_Count < Article.size(); sid1_Count++) {
 			for(int sid2_Count = 0; sid2_Count < Article.get(sid1_Count).size(); sid2_Count++) { //Insert_Article
-				mainApp.Insert_Article(Article.get(sid1_Count).get(sid2_Count).getArticle_Title(),Article.get(sid1_Count).get(sid2_Count).getArticle_Content(),Article.get(sid1_Count).get(sid2_Count).getArticle_sid2(),Article.get(sid1_Count).get(sid2_Count).getArticle_URL());
+				mainApp.Insert_Article(Article.get(sid1_Count).get(sid2_Count).getArticle_Title(),Article.get(sid1_Count).get(sid2_Count).getArticle_Content(),Article.get(sid1_Count).get(sid2_Count).getArticle_Sidnum(),Article.get(sid1_Count).get(sid2_Count).getArticle_URL());
 				for(int Article_Keyword_Count = 0; Article_Keyword_Count < Article.get(sid1_Count).get(sid2_Count).Article_Keyword.size(); Article_Keyword_Count++) { //Insert_Keyword_List
-					mainApp.Insert_Keyword_List(Article.get(sid1_Count).get(sid2_Count).Article_Keyword.get(Article_Keyword_Count), Article.get(sid1_Count).get(sid2_Count).getArticle_sid2(), Article.get(sid1_Count).get(sid2_Count).getArticle_URL());
+					mainApp.Insert_Keyword_List(Article.get(sid1_Count).get(sid2_Count).Article_Keyword.get(Article_Keyword_Count), Article.get(sid1_Count).get(sid2_Count).getArticle_Sidnum(), Article.get(sid1_Count).get(sid2_Count).getArticle_URL());
 				}
 			}
 		}

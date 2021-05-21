@@ -8,7 +8,7 @@ public class Article_Class {
 	String Article_Content; //내용
 	String Article_Time; //개시 시간
 	String Article_URL; //URL
-	String Article_sid2; //Sid2
+	String Article_Sidnum; //Sid1 Number
 	ArrayList<String> Article_Keyword = new ArrayList<String>(); //Keyword
 	
 	public String getArticle_Title() {
@@ -35,11 +35,11 @@ public class Article_Class {
 	public void setArticle_URL(String article_URL) {
 		Article_URL = article_URL;
 	}
-	public String getArticle_sid2() {
-		return Article_sid2;
+	public String getArticle_Sidnum() {
+		return Article_Sidnum;
 	}
-	public void setArticle_sid2(String article_sid2) {
-		Article_sid2 = article_sid2;
+	public void setArticle_Sidnum(String article_Sidnum) {
+		Article_Sidnum = article_Sidnum;
 	}
 	public ArrayList<String> getArticle_Keyword() {
 		return Article_Keyword;

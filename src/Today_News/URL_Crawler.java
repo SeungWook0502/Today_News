@@ -60,7 +60,7 @@ public class URL_Crawler{
 					ArrayList<String> Article_Data = article_crawler.article_crawling(element.toString().split("href=\"")[1].split("\">")[0].replace("&amp;","&")); //Crawling to Article
 					if(!Article_Data.get(0).equals("Non")&&!Article_Data.get(1).equals("Non")&&!Article_Data.get(2).equals("Non")) { //Non-exception Data
 						
-						article_class.setArticle_sid2(sid2[sid1%100][sid2_idx]/*"252"*/); //Store sid2
+						article_class.setArticle_Sidnum(Integer.toString(sid1)/*sid2[sid1%100][sid2_idx]*/); //Store Sidnum
 						article_class.setArticle_URL(Article_Data.get(0)); //Store URL
 						article_class.setArticle_Title(Article_Data.get(1)); //Store Title
 						System.out.println(sid2[sid1%100][sid2_idx]+"- "+Article_Data.get(1)); //check Sid2 + Title
