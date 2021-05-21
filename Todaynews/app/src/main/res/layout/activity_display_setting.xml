@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DisplaySetting">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.Todaynews.AppBarOverlay"
+        tools:ignore="MissingConstraints">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/display_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/Theme.Todaynews.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/display_rbt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="리스트" />
+
+        <RadioButton
+            android:id="@+id/display_rbt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="행성" />
+
+        <RadioButton
+            android:id="@+id/display_rbt3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="태그 클라우드" />
+    </RadioGroup>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
