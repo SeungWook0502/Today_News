@@ -19,7 +19,6 @@ public class PopupActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_popup);
 
-        //데이터 가져오기
         Intent intent = getIntent();
         position = intent.getIntExtra("position",0);
 
@@ -27,15 +26,12 @@ public class PopupActivity extends Activity {
         txtText.setText("정말 삭제하시겠습니까?");
     }
 
-    //확인 버튼 클릭
     public void yes(View v){
-        //데이터 전달하기
         Intent intent = new Intent();
         intent.putExtra("result", "yes");
         intent.putExtra("position", position);
         setResult(RESULT_OK, intent);
 
-        //액티비티(팝업) 닫기
         finish();
     }
 
@@ -48,7 +44,6 @@ public class PopupActivity extends Activity {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        //바깥레이어 클릭시 안닫히게
         if(event.getAction()==MotionEvent.ACTION_OUTSIDE){
             return false;
         }

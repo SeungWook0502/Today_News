@@ -1,13 +1,5 @@
 package com.example.todaynews;
 
-/**
- * Created by squirrelhuan on 2017/7/21.
- */
-
-/**
- * The text to be displayed
- */
-
 public class TextItem {
     private String value;
     private float index;

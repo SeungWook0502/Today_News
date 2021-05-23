@@ -7,7 +7,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -15,9 +14,6 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by chao on 2019/2/17.
- */
 
 public class SpiralView extends View {
 
@@ -74,7 +70,6 @@ public class SpiralView extends View {
             int y = Double.valueOf(A * Math.sin(w * t + sita)).intValue();
             A += 1;
             res.add(new Point(x, y));
-            Log.e("chao", x + ", " + y);
         }
         return res;
     }

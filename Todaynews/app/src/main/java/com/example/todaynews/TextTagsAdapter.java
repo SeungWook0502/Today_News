@@ -3,7 +3,6 @@ package com.example.todaynews;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +33,6 @@ public class TextTagsAdapter extends TagsAdapter {
 
     @Override
     public View getView(final Context context, final int position, ViewGroup parent) {
-        //데이터 입력파트
         if(i==10)
             i=0;
 
@@ -47,8 +45,6 @@ public class TextTagsAdapter extends TagsAdapter {
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e("Click", "Tag " + position + " clicked.");
-                //정보 넘겨주는 코드 필요!
                 Intent intent = new Intent(context, Article.class);
                 intent.putExtra("title", tv.getText());
                 intent.putExtra("select_keyword", select_keyword);

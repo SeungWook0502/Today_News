@@ -59,14 +59,11 @@ public class TextWall extends FrameLayout implements ViewTreeObserver.OnGlobalLa
     public void setData(List<TextItem> items, final Context context) {
         count = items.size();
 
-        //위치 고정
         int[] temp_left = {40, 40, 40, 40, 40, 40, 40, 40, 40, 40};
         int[] temp_top = {10, 200, 370, 520, 650, 760, 850, 920, 970, 1000};
 
-        //1.우선순위정렬
         items = sortTextItem(items);
 
-        //2.글자크기 정렬
         for (int i = 0; i < count; i++) {
             TextItem temp = items.get(i);
             temp.setFrontSize(i);
@@ -81,7 +78,6 @@ public class TextWall extends FrameLayout implements ViewTreeObserver.OnGlobalLa
             textView.setTextSize((i - count) * -5);
             textView.setTextColor(context.getResources().getColor(items.get(i).getFrontColor()));
 
-            //객체 크기 보기(배경색)
             textView.setBackgroundColor(colors[i]);
 
 
@@ -100,15 +96,11 @@ public class TextWall extends FrameLayout implements ViewTreeObserver.OnGlobalLa
 
             LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
             MarginLayoutParams marginParams = null;
-            //획득view의margin설정계수
             if (params instanceof MarginLayoutParams) {
                 marginParams = (MarginLayoutParams) params;
             } else {
-                //없을때 새로운 계수 만들기
-                //View기준으로 기본레이아웃 인자 개채
                 marginParams = new MarginLayoutParams(params);
             }
-            //margin 설정
 
             marginParams.setMargins(temp_left[i], temp_top[i], 0, 0);
             textView.setLayoutParams(marginParams);

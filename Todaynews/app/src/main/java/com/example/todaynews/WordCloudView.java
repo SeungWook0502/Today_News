@@ -19,10 +19,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Created by chao on 2019/2/15.
- */
-
 public class WordCloudView extends FrameLayout implements View.OnClickListener {
 
     Random random = new Random();
@@ -63,7 +59,6 @@ public class WordCloudView extends FrameLayout implements View.OnClickListener {
                 pivotX += p.x;
                 pivotY += p.y;
 
-                Log.d("chao", "place " + pivotX + "," + pivotY);
                 Rect r1 = getVisualRect(pivotX, pivotY, w, h, v.getRotation());
                 boolean isOverlap = false;
                 for(View pv : placed) {
@@ -76,7 +71,6 @@ public class WordCloudView extends FrameLayout implements View.OnClickListener {
                 if(isOverlap) {
 
                 } else {
-                    Log.d("chao", "placed");
                     Rect r = getRect(pivotX, pivotY, w, h);
                     v.layout(r.left, r.top, r.right, r.bottom);
                     break;
@@ -120,16 +114,6 @@ public class WordCloudView extends FrameLayout implements View.OnClickListener {
     }
 
 
-
-//    public void setWords(String[] words) {
-//        this.words = words;
-//        placed.clear();
-//        removeAllViews();
-//        for(final String word : words) {
-//            addTextView(word);
-//        }
-//    }
-
     LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
     float[] rotates = {
@@ -151,7 +135,6 @@ public class WordCloudView extends FrameLayout implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if(v instanceof TextView) {
-            Log.e("chao", "click " + ((TextView) v).getText());
             Intent intent = new Intent(getContext(), Article.class);
             intent.putExtra("title", ((TextView) v).getText());
             intent.putExtra("select_keyword", select_keyword);
@@ -169,7 +152,6 @@ public class WordCloudView extends FrameLayout implements View.OnClickListener {
             int y = Double.valueOf(A * Math.sin(w * t + sita)).intValue();
             A += 1;
             res.add(new Point(x, y));
-            Log.e("chao", x + ", " + y);
         }
         return res;
     }
