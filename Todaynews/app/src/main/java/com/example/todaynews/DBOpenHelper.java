@@ -23,12 +23,12 @@ public class DBOpenHelper {
 
         @Override
         public void onCreate(SQLiteDatabase db){
-            db.execSQL(ScarpDB.CreateDB._CREATE0);
+            db.execSQL(ScrapDB.CreateDB._CREATE0);
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
-            db.execSQL("DROP TABLE IF EXISTS "+ScarpDB.CreateDB._TABLENAME0);
+            db.execSQL("DROP TABLE IF EXISTS "+ ScrapDB.CreateDB._TABLENAME0);
             onCreate(db);
         }
     }
@@ -53,30 +53,30 @@ public class DBOpenHelper {
 
     public long insertColumn(String keyword, String article_title, String article_content, String article_url){
         ContentValues values = new ContentValues();
-        values.put(ScarpDB.CreateDB.KEYWORD, keyword);
-        values.put(ScarpDB.CreateDB.ARTICLE_TITLE, article_title);
-        values.put(ScarpDB.CreateDB.ARTICLE_CONTENT, article_content);
-        values.put(ScarpDB.CreateDB.ARTICLE_URL, article_url);
-        return mDB.insert(ScarpDB.CreateDB._TABLENAME0, null, values);
+        values.put(ScrapDB.CreateDB.KEYWORD, keyword);
+        values.put(ScrapDB.CreateDB.ARTICLE_TITLE, article_title);
+        values.put(ScrapDB.CreateDB.ARTICLE_CONTENT, article_content);
+        values.put(ScrapDB.CreateDB.ARTICLE_URL, article_url);
+        return mDB.insert(ScrapDB.CreateDB._TABLENAME0, null, values);
     }
 
     // Delete All
     public void deleteAllColumns() {
-        mDB.delete(ScarpDB.CreateDB._TABLENAME0, null, null);
+        mDB.delete(ScrapDB.CreateDB._TABLENAME0, null, null);
     }
 
     // Delete Column
     public boolean deleteColumn(long id){
-        return mDB.delete(ScarpDB.CreateDB._TABLENAME0, "_id="+id, null) > 0;
+        return mDB.delete(ScrapDB.CreateDB._TABLENAME0, "_id="+id, null) > 0;
     }
 
     // Sort
     public Cursor setFirst(){
-        Cursor c = mDB.rawQuery( "SELECT * FROM scarp ORDER BY " + 1 + ";", null);
+        Cursor c = mDB.rawQuery( "SELECT * FROM scrap ORDER BY " + 1 + ";", null);
         return c;
     }
 
     public Cursor selectColumns(){
-        return mDB.query(ScarpDB.CreateDB._TABLENAME0, null, null, null, null, null, null);
+        return mDB.query(ScrapDB.CreateDB._TABLENAME0, null, null, null, null, null, null);
     }
 }

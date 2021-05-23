@@ -8,7 +8,7 @@
 
 
     <string name="menu_home">Home</string>
-    <string name="menu_scarp">Scarp</string>
+    <string name="menu_scrap">Scrap</string>
     <string name="menu_setting">Setting</string>
     <string name="appwidget_text">Display</string>
     <string name="add_widget">Add widget</string>

@@ -17,7 +17,7 @@ import androidx.fragment.app.Fragment;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ScarpFragment extends Fragment {
+public class ScrapFragment extends Fragment {
 
     private ListView list;
     final ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String, String>>();
@@ -28,7 +28,7 @@ public class ScarpFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_scarp, container, false);
+        View root = inflater.inflate(R.layout.fragment_scrap, container, false);
 
         list = root.findViewById(R.id.list);
 
@@ -70,9 +70,9 @@ public class ScarpFragment extends Fragment {
                 int position = data.getIntExtra("position", 0);
                 mDBOpenHelper.deleteColumn(position);
                 showDatabase();
-                Toast.makeText(getContext(), Integer.toString(position), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "삭제되었습니다.", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "취소하였습니다.", Toast.LENGTH_SHORT).show();
             }
         }
     }

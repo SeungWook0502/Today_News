@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_scarp, R.id.nav_setting, R.id.nav_favorite)
+                R.id.nav_home, R.id.nav_scrap, R.id.nav_setting, R.id.nav_favorite)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

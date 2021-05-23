@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_scarp"
-        android:name="com.example.todaynews.ScarpFragment"
-        android:label="@string/menu_scarp"
-        tools:layout="@layout/fragment_scarp" />
+        android:id="@+id/nav_scrap"
+        android:name="com.example.todaynews.ScrapFragment"
+        android:label="@string/menu_scrap"
+        tools:layout="@layout/fragment_scrap" />
 
     <fragment
         android:id="@+id/nav_setting"
