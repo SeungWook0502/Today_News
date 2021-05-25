@@ -24,7 +24,7 @@ public class NewsWidget extends AppWidgetProvider {
 
     static phpDown task;
     static ArrayList<String> keyword = new ArrayList<String>();
-    static int a;
+    static int a=0;
     static RemoteViews views;
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
@@ -57,15 +57,15 @@ public class NewsWidget extends AppWidgetProvider {
             public void run() {
                 appWidgetManager.updateAppWidget(appWidgetId, views);
             }
-        }, 2000); //딜레이 타임 조절
+        }, 5000); //딜레이 타임 조절
     }
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         // There may be multiple widgets active, so update all of them
-        for (int appWidgetId : appWidgetIds) {
-            updateAppWidget(context, appWidgetManager, appWidgetId);
-        }
+                for (int appWidgetId : appWidgetIds) {
+                    updateAppWidget(context, appWidgetManager, appWidgetId);
+                }
     }
 
     @Override
@@ -125,17 +125,17 @@ public class NewsWidget extends AppWidgetProvider {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            views.setTextViewText(R.id.tv0, "현재 이슈는?");
-            views.setTextViewText(R.id.tv1, "1 : "+keyword.get(0));
-            views.setTextViewText(R.id.tv2, "2 : "+keyword.get(1));
-            views.setTextViewText(R.id.tv3, "3 : "+keyword.get(2));
-            views.setTextViewText(R.id.tv4, "4 : "+keyword.get(3));
-            views.setTextViewText(R.id.tv5, "5 : "+keyword.get(4));
-            views.setTextViewText(R.id.tv6, "6 : "+keyword.get(5));
-            views.setTextViewText(R.id.tv7, "7 : "+keyword.get(6));
-            views.setTextViewText(R.id.tv8, "8 : "+keyword.get(7));
-            views.setTextViewText(R.id.tv9, "9 : "+keyword.get(8));
-            views.setTextViewText(R.id.tv10, "10 : "+keyword.get(9));
+            views.setTextViewText(R.id.tv0, "현재 이슈는?"+a++);
+            views.setTextViewText(R.id.tv1, "1 : " + keyword.get(0));
+            views.setTextViewText(R.id.tv2, "2 : " + keyword.get(1));
+            views.setTextViewText(R.id.tv3, "3 : " + keyword.get(2));
+            views.setTextViewText(R.id.tv4, "4 : " + keyword.get(3));
+            views.setTextViewText(R.id.tv5, "5 : " + keyword.get(4));
+            views.setTextViewText(R.id.tv6, "6 : " + keyword.get(5));
+            views.setTextViewText(R.id.tv7, "7 : " + keyword.get(6));
+            views.setTextViewText(R.id.tv8, "8 : " + keyword.get(7));
+            views.setTextViewText(R.id.tv9, "9 : " + keyword.get(8));
+            views.setTextViewText(R.id.tv10, "10 : " + keyword.get(9));
         }
     }
 }
