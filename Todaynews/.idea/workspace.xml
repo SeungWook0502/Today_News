@@ -12,11 +12,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bebbbcd-d266-4876-aec6-34805a39b069" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/NewsWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/todaynews/NewsWidget.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/news_widget.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/news_widget.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/news_widget_info.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/xml/news_widget_info.xml" afterDir="false" />
-    </list>
+    <list default="true" id="9bebbbcd-d266-4876-aec6-34805a39b069" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -238,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621766960710</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="android project">
+      <created>1621951414122</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1621951414122</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -278,11 +281,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="560" y="161" key="AndroidProcessChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1620027281792" />
-    <state x="69" y="91" key="CommitChangelistDialog2" timestamp="1621766959930">
+    <state x="69" y="91" key="CommitChangelistDialog2" timestamp="1621951413443">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="55" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1621525420779" />
-    <state x="69" y="91" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1621766959930" />
+    <state x="69" y="91" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1621951413443" />
     <state x="462" y="223" key="FileChooserDialogImpl" timestamp="1621490881967">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -320,11 +323,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1621365389646" />
-    <state x="451" y="183" key="Vcs.Push.Dialog.v2" timestamp="1621766962313">
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2" timestamp="1621951417196">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1621525412047" />
-    <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1621766962313" />
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1621951417196" />
     <state x="482" y="349" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1621365631606">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
