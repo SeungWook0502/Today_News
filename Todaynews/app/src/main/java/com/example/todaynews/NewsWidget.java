@@ -125,6 +125,7 @@ public class NewsWidget extends AppWidgetProvider {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            views.setTextViewText(R.id.tv0, "현재 이슈는?");
             views.setTextViewText(R.id.tv1, "1 : "+keyword.get(0));
             views.setTextViewText(R.id.tv2, "2 : "+keyword.get(1));
             views.setTextViewText(R.id.tv3, "3 : "+keyword.get(2));
