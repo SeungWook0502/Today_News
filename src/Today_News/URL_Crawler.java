@@ -63,7 +63,7 @@ public class URL_Crawler{
 						article_class.setArticle_Sidnum(Integer.toString(sid1)/*sid2[sid1%100][sid2_idx]*/); //Store Sidnum
 						article_class.setArticle_URL(Article_Data.get(0)); //Store URL
 						article_class.setArticle_Title(Article_Data.get(1)); //Store Title
-						System.out.println(sid2[sid1%100][sid2_idx]+"- "+Article_Data.get(1)); //check Sid2 + Title
+						System.out.println(sid2[sid1%100][sid2_idx]+"- "+article_class.getArticle_Title()); //check Sid2 + Store Title
 						article_class.setArticle_Time(Article_Data.get(2)); //Store Time
 						article_class.setArticle_Content(Article_Data.get(3)); //Store Content -> 3줄요약 class추가해서 해당 메소드로 content내용 수정해야함 -> Article_Crawler에서 완료
 						

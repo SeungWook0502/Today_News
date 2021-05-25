@@ -24,14 +24,14 @@ public class Article_Crawler {
 		
 		ArrayList<String> Article_TTT = new ArrayList<String>();
 		
-		 //Article URL//
+		//Article URL//
 		try {
 			Article_TTT.add(URL);
 		}catch (ArrayIndexOutOfBoundsException exception) {
 			Article_TTT.add("Non");
 		}
 		
-		 //Article Title//
+		//Article Title//
 		try {
 		Article_TTT.add(elements_article_title.toString().split("<h3 id=\"articleTitle\">")[1].split("</h3>")[0]); //Article Title
 		}catch (ArrayIndexOutOfBoundsException exception){ //...같은 특수기호로 인한 예외처리
