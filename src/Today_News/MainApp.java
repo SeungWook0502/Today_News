@@ -21,6 +21,7 @@ public class MainApp {
 			int[] sid1 = {100,101,102,103,104,105}; //Sid1 value
 			MainApp mainApp = new MainApp();
 			LocalTime Start_Time = LocalTime.now();
+			System.out.println(Start_Time);
 			
 			URL_Crawler url_crawler = new URL_Crawler(); //URL Crawler
 			
@@ -30,15 +31,6 @@ public class MainApp {
 			//Crawling//
 			for(int i=0;i<sid1.length;i++) { //Sending Sid1 values
 				Article.add(url_crawler.select_sid2Num(sid1[i]/*102*/, Keyword_List)); //Send Sid1 value
-				for(int j=0; j < Article.get(i).size(); j++) { //Title redundancy check
-					Article_Class Article_Title_ori = Article.get(i).get(j);
-					for(int l=j+1; l < Article.get(i).size(); l++) {
-						if(Article.get(i).get(j).getArticle_Title().equals(Article.get(i).get(l).getArticle_Title())) { //Remove All redundancy Title
-							Article.get(i).remove(j);
-						}
-					}
-					Article.get(i).add(Article_Title_ori); //Add One of the redundancy title
-				}
 			}
 			
 			//Reset DB//
@@ -63,6 +55,8 @@ public class MainApp {
 			LocalTime End_Time = LocalTime.now();
 			Duration Start_to_End = Duration.between(Start_Time, End_Time); //Start End Time interval
 			if(Start_to_End.getSeconds()/3600<1) { //Less than an hour
+				System.out.println(End_Time);
+				System.out.println((60-Start_to_End.getSeconds()%3600/60)*60000);
 				Thread.sleep((60-Start_to_End.getSeconds()%3600/60)*60000); //Fill an hour
 			}
 			
