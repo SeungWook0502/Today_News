@@ -30,6 +30,15 @@ public class MainApp {
 			//Crawling//
 			for(int i=0;i<sid1.length;i++) { //Sending Sid1 values
 				Article.add(url_crawler.select_sid2Num(sid1[i]/*102*/, Keyword_List)); //Send Sid1 value
+				for(int j=0; j < Article.get(i).size(); j++) { //Title redundancy check
+					Article_Class Article_Title_ori = Article.get(i).get(j);
+					for(int l=j+1; l < Article.get(i).size(); l++) {
+						if(Article.get(i).get(j).getArticle_Title().equals(Article.get(i).get(l).getArticle_Title())) { //Remove All redundancy Title
+							Article.get(i).remove(j);
+						}
+					}
+					Article.get(i).add(Article_Title_ori); //Add One of the redundancy title
+				}
 			}
 			
 			//Reset DB//
