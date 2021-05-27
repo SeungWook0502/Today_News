@@ -18,7 +18,6 @@ import kr.co.shineware.nlp.komoran.model.KomoranResult;
 import kr.co.shineware.nlp.komoran.model.Token;
 
 public class URL_Crawler{
-
 	
 	static String[][] sid2 = { //Sid2 value
 			{"264","265","268","266","267","269"}, //Á¤Ä¡
