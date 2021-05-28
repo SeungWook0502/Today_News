@@ -8,12 +8,12 @@
 
   $connect = mysqli_connect($db_host,$db_user,$db_passwd,$db_name);
 
-  $query = "UPDATE Data_State set State_Code = 1 where Data_Upload_DateTime = (select Data_Upload_DateTime from Data_State where State_Code = 0 order by Data_Upload_DateTime desc limit 1)";
+  $query = "UPDATE Data_State set State_Code = 1 where State_Code = 0";
   
   $result = mysqli_query($connect, $query);
      
   $response = array();
-  $response["success"] = true;
+  $response["success"] = $result;
   
   echo json_encode($response);
    

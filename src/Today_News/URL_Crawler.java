@@ -55,10 +55,11 @@ public class URL_Crawler{
 				for(Element element : Article_List_URL) { //Article List loop
 					
 					if(Check_Upload_Time(element.toString().split("<span class=\"date")[1].split(">")[1])) {break Page_loop; } //Upload Time > 1hour => break Page loop
+					
 					Article_Class article_class = new Article_Class();	//sid2 하위 1개 기사
 					ArrayList<String> Article_Data = article_crawler.article_crawling(element.toString().split("href=\"")[1].split("\">")[0].replace("&amp;","&"), sid2[sid1%100][sid2_idx], Article_ArrayList); //Crawling to Article
-					System.out.print(!Article_Data.get(0).equals("Non")&&!Article_Data.get(1).equals("Non")&&!Article_Data.get(2).equals("Non"));
 					if(!Article_Data.get(0).equals("Non")&&!Article_Data.get(1).equals("Non")&&!Article_Data.get(2).equals("Non")) { //Non-exception Data
+						
 						article_class.setArticle_Sidnum(Integer.toString(sid1)/*sid2[sid1%100][sid2_idx]*/); //Store Sidnum
 						article_class.setArticle_URL(Article_Data.get(0)); //Store URL
 						article_class.setArticle_Title(Article_Data.get(1)); //Store Title

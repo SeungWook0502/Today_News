@@ -21,7 +21,7 @@ public class MainApp {
 			int[] sid1 = {100,101,102,103,104,105}; //Sid1 value
 			MainApp mainApp = new MainApp();
 			LocalTime Start_Time = LocalTime.now();
-			System.out.println(Start_Time);
+			System.out.println("\t\t\tStart Time - "+Start_Time);
 			
 			URL_Crawler url_crawler = new URL_Crawler(); //URL Crawler
 			
@@ -41,7 +41,7 @@ public class MainApp {
 			//Store DB//
 			for(int sid1_Count = 0; sid1_Count < Article.size(); sid1_Count++) {
 				for(int sid2_Count = 0; sid2_Count < Article.get(sid1_Count).size(); sid2_Count++) { //Insert_Article
-					mainApp.Insert_Article(Article.get(sid1_Count).get(sid2_Count).getArticle_Title(),Article.get(sid1_Count).get(sid2_Count).getArticle_Content(),Article.get(sid1_Count).get(sid2_Count).getArticle_Sidnum(),Article.get(sid1_Count).get(sid2_Count).getArticle_URL());
+					mainApp.Insert_Article(Article.get(sid1_Count).get(sid2_Count).getArticle_Title(), Article.get(sid1_Count).get(sid2_Count).getArticle_Content(), Article.get(sid1_Count).get(sid2_Count).getArticle_Sidnum(), Article.get(sid1_Count).get(sid2_Count).getArticle_URL());
 					for(int Article_Keyword_Count = 0; Article_Keyword_Count < Article.get(sid1_Count).get(sid2_Count).Article_Keyword.size(); Article_Keyword_Count++) { //Insert_Keyword_List
 						mainApp.Insert_Keyword_List(Article.get(sid1_Count).get(sid2_Count).Article_Keyword.get(Article_Keyword_Count), Article.get(sid1_Count).get(sid2_Count).getArticle_Sidnum(), Article.get(sid1_Count).get(sid2_Count).getArticle_URL());
 					}
@@ -55,8 +55,8 @@ public class MainApp {
 			LocalTime End_Time = LocalTime.now();
 			Duration Start_to_End = Duration.between(Start_Time, End_Time); //Start End Time interval
 			if(Start_to_End.getSeconds()/3600<1) { //Less than an hour
-				System.out.println(End_Time);
-				System.out.println((60-Start_to_End.getSeconds()%3600/60)*60000);
+				System.out.println("\t\t\tEnd Time - "+End_Time);
+				System.out.println("\t\t\tWait Time"+(60-Start_to_End.getSeconds()%3600/60)*60000);
 				Thread.sleep((60-Start_to_End.getSeconds()%3600/60)*60000); //Fill an hour
 			}
 			

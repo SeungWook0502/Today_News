@@ -8,14 +8,17 @@
 
   $connect = mysqli_connect($db_host,$db_user,$db_passwd,$db_name);
 
-  $Keyword_Emotion = $_GET['Keyword_Emotion'];
+  $query = "SET SQL_SAFE_UPDATES = 0";
+  mysqli_query($connect, $query);
+
   $Keyword_Word = $_GET['Keyword_Word'];
 
-  $query = "UPDATE Keyword_Rank set Keyword_Emotion = '$Keyword_Emotion' where Keyword_Word = '$Keyword_Word'";
+  $query = "UPDATE Keyword_Rank SET Keyword_Emotion = (SELECT COUNT(*) FROM Keyword_List WHERE Keyword_Word = '$Keyword_Word' AND Keyword_Emotion = 1)/(SELECT COUNT(*) FROM Keyword_List WHERE Keyword_Word = '$Keyword_Word')";
+
   $result = mysqli_query($connect, $query);
      
   $response = array();
-  $response["success"] = true;
+  $response["success"] = $result;
   
   echo json_encode($response);
    
