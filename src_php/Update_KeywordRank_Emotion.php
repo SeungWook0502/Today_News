@@ -13,7 +13,7 @@
 
   $Keyword_Word = $_GET['Keyword_Word'];
 
-  $query = "UPDATE Keyword_Rank SET Keyword_Emotion = (SELECT COUNT(*) FROM Keyword_List WHERE Keyword_Word = '$Keyword_Word' AND Keyword_Emotion = 1)/(SELECT COUNT(*) FROM Keyword_List WHERE Keyword_Word = '$Keyword_Word')";
+  $query = "UPDATE Keyword_Rank SET Keyword_Emotion = (SELECT COUNT(*) FROM Keyword_List WHERE Keyword_Word = '$Keyword_Word' AND Keyword_Emotion = 1)/(SELECT COUNT(*) FROM Keyword_List WHERE Keyword_Word = '$Keyword_Word') WHERE Keyword_Word = '$Keyword_Word'";
 
   $result = mysqli_query($connect, $query);
      
