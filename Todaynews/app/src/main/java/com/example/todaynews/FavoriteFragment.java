@@ -1,11 +1,13 @@
 package com.example.todaynews;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -21,18 +23,15 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 public class FavoriteFragment extends Fragment {
-    phpDown task;
-    ArrayList<String> favoritekeyword = new ArrayList<String>();
-    private TextWall textWall;
+    private phpDown task;
+    private ArrayList<String> favoritekeyword = new ArrayList<String>();
     private TagCloudView tagCloudView;
-    int select = 1;
-    int[] sid = {100,101,102,103,104,105};
-
-    View root = null;
-    String[] texts = {"로딩중", "로딩중", "로딩중", "로딩중", "로딩중", "로딩중", "로딩중", "로딩중", "로딩중", "로딩중"};
+    private int select = 1;
+    private int[] sid = {100,101,102,103,104,105};
+    private View root = null;
+    private String[] texts = {"", "", "", "", "", "", "", "", "", ""};
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -95,23 +94,116 @@ public class FavoriteFragment extends Fragment {
         return root;
     }
 
+
     public View showDisplay() {
         if (select == 1) {
-            textWall = (TextWall) root.findViewById(R.id.tw_test);
-            textWall.setSelect_keyword(2);
-            textWall.post(new Runnable() {
+            TextView[] tv = new TextView[10];
+            tv[0] = root.findViewById(R.id.home_tv0);
+            tv[1] = root.findViewById(R.id.home_tv1);
+            tv[2] = root.findViewById(R.id.home_tv2);
+            tv[3] = root.findViewById(R.id.home_tv3);
+            tv[4] = root.findViewById(R.id.home_tv4);
+            tv[5] = root.findViewById(R.id.home_tv5);
+            tv[6] = root.findViewById(R.id.home_tv6);
+            tv[7] = root.findViewById(R.id.home_tv7);
+            tv[8] = root.findViewById(R.id.home_tv8);
+            tv[9] = root.findViewById(R.id.home_tv9);
+
+            for (int i = 0; i < 10; i++)
+                tv[i].setText(i + 1 + ":" + texts[i]);
+
+            tv[0].setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void run() {
-                    List<TextItem> textItems = new ArrayList<TextItem>();
-                    for (int i = 0; i < 10; i++) {
-                        TextItem item = new TextItem();
-                        item.setIndex(10);
-                        item.setValue(texts[i % 10]);
-                        textItems.add(item);
-                    }
-                    textWall.setData(textItems, getContext());
+                public void onClick(View view) {
+                        Intent intent = new Intent(getContext(), Article.class);
+                        intent.putExtra("title", texts[0]);
+                        intent.putExtra("select_keyword", 1);
+                        getContext().startActivity(intent);
                 }
             });
+            tv[1].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                        Intent intent = new Intent(getContext(), Article.class);
+                        intent.putExtra("title", texts[1]);
+                        intent.putExtra("select_keyword", 1);
+                        getContext().startActivity(intent);
+                }
+            });
+            tv[2].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                        Intent intent = new Intent(getContext(), Article.class);
+                        intent.putExtra("title", texts[2]);
+                        intent.putExtra("select_keyword", 1);
+                        getContext().startActivity(intent);
+                }
+            });
+            tv[3].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                        Intent intent = new Intent(getContext(), Article.class);
+                        intent.putExtra("title", texts[3]);
+                        intent.putExtra("select_keyword", 1);
+                        getContext().startActivity(intent);
+                }
+            });
+            tv[4].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                        Intent intent = new Intent(getContext(), Article.class);
+                        intent.putExtra("title", texts[4]);
+                        intent.putExtra("select_keyword", 1);
+                        getContext().startActivity(intent);
+                }
+            });
+            tv[5].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                        Intent intent = new Intent(getContext(), Article.class);
+                        intent.putExtra("title", texts[5]);
+                        intent.putExtra("select_keyword", 1);
+                        getContext().startActivity(intent);
+                }
+            });
+            tv[6].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                        Intent intent = new Intent(getContext(), Article.class);
+                        intent.putExtra("title", texts[6]);
+                        intent.putExtra("select_keyword", 1);
+                        getContext().startActivity(intent);
+                }
+            });
+            tv[7].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                        Intent intent = new Intent(getContext(), Article.class);
+                        intent.putExtra("title", texts[7]);
+                        intent.putExtra("select_keyword", 1);
+                        getContext().startActivity(intent);
+                }
+            });
+            tv[8].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                        Intent intent = new Intent(getContext(), Article.class);
+                        intent.putExtra("title", texts[8]);
+                        intent.putExtra("select_keyword", 1);
+                        getContext().startActivity(intent);
+                }
+            });
+            tv[9].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                        Intent intent = new Intent(getContext(), Article.class);
+                        intent.putExtra("title", texts[9]);
+                        intent.putExtra("select_keyword", 1);
+                        getContext().startActivity(intent);
+                }
+            });
+
+
         } else if (select == 2) {
             tagCloudView = (TagCloudView) root.findViewById(R.id.tag_cloud);
             TextTagsAdapter tagsAdapter = new TextTagsAdapter(texts,2);

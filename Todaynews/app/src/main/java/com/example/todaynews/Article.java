@@ -194,10 +194,12 @@ public class Article extends AppCompatActivity {
                 JSONArray ArticleArray = jsonObject.getJSONArray("Article_List");
                 for (int i = 0; i < ArticleArray.length(); i++) {
                     JSONObject articleObject = ArticleArray.getJSONObject(i);
-                    Article_Title.add(articleObject.getString("Article_Title"));
+                    if(articleObject.getString("Article_Emotion").equals("1"))
+                        Article_Title.add("[긍정]"+articleObject.getString("Article_Title"));
+                    else
+                        Article_Title.add("[부정]"+articleObject.getString("Article_Title"));
                     Article_Content.add(articleObject.getString("Article_Content"));
                     Article_URL.add(articleObject.getString("Keyword_URL"));
-                    //Article_Emotion.add(articleObject.getString("Article_Emotion"));
                     count++;
                 }
 

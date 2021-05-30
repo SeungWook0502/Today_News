@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.todaynews.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="오늘의 이슈는?"
         tools:layout="@layout/fragment_home" />
 
     <fragment
