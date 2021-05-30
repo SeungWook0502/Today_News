@@ -3,7 +3,7 @@
 + 선문대학교 2021년도 1학기 오픈소스 프로젝트
 + 팀원 : 박장훈, 전승욱, 한영호
 + Notion Link : https://www.notion.so/SW-e3260075a48044239951dc38c5fb9b4c
-
++ App prototype by Oven.io : https://ovenapp.io/view/l7bn2uY5MRJCicwnhb5IJ6F2TL22IKj2/
 
 ### Project Structure
 ![Today News  Total Structure](https://user-images.githubusercontent.com/68545660/118496676-502f8600-b75f-11eb-8f28-2cef2d82f315.png)
