@@ -1,0 +1,10 @@
+APScheduler==3.7.0
+tensorflow==2.4.1
+tensorflow_addons==0.12.1
+tqdm==4.60.0
+numpy==0.24.2
+json==2.0.9
+logging==0.5.1.2
+requests==2.25.1
+transformers==4.5.1
+torch==1.8.1
