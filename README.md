@@ -13,7 +13,7 @@
 
 ### 선문대학교 2021년도 1학기 오픈소스 프로젝트
 ### 목표 : 뉴스를 기반한 키워드 분석 앱을 통해 사회적 이슈를 빠르게 수집하고 제공하고자 함.
-![issue badge](http://img.shields.io/badge/-Notion-black?style=for-the-badge&logo=Notion&link='https://www.notion.so/SW-e3260075a48044239951dc38c5fb9b4c')
+![issue badge](http://img.shields.io/badge/-Notion-black?style=for-the-badge&logo=Notion&link=https://www.notion.so/SW-e3260075a48044239951dc38c5fb9b4c)
 ![issue badge](http://img.shields.io/badge/-Prototype-white?style=for-the-badge&logo=Android&link=https://ovenapp.io/view/l7bn2uY5MRJCicwnhb5IJ6F2TL22IKj2/)
 + 팀원 : 박장훈, 전승욱, 한영호
 ---
