@@ -4,7 +4,7 @@
 ![issue badge](https://img.shields.io/github/license/SeungWook0502/Today_News)
 ![issue badge](http://img.shields.io/badge/-Java-red?style=flat&logo=Java)
 ![issue badge](http://img.shields.io/badge/-Python-yellow?style=flat&logo=Python)
-![issue badge](http://img.shields.io/badge/-TensorFlow_2.0-white?style=flat&logo=TensorFlow
+![issue badge](http://img.shields.io/badge/-TensorFlow_2.0-white?style=flat&logo=TensorFlow)
 ![issue badge](http://img.shields.io/badge/-PHP-pink?style=flat&logo=PHP)
 ![issue badge](http://img.shields.io/badge/-Android-black?style=flat&logo=Android)
 
