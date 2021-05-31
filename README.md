@@ -5,6 +5,23 @@
 + Notion Link : https://www.notion.so/SW-e3260075a48044239951dc38c5fb9b4c
 + App prototype by Oven.io : https://ovenapp.io/view/l7bn2uY5MRJCicwnhb5IJ6F2TL22IKj2/
 
+# License
+'''
+Copyright 2020 TM.Coding Potatoes
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+'''
+
 ### Project Structure
 ![Today News  Total Structure](https://user-images.githubusercontent.com/68545660/118496676-502f8600-b75f-11eb-8f28-2cef2d82f315.png)
 
