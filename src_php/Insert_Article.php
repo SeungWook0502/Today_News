@@ -17,7 +17,7 @@
   $result = mysqli_query($connect, $query);
      
   $response = array();
-  $response["success"] = true;
+  $response["success"] = $result;
   
   echo json_encode($response);
 

@@ -109,9 +109,9 @@ public class URL_Crawler{
 			return false;
 		}
 		else if(Upload_Time.contains("시간")) {
-//			if(2>Integer.parseInt(Upload_Time.split("시간")[0])) {
-//				return false;
-//			}
+			if(2>Integer.parseInt(Upload_Time.split("시간")[0])) {
+				return false;
+			}
 			return true;
 		}
 		return true;
@@ -145,7 +145,7 @@ public class URL_Crawler{
 	    
 	    for (Token token : tokenList) { 
 	        if(token.getPos().equals("NNP")) { //Extract NNP(고유명사) keyword
-	        	if(token.getMorph().length()!=1) {
+	        	if(token.getMorph().length()!=1 && !token.getMorph().equals("19")) {
 	        		keyWord.add(token.getMorph()); //Append Keyword
 	        	}
 	        }        

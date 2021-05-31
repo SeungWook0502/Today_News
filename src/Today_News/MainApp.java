@@ -42,8 +42,10 @@ public class MainApp {
 			for(int sid1_Count = 0; sid1_Count < Article.size(); sid1_Count++) {
 				for(int sid2_Count = 0; sid2_Count < Article.get(sid1_Count).size(); sid2_Count++) { //Insert_Article
 					mainApp.Insert_Article(Article.get(sid1_Count).get(sid2_Count).getArticle_Title(), Article.get(sid1_Count).get(sid2_Count).getArticle_Content(), Article.get(sid1_Count).get(sid2_Count).getArticle_Sidnum(), Article.get(sid1_Count).get(sid2_Count).getArticle_URL());
+					System.out.println(Article.get(sid1_Count).get(sid2_Count).getArticle_Title()+ Article.get(sid1_Count).get(sid2_Count).getArticle_Content()+ Article.get(sid1_Count).get(sid2_Count).getArticle_Sidnum().toString()+ Article.get(sid1_Count).get(sid2_Count).getArticle_URL().toString());
 					for(int Article_Keyword_Count = 0; Article_Keyword_Count < Article.get(sid1_Count).get(sid2_Count).Article_Keyword.size(); Article_Keyword_Count++) { //Insert_Keyword_List
 						mainApp.Insert_Keyword_List(Article.get(sid1_Count).get(sid2_Count).Article_Keyword.get(Article_Keyword_Count), Article.get(sid1_Count).get(sid2_Count).getArticle_Sidnum(), Article.get(sid1_Count).get(sid2_Count).getArticle_URL());
+						System.out.println(Article.get(sid1_Count).get(sid2_Count).Article_Keyword.get(Article_Keyword_Count)+ Article.get(sid1_Count).get(sid2_Count).getArticle_Sidnum()+ Article.get(sid1_Count).get(sid2_Count).getArticle_URL());
 					}
 				}
 			}
@@ -71,6 +73,12 @@ public class MainApp {
 			connect.setUseCaches(false);
 			InputStream is = connect.getInputStream();
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
+			String result;
+			StringBuffer response = new StringBuffer();
+			while ((result = br.readLine()) != null) {
+				response.append(result); 
+			}
+	        System.out.println(response.toString().replace("\\","").replace(" ", ""));
 	        br.close();
 	        
 		} catch (Exception e) {
