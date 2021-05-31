@@ -1,4 +1,5 @@
-# 프로젝트명 : Today_News
+---
+# Today News (오늘의 뉴스)
 ![issue badge](https://img.shields.io/github/forks/SeungWook0502/Today_News)
 ![issue badge](https://img.shields.io/github/stars/SeungWook0502/Today_News)
 ![issue badge](https://img.shields.io/github/license/SeungWook0502/Today_News)
@@ -13,7 +14,7 @@
 + 팀원 : 박장훈, 전승욱, 한영호
 + Notion Link : https://www.notion.so/SW-e3260075a48044239951dc38c5fb9b4c
 + App prototype by Oven.io : https://ovenapp.io/view/l7bn2uY5MRJCicwnhb5IJ6F2TL22IKj2/
-
+---
 ### License
 ```
 Copyright 2020 TM.Coding Potatoes
@@ -30,7 +31,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
-
+---
 ### Project Structure
 ![Today News  Total Structure](https://user-images.githubusercontent.com/68545660/118496676-502f8600-b75f-11eb-8f28-2cef2d82f315.png)
 
