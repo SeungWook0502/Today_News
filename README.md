@@ -1,12 +1,12 @@
 # 프로젝트명 : Today_News
-## 목표 : 뉴스를 기반한 키워드 분석 앱을 통해 사회적 이슈를 빠르게 수집하고 제공하고자 함.
+### 목표 : 뉴스를 기반한 키워드 분석 앱을 통해 사회적 이슈를 빠르게 수집하고 제공하고자 함.
 + 선문대학교 2021년도 1학기 오픈소스 프로젝트
 + 팀원 : 박장훈, 전승욱, 한영호
 + Notion Link : https://www.notion.so/SW-e3260075a48044239951dc38c5fb9b4c
 + App prototype by Oven.io : https://ovenapp.io/view/l7bn2uY5MRJCicwnhb5IJ6F2TL22IKj2/
 
-# License
-'''
+### License
+```
 Copyright 2020 TM.Coding Potatoes
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-'''
+```
 
 ### Project Structure
 ![Today News  Total Structure](https://user-images.githubusercontent.com/68545660/118496676-502f8600-b75f-11eb-8f28-2cef2d82f315.png)
