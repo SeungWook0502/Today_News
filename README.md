@@ -1,4 +1,9 @@
 # 프로젝트명 : Today_News
+![issue badge](https://img.shields.io/github/forks/SeungWook0502/Today_News)
+![issue badge](https://img.shields.io/github/stars/SeungWook0502/Today_News)
+![issue badge](https://img.shields.io/github/license/SeungWook0502/Today_News)
+![issue badge](https://img.shields.io/github/pipenv/locked/python-version/metabolize/rq-dashboard-on-heroku)
+
 ### 목표 : 뉴스를 기반한 키워드 분석 앱을 통해 사회적 이슈를 빠르게 수집하고 제공하고자 함.
 ### 선문대학교 2021년도 1학기 오픈소스 프로젝트
 + 팀원 : 박장훈, 전승욱, 한영호
