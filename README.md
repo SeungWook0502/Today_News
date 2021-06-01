@@ -45,6 +45,5 @@ limitations under the License.
 ### Crawler Structure
 ![Today News  Crawler Structure](https://user-images.githubusercontent.com/68545660/118496686-51f94980-b75f-11eb-8e08-d5c7974d986e.png)
 
-![Uploading image.png…]()
 ### ArrayList Structure
 ![Today News  ArrayList Structure](https://user-images.githubusercontent.com/68545660/118496724-5aea1b00-b75f-11eb-9ab5-44b427cf6ac8.png)
