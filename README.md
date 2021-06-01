@@ -37,11 +37,11 @@ limitations under the License.
 ```
 ---
 ### Project Structure
-![Today News  Total Structure](https://user-images.githubusercontent.com/68545660/118496676-502f8600-b75f-11eb-8f28-2cef2d82f315.png)
+<p align="center"><img src="https://user-images.githubusercontent.com/68545660/118496676-502f8600-b75f-11eb-8f28-2cef2d82f315.png"/></p>
 ---
 ### DataBase Structure
 #### Server DataBase
-<p align="center"><img src="(https://user-images.githubusercontent.com/68545660/120276368-8dfae580-c2ed-11eb-9f14-061b3c72dfc4.JPG)"/></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/68545660/120276368-8dfae580-c2ed-11eb-9f14-061b3c72dfc4.JPG"/></p>
 <p align="center"><img src="https://user-images.githubusercontent.com/68545660/120276373-8e937c00-c2ed-11eb-966c-89341a385cad.JPG"/></p>
 <p align="center"><img src="https://user-images.githubusercontent.com/68545660/120276377-8f2c1280-c2ed-11eb-9ef1-4efcbf66d9fd.JPG"/></p>
 <p align="center"><img src="https://user-images.githubusercontent.com/68545660/120276379-8f2c1280-c2ed-11eb-9184-3866992ebe32.JPG"/></p>
