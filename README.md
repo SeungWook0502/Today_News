@@ -41,7 +41,7 @@ limitations under the License.
 ---
 ### DataBase Structure
 #### Server DataBase
-![Article_Table](https://user-images.githubusercontent.com/68545660/120276368-8dfae580-c2ed-11eb-9f14-061b3c72dfc4.JPG)
+<p align="center"><img src="https://user-images.githubusercontent.com/68545660/120276368-8dfae580-c2ed-11eb-9f14-061b3c72dfc4.JPG"></p>
 ![DataState_Table](https://user-images.githubusercontent.com/68545660/120276373-8e937c00-c2ed-11eb-966c-89341a385cad.JPG)
 ![KeywordList_Table](https://user-images.githubusercontent.com/68545660/120276377-8f2c1280-c2ed-11eb-9ef1-4efcbf66d9fd.JPG)
 ![KeywordRank_Table](https://user-images.githubusercontent.com/68545660/120276379-8f2c1280-c2ed-11eb-9184-3866992ebe32.JPG)
