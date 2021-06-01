@@ -18,7 +18,7 @@
 
 **팀원 : 박장훈, 전승욱, 한영호**
 
----
+----------------------
 ### License
 ```
 Copyright 2020 TM.Coding Potatoes
@@ -35,26 +35,29 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
----
+----------------------
 
 > Project Structure
 <p align="center"><img src="https://user-images.githubusercontent.com/68545660/118496676-502f8600-b75f-11eb-8f28-2cef2d82f315.png"/></p>
----
+
+----------------------
 
 > DataBase Structure
-### Server DataBase
+> > Server DataBase
 <p align="center"><img src="https://user-images.githubusercontent.com/68545660/120276368-8dfae580-c2ed-11eb-9f14-061b3c72dfc4.JPG"/></p>
 <p align="center"><img src="https://user-images.githubusercontent.com/68545660/120276373-8e937c00-c2ed-11eb-966c-89341a385cad.JPG"/></p>
 <p align="center"><img src="https://user-images.githubusercontent.com/68545660/120276377-8f2c1280-c2ed-11eb-9ef1-4efcbf66d9fd.JPG"/></p>
 <p align="center"><img src="https://user-images.githubusercontent.com/68545660/120276379-8f2c1280-c2ed-11eb-9184-3866992ebe32.JPG"/></p>
 <p align="center"><img src="https://user-images.githubusercontent.com/68545660/120276382-8fc4a900-c2ed-11eb-9c91-62a17873c7d6.JPG"/></p>
-#### Android DataBase
+> > Android DataBase
 <p align="center"><img src="https://user-images.githubusercontent.com/68545660/120276381-8fc4a900-c2ed-11eb-830c-8c2d4e9f04fb.JPG"/></p>
----
+
+----------------------
 
 > Crawler Structure
 <p align="center"><img src="https://user-images.githubusercontent.com/68545660/118496686-51f94980-b75f-11eb-8e08-d5c7974d986e.png"/></p>
----
+
+----------------------
 
 > ArrayList Structure
 <p align="center"><img src="https://user-images.githubusercontent.com/68545660/118496724-5aea1b00-b75f-11eb-9ab5-44b427cf6ac8.png"/></p>
