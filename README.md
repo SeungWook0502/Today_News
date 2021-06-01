@@ -40,8 +40,14 @@ limitations under the License.
 ![Today News  Total Structure](https://user-images.githubusercontent.com/68545660/118496676-502f8600-b75f-11eb-8f28-2cef2d82f315.png)
 
 ### DataBase Structure
-![DBTable_1](https://user-images.githubusercontent.com/68545660/120275283-09f42e00-c2ec-11eb-9a4d-5505fee1dc96.JPG)
-![DBTable_2](https://user-images.githubusercontent.com/68545660/120275278-08c30100-c2ec-11eb-98c3-e5115d5d5f25.JPG)
+#### Server DataBase
+![Article_Table](https://user-images.githubusercontent.com/68545660/120276368-8dfae580-c2ed-11eb-9f14-061b3c72dfc4.JPG)
+![DataState_Table](https://user-images.githubusercontent.com/68545660/120276373-8e937c00-c2ed-11eb-966c-89341a385cad.JPG)
+![KeywordList_Table](https://user-images.githubusercontent.com/68545660/120276377-8f2c1280-c2ed-11eb-9ef1-4efcbf66d9fd.JPG)
+![KeywordRank_Table](https://user-images.githubusercontent.com/68545660/120276379-8f2c1280-c2ed-11eb-9184-3866992ebe32.JPG)
+![StateCode_Table](https://user-images.githubusercontent.com/68545660/120276382-8fc4a900-c2ed-11eb-9c91-62a17873c7d6.JPG)
+#### Android DataBase
+![Scrap_Table](https://user-images.githubusercontent.com/68545660/120276381-8fc4a900-c2ed-11eb-830c-8c2d4e9f04fb.JPG)
 
 ### Crawler Structure
 ![Today News  Crawler Structure](https://user-images.githubusercontent.com/68545660/118496686-51f94980-b75f-11eb-8e08-d5c7974d986e.png)
