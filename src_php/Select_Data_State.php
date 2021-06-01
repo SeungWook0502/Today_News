@@ -8,18 +8,18 @@
 
   $connect = mysqli_connect($db_host,$db_user,$db_passwd,$db_name);
 
-  $query = "SELECT State_Code from Data_State WHERE State_Code = 0";
+  $query = "SELECT State_Code FROM Data_State ORDER BY Data_Upload_DateTime DESC LIMIT 1";
 
   $result = mysqli_query($connect, $query);
   $data = array();
 
   if($result){
     while($row=mysqli_fetch_array($result)){
-      array_push($data,array('Article_Title'=>$row[0], 'Article_Content'=>$row[1], 'Keyword_Word'=>$row[2], 'Keyword_URL'=>$row[3]));
+      array_push($data,array('State_Code'=>$row[0]));
     }
     header('Content-Type: application/json; charset=utf8');
 
-    $json = json_encode(array("Article_List"=>$data), JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE);
+    $json = json_encode(array("Data_State"=>$data), JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE);
 
     echo $json;
   }
