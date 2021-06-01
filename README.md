@@ -38,7 +38,7 @@ limitations under the License.
 ---
 ### Project Structure
 ![Today News  Total Structure](https://user-images.githubusercontent.com/68545660/118496676-502f8600-b75f-11eb-8f28-2cef2d82f315.png)
-
+---
 ### DataBase Structure
 #### Server DataBase
 ![Article_Table](https://user-images.githubusercontent.com/68545660/120276368-8dfae580-c2ed-11eb-9f14-061b3c72dfc4.JPG)
@@ -48,9 +48,9 @@ limitations under the License.
 ![StateCode_Table](https://user-images.githubusercontent.com/68545660/120276382-8fc4a900-c2ed-11eb-9c91-62a17873c7d6.JPG)
 #### Android DataBase
 ![Scrap_Table](https://user-images.githubusercontent.com/68545660/120276381-8fc4a900-c2ed-11eb-830c-8c2d4e9f04fb.JPG)
-
+---
 ### Crawler Structure
 ![Today News  Crawler Structure](https://user-images.githubusercontent.com/68545660/118496686-51f94980-b75f-11eb-8e08-d5c7974d986e.png)
-
+---
 ### ArrayList Structure
 ![Today News  ArrayList Structure](https://user-images.githubusercontent.com/68545660/118496724-5aea1b00-b75f-11eb-9ab5-44b427cf6ac8.png)
