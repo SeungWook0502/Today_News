@@ -40,7 +40,8 @@ limitations under the License.
 ![Today News  Total Structure](https://user-images.githubusercontent.com/68545660/118496676-502f8600-b75f-11eb-8f28-2cef2d82f315.png)
 
 ### DataBase Structure
-![Today News  DB Table Structure](https://user-images.githubusercontent.com/68545660/118496700-54f43a00-b75f-11eb-9490-61ff6ebc0014.png)
+![DBTable_1](https://user-images.githubusercontent.com/68545660/120275283-09f42e00-c2ec-11eb-9a4d-5505fee1dc96.JPG)
+![DBTable_2](https://user-images.githubusercontent.com/68545660/120275278-08c30100-c2ec-11eb-98c3-e5115d5d5f25.JPG)
 
 ### Crawler Structure
 ![Today News  Crawler Structure](https://user-images.githubusercontent.com/68545660/118496686-51f94980-b75f-11eb-8e08-d5c7974d986e.png)
