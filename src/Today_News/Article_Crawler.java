@@ -34,7 +34,7 @@ public class Article_Crawler {
 		
 		//Article Title//
 		try {
-			String Article_Title=elements_article_title.toString().split("<h3 id=\"articleTitle\">")[1].split("</h3>")[0].replace("&nbsp;","").replace("‘", "\"").replace("’", "\"").replace("'", "\"").replaceAll(delet_txt[0], "").replaceAll(delet_txt[1],"").replaceAll(delet_txt[2], ""); //Article Title
+			String Article_Title=elements_article_title.toString().split("<h3 id=\"articleTitle\">")[1].split("</h3>")[0].replace("&nbsp;","").replace("&#xb287;","").replace("‘", "\"").replace("’", "\"").replace("'", "\"").replaceAll(delet_txt[0], "").replaceAll(delet_txt[1],"").replaceAll(delet_txt[2], ""); //Article Title
 			for(int i=0; i < Article_ArrayList.size(); i++) { //Title redundancy check
 				if(Article_Title.equals(Article_ArrayList.get(i).getArticle_Title())){
 					Article_TTT.add("Non");
@@ -61,7 +61,7 @@ public class Article_Crawler {
 		try {
 			for(Element element : elements_article_text) { //내용
 				Article_Summarizer article_summarizer = new Article_Summarizer();
-				Article_TTT.add(article_summarizer.summarize(element.toString().replaceAll(delet_txt[2], "").replace("function _flash_removeCallback() {}", "").replace("// flash 오류를 우회하기 위한 함수 추가", "").replaceAll("\n","").replaceAll("|", "").replace("&nbsp;","").replace("‘", "\"").replace("’", "\"").replace("'", "\"").replaceAll(delet_txt[1], "").replaceAll(delet_txt[0],""))); //Article Content (1.remove tag 2.summarize)
+				Article_TTT.add(article_summarizer.summarize(element.toString().replaceAll(delet_txt[2], "").replace("function _flash_removeCallback() {}", "").replace("// flash 오류를 우회하기 위한 함수 추가", "").replaceAll("\n","").replaceAll("|", "").replace("&nbsp;","").replace("&#xb287;","").replace("‘", "\"").replace("’", "\"").replace("'", "\"").replaceAll(delet_txt[1], "").replaceAll(delet_txt[0],""))); //Article Content (1.remove tag 2.summarize)
 			}
 		}catch(ArrayIndexOutOfBoundsException exception) {
 			Article_TTT.add("Non");
