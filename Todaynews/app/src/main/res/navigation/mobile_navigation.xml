@@ -26,6 +26,6 @@
     <fragment
         android:id="@+id/nav_favorite"
         android:name="com.example.todaynews.FavoriteFragment"
-        android:label="Favorite"
+        android:label="@string/Favorite"
         tools:layout="@layout/fragment_favorite" />
 </navigation>

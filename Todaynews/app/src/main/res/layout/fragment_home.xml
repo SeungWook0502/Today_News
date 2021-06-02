@@ -11,82 +11,232 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="vertical">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/home_tv0"
-            android:layout_width="wrap_content"
+        <FrameLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="60dp"
-            android:textColor="@color/black" />
+            android:orientation="horizontal"
+            android:layout_gravity="center">
 
-        <TextView
-            android:id="@+id/home_tv1"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/home_tv0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="40dp" />
+
+            <TextView
+                android:id="@+id/tv0_negative"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#68FC1100"
+                android:layout_gravity="right"
+                android:textSize="1dp"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="55dp"
-            android:textColor="@color/black" />
+            android:orientation="horizontal"
+            android:layout_gravity="center">
 
-        <TextView
-            android:id="@+id/home_tv2"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/home_tv1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="40dp" />
+
+            <TextView
+                android:id="@+id/tv1_negative"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#68FC1100"
+                android:layout_gravity="right" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="50dp"
-            android:textColor="@color/black" />
+            android:orientation="horizontal"
+            android:layout_gravity="center">
 
-        <TextView
-            android:id="@+id/home_tv3"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/home_tv2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="40dp" />
+
+            <TextView
+                android:id="@+id/tv2_negative"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#68FC1100"
+                android:layout_gravity="right" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="45dp"
-            android:textColor="@color/black" />
+            android:orientation="horizontal"
+            android:layout_gravity="center">
 
-        <TextView
-            android:id="@+id/home_tv4"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/home_tv3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="40dp" />
+
+            <TextView
+                android:id="@+id/tv3_negative"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#68FC1100"
+                android:layout_gravity="right" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="40dp"
-            android:textColor="@color/black" />
+            android:orientation="horizontal"
+            android:layout_gravity="center">
 
-        <TextView
-            android:id="@+id/home_tv5"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/home_tv4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="40dp" />
+
+            <TextView
+                android:id="@+id/tv4_negative"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#68FC1100"
+                android:layout_gravity="right" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="35dp"
-            android:textColor="@color/black" />
+            android:orientation="horizontal"
+            android:layout_gravity="center">
 
-        <TextView
-            android:id="@+id/home_tv6"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/home_tv5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="40dp" />
+
+            <TextView
+                android:id="@+id/tv5_negative"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#68FC1100"
+                android:layout_gravity="right" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:textColor="@color/black" />
+            android:orientation="horizontal"
+            android:layout_gravity="center">
 
-        <TextView
-            android:id="@+id/home_tv7"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/home_tv6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="40dp" />
+
+            <TextView
+                android:id="@+id/tv6_negative"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#68FC1100"
+                android:layout_gravity="right" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="25dp"
-            android:textColor="@color/black" />
+            android:orientation="horizontal"
+            android:layout_gravity="center">
 
-        <TextView
-            android:id="@+id/home_tv8"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/home_tv7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="40dp" />
+
+            <TextView
+                android:id="@+id/tv7_negative"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#68FC1100"
+                android:layout_gravity="right" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:textColor="@color/black" />
+            android:orientation="horizontal"
+            android:layout_gravity="center">
 
-        <TextView
-            android:id="@+id/home_tv9"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/home_tv8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="40dp" />
+
+            <TextView
+                android:id="@+id/tv8_negative"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#68FC1100"
+                android:layout_gravity="right" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:textColor="@color/black" />
+            android:orientation="horizontal"
+            android:layout_gravity="center">
 
+            <TextView
+                android:id="@+id/home_tv9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="40dp" />
+
+            <TextView
+                android:id="@+id/tv9_negative"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#68FC1100"
+                android:layout_gravity="right" />
+        </FrameLayout>
     </LinearLayout>
 
 

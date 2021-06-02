@@ -4,7 +4,7 @@
     android:initialLayout="@layout/news_widget"
     android:minWidth="180dp"
     android:minHeight="250dp"
-    android:previewImage="@mipmap/ic_launcher"
+    android:previewImage="@drawable/main"
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="3600000"
     android:widgetCategory="home_screen"></appwidget-provider>

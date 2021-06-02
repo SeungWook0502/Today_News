@@ -9,12 +9,16 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/main"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Todaynews.NoActionBar">
+        <activity
+            android:name=".Credit"
+            android:label="크레딧"></activity>
+
         <receiver android:name=".NewsWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -28,13 +32,14 @@
         <activity
             android:name=".PopupActivity"
             android:theme="@android:style/Theme.Dialog" />
-        <activity android:name=".Summary"/>
-        <activity android:name=".Article"/>
-        <activity android:name=".KeywordSetting"
-            android:label="KeywordSetting"/>
+        <activity android:name=".Summary" />
+        <activity android:name=".Article" />
+        <activity
+            android:name=".KeywordSetting"
+            android:label="키워드 설정" />
         <activity
             android:name=".DisplaySetting"
-            android:label="DisplaySetting"/>
+            android:label="화면 설정" />
         <activity android:name=".Loading">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,7 +49,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"/>
+            android:label="@string/app_name" />
     </application>
 
 </manifest>

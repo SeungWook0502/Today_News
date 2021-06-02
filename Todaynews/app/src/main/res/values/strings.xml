@@ -7,11 +7,12 @@
     <string name="nav_header_desc">Navigation header</string>
 
 
-    <string name="menu_home">Home</string>
-    <string name="menu_scrap">Scrap</string>
-    <string name="menu_setting">Setting</string>
-    <string name="appwidget_text">Display</string>
-    <string name="add_widget">Add widget</string>
+    <string name="menu_home">홈</string>
+    <string name="menu_scrap">스크랩</string>
+    <string name="Favorite">관심기사</string>
+    <string name="menu_setting">설정</string>
+    <string name="appwidget_text">위젯</string>
+    <string name="add_widget">위젯 추가</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

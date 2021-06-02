@@ -1,9 +1,13 @@
 package com.example.todaynews;
 
 import android.content.Intent;
+import android.graphics.Point;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +30,8 @@ import java.util.ArrayList;
 
 public class FavoriteFragment extends Fragment {
     private phpDown task;
-    private ArrayList<String> favoritekeyword = new ArrayList<String>();
+    private ArrayList<String> favorite_keyword = new ArrayList<String>();
+    private ArrayList<String> favorite_emotion = new ArrayList<String>();
     private TagCloudView tagCloudView;
     private int select = 1;
     private int[] sid = {100,101,102,103,104,105};
@@ -83,7 +88,7 @@ public class FavoriteFragment extends Fragment {
             public void run() {
                 try {
                     for (int i = 0; i < 10; i++) {
-                        texts[i] = favoritekeyword.get(i);
+                        texts[i] = favorite_keyword.get(i);
                     }
                 }catch (Exception e){
                     e.printStackTrace();
@@ -98,26 +103,54 @@ public class FavoriteFragment extends Fragment {
     public View showDisplay() {
         if (select == 1) {
             TextView[] tv = new TextView[10];
-            tv[0] = root.findViewById(R.id.home_tv0);
-            tv[1] = root.findViewById(R.id.home_tv1);
-            tv[2] = root.findViewById(R.id.home_tv2);
-            tv[3] = root.findViewById(R.id.home_tv3);
-            tv[4] = root.findViewById(R.id.home_tv4);
-            tv[5] = root.findViewById(R.id.home_tv5);
-            tv[6] = root.findViewById(R.id.home_tv6);
-            tv[7] = root.findViewById(R.id.home_tv7);
-            tv[8] = root.findViewById(R.id.home_tv8);
-            tv[9] = root.findViewById(R.id.home_tv9);
+            TextView[] tv_negative = new TextView[10];
+            Drawable color = getResources().getDrawable(R.color.light_blue);
 
-            for (int i = 0; i < 10; i++)
+            Display display = getActivity().getWindowManager().getDefaultDisplay();
+            DisplayMetrics outMetrics = new DisplayMetrics();
+            display.getMetrics(outMetrics);
+
+            Point size = new Point();
+            display.getRealSize(size);
+
+            float density = getResources().getDisplayMetrics().density;
+            int width = (int) (size.x/density);
+
+            for (int i = 0; i < 10; i++) {
+                int tv_id = getResources().getIdentifier("home_tv" + i, "id", "com.example.todaynews");
+                int tv_negative_id = getResources().getIdentifier("tv" + i + "_negative", "id", "com.example.todaynews");
+                tv[i] = ((TextView) root.findViewById(tv_id));
+                tv_negative[i] = ((TextView) root.findViewById(tv_negative_id));
+            }
+
+            for (int i = 0; i < 10; i++) {
                 tv[i].setText(i + 1 + ":" + texts[i]);
+                tv[i].setBackground(color);
+                long result = Math.round(Double.parseDouble(favorite_emotion.get(i)) * 100);
+                String str = " ";
+                if (result == 0) {
+                    for(int j = 0; j<width;j++){
+                        str+=" ";
+                    }
+                    tv_negative[i].setTextSize(width/100);
+                    tv_negative[i].setText(str);
+                } else if (result >= 100) {
+                } else {
+                    for(int j = 0; j<(width/100)*(100-result);j++){
+                        str+=" ";
+                    }
+                    tv_negative[i].setTextSize(width/100);
+
+                    tv_negative[i].setText(str);
+                }
+            }
 
             tv[0].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                         Intent intent = new Intent(getContext(), Article.class);
                         intent.putExtra("title", texts[0]);
-                        intent.putExtra("select_keyword", 1);
+                        intent.putExtra("select_keyword", 2);
                         getContext().startActivity(intent);
                 }
             });
@@ -126,7 +159,7 @@ public class FavoriteFragment extends Fragment {
                 public void onClick(View view) {
                         Intent intent = new Intent(getContext(), Article.class);
                         intent.putExtra("title", texts[1]);
-                        intent.putExtra("select_keyword", 1);
+                        intent.putExtra("select_keyword", 2);
                         getContext().startActivity(intent);
                 }
             });
@@ -135,7 +168,7 @@ public class FavoriteFragment extends Fragment {
                 public void onClick(View view) {
                         Intent intent = new Intent(getContext(), Article.class);
                         intent.putExtra("title", texts[2]);
-                        intent.putExtra("select_keyword", 1);
+                        intent.putExtra("select_keyword", 2);
                         getContext().startActivity(intent);
                 }
             });
@@ -144,7 +177,7 @@ public class FavoriteFragment extends Fragment {
                 public void onClick(View view) {
                         Intent intent = new Intent(getContext(), Article.class);
                         intent.putExtra("title", texts[3]);
-                        intent.putExtra("select_keyword", 1);
+                        intent.putExtra("select_keyword", 2);
                         getContext().startActivity(intent);
                 }
             });
@@ -153,7 +186,7 @@ public class FavoriteFragment extends Fragment {
                 public void onClick(View view) {
                         Intent intent = new Intent(getContext(), Article.class);
                         intent.putExtra("title", texts[4]);
-                        intent.putExtra("select_keyword", 1);
+                        intent.putExtra("select_keyword", 2);
                         getContext().startActivity(intent);
                 }
             });
@@ -162,7 +195,7 @@ public class FavoriteFragment extends Fragment {
                 public void onClick(View view) {
                         Intent intent = new Intent(getContext(), Article.class);
                         intent.putExtra("title", texts[5]);
-                        intent.putExtra("select_keyword", 1);
+                        intent.putExtra("select_keyword", 2);
                         getContext().startActivity(intent);
                 }
             });
@@ -171,7 +204,7 @@ public class FavoriteFragment extends Fragment {
                 public void onClick(View view) {
                         Intent intent = new Intent(getContext(), Article.class);
                         intent.putExtra("title", texts[6]);
-                        intent.putExtra("select_keyword", 1);
+                        intent.putExtra("select_keyword", 2);
                         getContext().startActivity(intent);
                 }
             });
@@ -180,7 +213,7 @@ public class FavoriteFragment extends Fragment {
                 public void onClick(View view) {
                         Intent intent = new Intent(getContext(), Article.class);
                         intent.putExtra("title", texts[7]);
-                        intent.putExtra("select_keyword", 1);
+                        intent.putExtra("select_keyword", 2);
                         getContext().startActivity(intent);
                 }
             });
@@ -189,7 +222,7 @@ public class FavoriteFragment extends Fragment {
                 public void onClick(View view) {
                         Intent intent = new Intent(getContext(), Article.class);
                         intent.putExtra("title", texts[8]);
-                        intent.putExtra("select_keyword", 1);
+                        intent.putExtra("select_keyword", 2);
                         getContext().startActivity(intent);
                 }
             });
@@ -198,7 +231,7 @@ public class FavoriteFragment extends Fragment {
                 public void onClick(View view) {
                         Intent intent = new Intent(getContext(), Article.class);
                         intent.putExtra("title", texts[9]);
-                        intent.putExtra("select_keyword", 1);
+                        intent.putExtra("select_keyword", 2);
                         getContext().startActivity(intent);
                 }
             });
@@ -257,13 +290,16 @@ public class FavoriteFragment extends Fragment {
 
         protected void onPostExecute(String str) {
             try {
-                favoritekeyword.clear();
+                favorite_keyword.clear();
+                favorite_emotion.clear();
                 JSONObject jsonObject = new JSONObject(str);
                 JSONArray favoritekeywordArray = jsonObject.getJSONArray("FavoriteKeyword_Rank");
                 for (int i = 0; i < favoritekeywordArray.length(); i++) {
                     JSONObject favoritekeywordObject = favoritekeywordArray.getJSONObject(i);
-                    String temp = favoritekeywordObject.getString("Keyword_Word");
-                    favoritekeyword.add(temp);
+                    String keyword = favoritekeywordObject.getString("Keyword_Word");
+                    String emotion = favoritekeywordObject.getString("Emotion");
+                    favorite_keyword.add(keyword);
+                    favorite_emotion.add(emotion);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

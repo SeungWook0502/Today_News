@@ -1,9 +1,13 @@
 package com.example.todaynews;
 
 import android.content.Intent;
+import android.graphics.Point;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +32,7 @@ import java.util.ArrayList;
 public class HomeFragment extends Fragment {
     private phpDown task;
     private ArrayList<String> keyword = new ArrayList<String>();
+    private ArrayList<String> emotion = new ArrayList<String>();
     private TagCloudView tagCloudView;
     private int select = 1;
     private View root = null;
@@ -85,26 +90,50 @@ public class HomeFragment extends Fragment {
     }
 
 
-
     public View showDisplay() {
         if (select == 1) {
             TextView[] tv = new TextView[10];
-            tv[0] = root.findViewById(R.id.home_tv0);
-            tv[1] = root.findViewById(R.id.home_tv1);
-            tv[2] = root.findViewById(R.id.home_tv2);
-            tv[3] = root.findViewById(R.id.home_tv3);
-            tv[4] = root.findViewById(R.id.home_tv4);
-            tv[5] = root.findViewById(R.id.home_tv5);
-            tv[6] = root.findViewById(R.id.home_tv6);
-            tv[7] = root.findViewById(R.id.home_tv7);
-            tv[8] = root.findViewById(R.id.home_tv8);
-            tv[9] = root.findViewById(R.id.home_tv9);
+            TextView[] tv_negative = new TextView[10];
+            Drawable color = getResources().getDrawable(R.color.light_blue);
 
-            for (int i = 0; i < 10; i++)
-                tv[i].setText(i + 1 + ":" + texts[i]);
+            Display display = getActivity().getWindowManager().getDefaultDisplay();
+            DisplayMetrics outMetrics = new DisplayMetrics();
+            display.getMetrics(outMetrics);
 
-            for (int i = 0; i < 10; i++)
+            Point size = new Point();
+            display.getRealSize(size);
+
+            float density = getResources().getDisplayMetrics().density;
+            int width = (int) (size.x/density);
+
+            for (int i = 0; i < 10; i++) {
+                int tv_id = getResources().getIdentifier("home_tv" + i, "id", "com.example.todaynews");
+                int tv_negative_id = getResources().getIdentifier("tv" + i + "_negative", "id", "com.example.todaynews");
+                tv[i] = ((TextView) root.findViewById(tv_id));
+                tv_negative[i] = ((TextView) root.findViewById(tv_negative_id));
+            }
+
+            for (int i = 0; i < 10; i++) {
                 tv[i].setText(i + 1 + ":" + texts[i]);
+                tv[i].setBackground(color);
+                long result = Math.round(Double.parseDouble(emotion.get(i)) * 100);
+                String str = " ";
+                if (result == 0) {
+                    for(int j = 0; j<width/result;j++){
+                        str+=" ";
+                    }
+                    tv_negative[i].setText(str);
+                } else if (result >= 100) {
+                } else {
+                    for(int j = 0; j<(width/100)*(100-result);j++){
+                        str+=" ";
+                    }
+                    tv_negative[i].setTextSize(width/100);
+
+                    tv_negative[i].setText(str);
+                }
+            }
+
 
             tv[0].setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -252,12 +281,15 @@ public class HomeFragment extends Fragment {
         protected void onPostExecute(String str) {
             try {
                 keyword.clear();
+                emotion.clear();
                 JSONObject jsonObject = new JSONObject(str);
                 JSONArray keywordArray = jsonObject.getJSONArray("Keyword_Rank");
                 for (int i = 0; i < keywordArray.length(); i++) {
                     JSONObject keywordObject = keywordArray.getJSONObject(i);
-                    String temp = keywordObject.getString("Keyword_Word");
-                    keyword.add(temp);
+                    String Keyword_Word = keywordObject.getString("Keyword_Word");
+                    String Keyword_Emotion = keywordObject.getString("Keyword_Emotion");
+                    keyword.add(Keyword_Word);
+                    emotion.add(Keyword_Emotion);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
