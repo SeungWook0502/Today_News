@@ -1,5 +1,5 @@
 <?php
-  $con = mysqli_connect("localhost", "todaynews", "coding1998!", "todaynews");
+    $con = mysqli_connect("localhost", "todaynews", "coding1998!", "todaynews");
     mysqli_query($con,'SET NAMES utf8');
 
     if (mysqli_connect_errno($con)) {

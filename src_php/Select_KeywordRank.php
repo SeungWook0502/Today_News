@@ -19,7 +19,7 @@
     }
     header('Content-Type: application/json; charset=utf8');
 
-    $json = json_encode(array("Article_List"=>$data), JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE);
+    $json = json_encode(array("Keyword_Rank"=>$data), JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE);
 
     echo $json;
   }

@@ -16,11 +16,8 @@
   $query = "UPDATE Keyword_Rank SET Keyword_Emotion = (SELECT COUNT(*) FROM Keyword_List WHERE Keyword_Word = $Keyword_Word AND Keyword_Emotion = 1)/(SELECT COUNT(*) FROM Keyword_List WHERE Keyword_Word = $Keyword_Word) WHERE Keyword_Word = $Keyword_Word";
 
   $result = mysqli_query($connect, $query);
-     
-  $response = array();
-  $response["success"] = $result;
   
-  echo json_encode($response);
+  echo json_encode($result);
    
   mysqli_close($connect);
 
