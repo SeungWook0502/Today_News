@@ -20,7 +20,16 @@
 [![issue badge](http://img.shields.io/badge/-SeungWook-black?style=for-the-badge&logo=GitHub&link=https://www.github.com/SeungWook0502)](https://github.com/SeungWook0502)
 [![issue badge](http://img.shields.io/badge/-YeongHo-black?style=for-the-badge&logo=GitHub&link=https://www.github.com/HwaRyo)](https://github.com/HYH223)
 
-***Developed by TM.Coding Potato***
+<div>
+   <h3>
+   <img src="https://user-images.githubusercontent.com/58671177/120524680-47eb7200-c412-11eb-9f4c-a4b4d1a44499.png" height = "25px">
+      Developed by TM.Coding Potato
+   <img src="https://user-images.githubusercontent.com/58671177/120524680-47eb7200-c412-11eb-9f4c-a4b4d1a44499.png" height = "25px">
+   </h3>
+</div>
+
+
+
 ---
 License
 ```
