@@ -1,3 +1,4 @@
+
 ---
 # Today News (오늘의 뉴스)
 ![issue badge](https://img.shields.io/github/forks/SeungWook0502/Today_News)
@@ -63,7 +64,7 @@ limitations under the License.
 <p align="center"><img src="https://user-images.githubusercontent.com/68545660/120276382-8fc4a900-c2ed-11eb-9c91-62a17873c7d6.JPG"/></p>
 
 <H4 align="center">Android DataBase</H4>
-<p align="center"><img src="https://user-images.githubusercontent.com/68545660/121188070-b5305480-c8a3-11eb-954a-e16b3e49f0f8.JPG"/></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/68545660/121188496-21ab5380-c8a4-11eb-92c1-49dcbf53b842.JPG"/></p>
 
 ----------------------
 
