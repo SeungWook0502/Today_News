@@ -1,6 +1,6 @@
 
 ---
-# Today News (오늘의 뉴스)
+# Today's News (오늘의 뉴스)
 ![issue badge](https://img.shields.io/github/forks/SeungWook0502/Today_News)
 ![issue badge](https://img.shields.io/github/stars/SeungWook0502/Today_News)
 ![issue badge](https://img.shields.io/github/license/SeungWook0502/Today_News)
