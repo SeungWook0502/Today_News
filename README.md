@@ -1,5 +1,6 @@
+
 ---
-# Today News (오늘의 뉴스)
+# Today's News (오늘의 뉴스)
 ![issue badge](https://img.shields.io/github/forks/SeungWook0502/Today_News)
 ![issue badge](https://img.shields.io/github/stars/SeungWook0502/Today_News)
 ![issue badge](https://img.shields.io/github/license/SeungWook0502/Today_News)
@@ -18,9 +19,18 @@
 [![issue badge](http://img.shields.io/badge/-Prototype-white?style=for-the-badge&logo=Android&link=https://ovenapp.io/view/l7bn2uY5MRJCicwnhb5IJ6F2TL22IKj2/)](https://ovenapp.io/view/l7bn2uY5MRJCicwnhb5IJ6F2TL22IKj2/)
 [![issue badge](http://img.shields.io/badge/-leonilpark-black?style=for-the-badge&logo=GitHub&link=https://www.github.com/leonilpark)](https://www.github.com/leonilpark)
 [![issue badge](http://img.shields.io/badge/-SeungWook-black?style=for-the-badge&logo=GitHub&link=https://www.github.com/SeungWook0502)](https://github.com/SeungWook0502)
-[![issue badge](http://img.shields.io/badge/-YeongHo-black?style=for-the-badge&logo=GitHub&link=https://www.github.com/HYH223)](https://github.com/HYH223)
+[![issue badge](http://img.shields.io/badge/-YeongHo-black?style=for-the-badge&logo=GitHub&link=https://www.github.com/HwaRyo)](https://github.com/HwaRyo)
 
-***Developed by TM.Coding Potato***
+<div>
+   <h3>
+   <img src="https://user-images.githubusercontent.com/58671177/120524680-47eb7200-c412-11eb-9f4c-a4b4d1a44499.png" height = "25px">
+      Developed by TM.Coding Potato
+   <img src="https://user-images.githubusercontent.com/58671177/120524680-47eb7200-c412-11eb-9f4c-a4b4d1a44499.png" height = "25px">
+   </h3>
+</div>
+
+
+
 ---
 License
 ```
@@ -54,7 +64,7 @@ limitations under the License.
 <p align="center"><img src="https://user-images.githubusercontent.com/68545660/120276382-8fc4a900-c2ed-11eb-9c91-62a17873c7d6.JPG"/></p>
 
 <H4 align="center">Android DataBase</H4>
-<p align="center"><img src="https://user-images.githubusercontent.com/68545660/120276381-8fc4a900-c2ed-11eb-830c-8c2d4e9f04fb.JPG"/></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/68545660/121188676-4dc6d480-c8a4-11eb-9c38-0bbfc334b90b.JPG"/></p>
 
 ----------------------
 
