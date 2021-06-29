@@ -1,0 +1,235 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from gensim.summarization import summarize\n",
+    "from newspaper import Article"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "ValueError",
+     "evalue": "input must have more than one sentence",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[1;31mValueError\u001b[0m                                Traceback (most recent call last)",
+      "\u001b[1;32m<ipython-input-16-6855e777d82b>\u001b[0m in \u001b[0;36m<module>\u001b[1;34m\u001b[0m\n\u001b[0;32m      3\u001b[0m \u001b[0mnews\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mdownload\u001b[0m\u001b[1;33m(\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m      4\u001b[0m \u001b[0mnews\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mparse\u001b[0m\u001b[1;33m(\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m----> 5\u001b[1;33m \u001b[0msummarize\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0murl\u001b[0m\u001b[1;33m,\u001b[0m\u001b[0mword_count\u001b[0m\u001b[1;33m=\u001b[0m\u001b[1;36m50\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[1;32mc:\\users\\wjstm\\anaconda3\\envs\\tensorflow\\lib\\site-packages\\gensim\\summarization\\summarizer.py\u001b[0m in \u001b[0;36msummarize\u001b[1;34m(text, ratio, word_count, split)\u001b[0m\n\u001b[0;32m    426\u001b[0m     \u001b[1;31m# If only one sentence is present, the function raises an error (Avoids ZeroDivisionError).\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    427\u001b[0m     \u001b[1;32mif\u001b[0m \u001b[0mlen\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0msentences\u001b[0m\u001b[1;33m)\u001b[0m \u001b[1;33m==\u001b[0m \u001b[1;36m1\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m--> 428\u001b[1;33m         \u001b[1;32mraise\u001b[0m \u001b[0mValueError\u001b[0m\u001b[1;33m(\u001b[0m\u001b[1;34m\"input must have more than one sentence\"\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m    429\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    430\u001b[0m     \u001b[1;31m# Warns if the text is too short.\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;31mValueError\u001b[0m: input must have more than one sentence"
+     ]
+    }
+   ],
+   "source": [
+    "url = \"https://news.v.daum.net/v/20180206160003332\"\n",
+    "news=Article(url,language='ko')\n",
+    "news.download()\n",
+    "news.parse()\n",
+    "summarize(url,word_count=50)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Collecting eunjeon\n",
+      "  Downloading https://files.pythonhosted.org/packages/68/90/3232725f974abf6d38f1e2cfd7a6b958337133b3fdc5b3e8994e03d7c2d3/eunjeon-0.4.0.tar.gz (34.7MB)\n",
+      "Building wheels for collected packages: eunjeon\n",
+      "  Running setup.py bdist_wheel for eunjeon: started\n",
+      "  Running setup.py bdist_wheel for eunjeon: finished with status 'error'\n",
+      "  Complete output from command C:\\Users\\wjstm\\Anaconda3\\envs\\tensorflow\\python.exe -u -c \"import setuptools, tokenize;__file__='C:\\\\Users\\\\wjstm\\\\AppData\\\\Local\\\\Temp\\\\pip-install-emax_plo\\\\eunjeon\\\\setup.py';f=getattr(tokenize, 'open', open)(__file__);code=f.read().replace('\\r\\n', '\\n');f.close();exec(compile(code, __file__, 'exec'))\" bdist_wheel -d C:\\Users\\wjstm\\AppData\\Local\\Temp\\pip-wheel-kbs1oxu5 --python-tag cp35:\n",
+      "  running bdist_wheel\n",
+      "  running build\n",
+      "  running build_py\n",
+      "  creating build\n",
+      "  creating build\\lib.win-amd64-3.5\n",
+      "  creating build\\lib.win-amd64-3.5\\eunjeon\n",
+      "  copying eunjeon\\constants.py -> build\\lib.win-amd64-3.5\\eunjeon\n",
+      "  copying eunjeon\\mecab.py -> build\\lib.win-amd64-3.5\\eunjeon\n",
+      "  copying eunjeon\\_mecab.py -> build\\lib.win-amd64-3.5\\eunjeon\n",
+      "  copying eunjeon\\__init__.py -> build\\lib.win-amd64-3.5\\eunjeon\n",
+      "  creating build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "  copying eunjeon\\data\\char.bin -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "  copying eunjeon\\data\\matrix.bin -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "  copying eunjeon\\data\\model.bin -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "  copying eunjeon\\data\\char.def -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "  copying eunjeon\\data\\feature.def -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "  copying eunjeon\\data\\left-id.def -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "  copying eunjeon\\data\\pos-id.def -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "  copying eunjeon\\data\\rewrite.def -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "  copying eunjeon\\data\\right-id.def -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "  copying eunjeon\\data\\unk.def -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "  copying eunjeon\\data\\sys.dic -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "  copying eunjeon\\data\\unk.dic -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "  copying eunjeon\\data\\dicrc -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "  copying eunjeon\\data\\mecabrc -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "  copying eunjeon\\data\\libmecab.dll -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "  copying eunjeon\\data\\mecab-cost-train.exe -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "  copying eunjeon\\data\\mecab-dict-gen.exe -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "  copying eunjeon\\data\\mecab-dict-index.exe -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "  copying eunjeon\\data\\mecab-system-eval.exe -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "  copying eunjeon\\data\\mecab-test-gen.exe -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "  copying eunjeon\\data\\mecab.exe -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "  creating build\\lib.win-amd64-3.5\\eunjeon\\data\\sdk\n",
+      "  copying eunjeon\\data\\sdk\\libmecab.lib -> build\\lib.win-amd64-3.5\\eunjeon\\data\\sdk\n",
+      "  copying eunjeon\\data\\sdk\\mecab-cost-train.lib -> build\\lib.win-amd64-3.5\\eunjeon\\data\\sdk\n",
+      "  copying eunjeon\\data\\sdk\\mecab-dict-gen.lib -> build\\lib.win-amd64-3.5\\eunjeon\\data\\sdk\n",
+      "  copying eunjeon\\data\\sdk\\mecab-dict-index.lib -> build\\lib.win-amd64-3.5\\eunjeon\\data\\sdk\n",
+      "  copying eunjeon\\data\\sdk\\mecab-system-eval.lib -> build\\lib.win-amd64-3.5\\eunjeon\\data\\sdk\n",
+      "  copying eunjeon\\data\\sdk\\mecab-test-gen.lib -> build\\lib.win-amd64-3.5\\eunjeon\\data\\sdk\n",
+      "  copying eunjeon\\data\\sdk\\mecab.h -> build\\lib.win-amd64-3.5\\eunjeon\\data\\sdk\n",
+      "  copying eunjeon\\data\\sdk\\mecab.lib -> build\\lib.win-amd64-3.5\\eunjeon\\data\\sdk\n",
+      "  running build_ext\n",
+      "  building '_MeCab' extension\n",
+      "  error: Microsoft Visual C++ 14.0 is required. Get it with \"Microsoft Visual C++ Build Tools\": https://visualstudio.microsoft.com/downloads/\n",
+      "  \n",
+      "  ----------------------------------------\n",
+      "  Running setup.py clean for eunjeon\n",
+      "Failed to build eunjeon\n",
+      "Installing collected packages: eunjeon\n",
+      "  Running setup.py install for eunjeon: started\n",
+      "    Running setup.py install for eunjeon: finished with status 'error'\n",
+      "    Complete output from command C:\\Users\\wjstm\\Anaconda3\\envs\\tensorflow\\python.exe -u -c \"import setuptools, tokenize;__file__='C:\\\\Users\\\\wjstm\\\\AppData\\\\Local\\\\Temp\\\\pip-install-emax_plo\\\\eunjeon\\\\setup.py';f=getattr(tokenize, 'open', open)(__file__);code=f.read().replace('\\r\\n', '\\n');f.close();exec(compile(code, __file__, 'exec'))\" install --record C:\\Users\\wjstm\\AppData\\Local\\Temp\\pip-record-2wbz7lfj\\install-record.txt --single-version-externally-managed --compile:\n",
+      "    running install\n",
+      "    running build\n",
+      "    running build_py\n",
+      "    creating build\n",
+      "    creating build\\lib.win-amd64-3.5\n",
+      "    creating build\\lib.win-amd64-3.5\\eunjeon\n",
+      "    copying eunjeon\\constants.py -> build\\lib.win-amd64-3.5\\eunjeon\n",
+      "    copying eunjeon\\mecab.py -> build\\lib.win-amd64-3.5\\eunjeon\n",
+      "    copying eunjeon\\_mecab.py -> build\\lib.win-amd64-3.5\\eunjeon\n",
+      "    copying eunjeon\\__init__.py -> build\\lib.win-amd64-3.5\\eunjeon\n",
+      "    creating build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "    copying eunjeon\\data\\char.bin -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "    copying eunjeon\\data\\matrix.bin -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "    copying eunjeon\\data\\model.bin -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "    copying eunjeon\\data\\char.def -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "    copying eunjeon\\data\\feature.def -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "    copying eunjeon\\data\\left-id.def -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "    copying eunjeon\\data\\pos-id.def -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "    copying eunjeon\\data\\rewrite.def -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "    copying eunjeon\\data\\right-id.def -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "    copying eunjeon\\data\\unk.def -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "    copying eunjeon\\data\\sys.dic -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "    copying eunjeon\\data\\unk.dic -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "    copying eunjeon\\data\\dicrc -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "    copying eunjeon\\data\\mecabrc -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "    copying eunjeon\\data\\libmecab.dll -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "    copying eunjeon\\data\\mecab-cost-train.exe -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "    copying eunjeon\\data\\mecab-dict-gen.exe -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "    copying eunjeon\\data\\mecab-dict-index.exe -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "    copying eunjeon\\data\\mecab-system-eval.exe -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "    copying eunjeon\\data\\mecab-test-gen.exe -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "    copying eunjeon\\data\\mecab.exe -> build\\lib.win-amd64-3.5\\eunjeon\\data\n",
+      "    creating build\\lib.win-amd64-3.5\\eunjeon\\data\\sdk\n",
+      "    copying eunjeon\\data\\sdk\\libmecab.lib -> build\\lib.win-amd64-3.5\\eunjeon\\data\\sdk\n",
+      "    copying eunjeon\\data\\sdk\\mecab-cost-train.lib -> build\\lib.win-amd64-3.5\\eunjeon\\data\\sdk\n",
+      "    copying eunjeon\\data\\sdk\\mecab-dict-gen.lib -> build\\lib.win-amd64-3.5\\eunjeon\\data\\sdk\n",
+      "    copying eunjeon\\data\\sdk\\mecab-dict-index.lib -> build\\lib.win-amd64-3.5\\eunjeon\\data\\sdk\n",
+      "    copying eunjeon\\data\\sdk\\mecab-system-eval.lib -> build\\lib.win-amd64-3.5\\eunjeon\\data\\sdk\n",
+      "    copying eunjeon\\data\\sdk\\mecab-test-gen.lib -> build\\lib.win-amd64-3.5\\eunjeon\\data\\sdk\n",
+      "    copying eunjeon\\data\\sdk\\mecab.h -> build\\lib.win-amd64-3.5\\eunjeon\\data\\sdk\n",
+      "    copying eunjeon\\data\\sdk\\mecab.lib -> build\\lib.win-amd64-3.5\\eunjeon\\data\\sdk\n",
+      "    running build_ext\n",
+      "    building '_MeCab' extension\n",
+      "    error: Microsoft Visual C++ 14.0 is required. Get it with \"Microsoft Visual C++ Build Tools\": https://visualstudio.microsoft.com/downloads/\n",
+      "    \n",
+      "    ----------------------------------------\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "  Failed building wheel for eunjeon\n",
+      "Command \"C:\\Users\\wjstm\\Anaconda3\\envs\\tensorflow\\python.exe -u -c \"import setuptools, tokenize;__file__='C:\\\\Users\\\\wjstm\\\\AppData\\\\Local\\\\Temp\\\\pip-install-emax_plo\\\\eunjeon\\\\setup.py';f=getattr(tokenize, 'open', open)(__file__);code=f.read().replace('\\r\\n', '\\n');f.close();exec(compile(code, __file__, 'exec'))\" install --record C:\\Users\\wjstm\\AppData\\Local\\Temp\\pip-record-2wbz7lfj\\install-record.txt --single-version-externally-managed --compile\" failed with error code 1 in C:\\Users\\wjstm\\AppData\\Local\\Temp\\pip-install-emax_plo\\eunjeon\\\n"
+     ]
+    }
+   ],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "ImportError",
+     "evalue": "No module named 'eunjeon'",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[1;31mImportError\u001b[0m                               Traceback (most recent call last)",
+      "\u001b[1;32m<ipython-input-12-5f9ba8403da3>\u001b[0m in \u001b[0;36m<module>\u001b[1;34m\u001b[0m\n\u001b[1;32m----> 1\u001b[1;33m \u001b[1;32mfrom\u001b[0m \u001b[0meunjeon\u001b[0m \u001b[1;32mimport\u001b[0m \u001b[0mMecab\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m      2\u001b[0m \u001b[0mm\u001b[0m \u001b[1;33m=\u001b[0m \u001b[0mMecab\u001b[0m\u001b[1;33m(\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m      3\u001b[0m \u001b[0mm\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mpos\u001b[0m\u001b[1;33m(\u001b[0m\u001b[1;34m\"이것은 메캅 테스트입니다. 사용자 사전을 등록하기 전입니다. 비타500\"\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;31mImportError\u001b[0m: No module named 'eunjeon'"
+     ]
+    }
+   ],
+   "source": [
+    "from eunjeon import Mecab\n",
+    "m = Mecab()\n",
+    "m.pos(\"이것은 메캅 테스트입니다. 사용자 사전을 등록하기 전입니다. 비타500\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['박준영', '변호사', '박범계', '장관', '겨냥', '피', '사실', '공표', '사태', '왜']\n"
+     ]
+    }
+   ],
+   "source": [
+    "from konlpy.tag import Komoran; komoran=Komoran()\n",
+    "print(okt.nouns('박준영 변호사, 박범계 장관 겨냥 \\\"피의사실공표? LH사태는 왜 조용?\\\"'))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.5.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

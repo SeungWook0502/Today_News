@@ -1,0 +1,200 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import requests\n",
+    "from bs4 import BeautifulSoup\n",
+    "import pandas as pd\n",
+    "from gensim.summarization import summarize\n",
+    "from konlpy.tag import Komoran; komoran=Komoran()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def Crawling_Article(url,sid2): # get one articla data\n",
+    "    \n",
+    "    response = requests.get(url, headers={'User-Agent':'Mozilla/5.0'})\n",
+    "    if response.status_code==200:\n",
+    "        bsoup = BeautifulSoup(response.content, \"html.parser\", from_encoding='utf-8')\n",
+    "        try: #Error article catch\n",
+    "            crw_title = bsoup.select('div.content div.article_header div.article_info h3')\n",
+    "            crw_text = summarize(bsoup.select(\"div.content div._article_body_contents\")[0].get_text().replace('\\n', \"\").replace(\"    동영상 뉴스   \", \"\").replace(\"// flash 오류를 우회하기 위한 함수 추가\", \"\").replace(\"function _flash_removeCallback() {}\",\"\").replace(\"// flash 오류를 우회하기 위한 함수 추가function _flash_removeCallback() {}\",\"\"),word_count=50).replace(\"\\n\",\"\")\n",
+    "            Crw_Title = crw_title[0].get_text()\n",
+    "            print(crw_text)\n",
+    "        except IndexError:\n",
+    "            print(url)\n",
+    "            Crw_Title = \"제목없음\"\n",
+    "        except ValueError:\n",
+    "            crw_text=\"내용없음\"\n",
+    "            print(\"\\n\\n내용없음\\n\\n\")\n",
+    "        news_data = {\n",
+    "            'Title' : crw_title[0].get_text(),\n",
+    "            'Content' : crw_text,\n",
+    "            'Sid_Number' : sid2,\n",
+    "        }\n",
+    "        komoran.nouns(crw_title[0].get_text())\n",
+    "        "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "def Crawling_URL(url,sid2): #get url in news categorys\n",
+    "\n",
+    "    URL = url\n",
+    "#     URL = \"https://news.naver.com/main/list.nhn?mode=LS2D&mid=shm&sid1=104&sid2=234\"\n",
+    "    response = requests.get(URL, headers={'User-Agent':'Mozilla/5.0'})\n",
+    "    \n",
+    "    if response.status_code==200:\n",
+    "        bsoup = BeautifulSoup(response.content, \"html.parser\", from_encoding='utf-8')\n",
+    "    #   print(bsoup)\n",
+    "    #   print(len(bsoup.select('div.list_body a')))\n",
+    "        url_list = bsoup.select('div.list_body dt.photo a')\n",
+    "        \n",
+    "        for i in range(len(url_list)):\n",
+    "#             crw_url = url_list[i][\"href\"]\n",
+    "#             if crw_url==None:\n",
+    "#                 print(\"a\")\n",
+    "#             else:\n",
+    "#                 print(crw_url)\n",
+    "            Crawling_Article(url_list[i][\"href\"],sid2) #crawing article with crawled url"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def Crawling_naver_news_category(): #get naver news url with sid1, sid2\n",
+    "    \n",
+    "    sid1 = [100,101,102,103,104,105]\n",
+    "    sid2 = [\n",
+    "        [\"264\",\"265\",\"268\",\"266\",\"267\",\"269\"], #정치\n",
+    "        [\"259\",\"258\",\"261\",\"771\",\"260\",\"262\",\"310\",\"263\"], #경제\n",
+    "        [\"249\",\"250\",\"251\",\"254\",\"252\",\"59b\",\"255\",\"256\",\"276\",\"257\"], #사회\n",
+    "        [\"241\",\"239\",\"240\",\"267\",\"238\",\"376\",\"242\",\"243\",\"244\",\"248\",\"245\"], #생활문화\n",
+    "        [\"231\",\"232\",\"233\",\"234\",\"322\"], #세계\n",
+    "        [\"731\",\"226\",\"227\",\"230\",\"732\",\"283\",\"229\",\"228\"] #IT과학\n",
+    "    ]\n",
+    "    \n",
+    "    for sid1_num in sid1:\n",
+    "        for sid2_num in sid2[sid1_num%100]:\n",
+    "    #         print(sid2_num)\n",
+    "\n",
+    "            url = (\n",
+    "                \"https://news.naver.com/main/list.nhn?mode=LS2D&mid=shm&\"\n",
+    "                + \"sid2=\" + sid2_num\n",
+    "                + \"&sid1=\" + str(sid1_num)\n",
+    "    #             + \"&date=\"\n",
+    "    #             + \"&page=\"+page_num\n",
+    "            )\n",
+    "            Crawling_URL(url,sid2_num)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "국민의힘 오세훈 서울시장 후보가 7일 서울 여의도 국민의힘 중앙당사 개표상황실에서 방송3사(KBS,MBC,SBS) 공동 출구 조사 결과발표에서 더불어민주당 박영선 서울시장 후보를 앞서는 걸로 예측되자 김종인 비대위원장 등과 함께 기뻐하고 있다.연합뉴스더불어민주당 김태년 당대표 직무대행이 7일 서울 여의도 중앙당사 개표상황실에서 방송3사(KBS,MBC,SBS) 공동 출구 조사 결과 국민의힘 오세훈 서울시장 후보가 더불어민주당 박영선 서울시장 후보를 앞서는 걸로 예측되자 굳은 표정을 짓고 있다 .\n",
+      "[머니투데이 정진우 기자]  [서울=뉴시스]박영태 기자 = 문재인 대통령이 5일 청와대 여민관에서 열린 수석 보좌관회의에 참석해 발언하고 있다.그동안 문재인정부 총리가 이낙연, 정세균 등 호남 출신이었기 때문에 지역 안배 등 차원에서 김 전 의원 이름이 자주 거론된다.노무현정부 청와대 경제수석 출신으로 문 대통령과 함께 일한 김영주 전 무역협회장의 이름도 나온다.\n",
+      "\n",
+      "가운데는 우태희 대한상의 상근부회장.2021.4.7 scape@yna.co.kr(서울=연합뉴스) 임형섭 기자 = 이호승 청와대 정책실장이 7일 서울 중구 대한상공회의소와 여의도 중소기업중앙회를 차례로 방문했다.우태희 대한상의 상근부회장 역시 \"기업들이 부담스러워하는 법들에 대해 더 관심을 가져달라\"고 했다.이에 김 회장은 \"정책실장의 경제단체 방문은 의미가 있는 일\"이라며 \"납품단가조정권, 중소기업기본법 등 잘 만들어진 정책들이 제대로 작동하도록 청와대가 역할을 해달라\"고 말했다.\n",
+      "최 회장은 “규제를 풀려면 법과 규제가 있음으로써 불편한 정도나 범위가 얼마만큼일 지 평가하고 인과관계를 추적하는 시스템이 필요하다”면서 “규제가 어떤 문제가 있는지 데이터화해야 한다”고 말했다.이호승 청와대 정책실장이 7일 서울 여의도 중기중앙회에서 김기문 중기중앙회 회장을 만나 대화하고 있다.\n",
+      "7일 충남 태안군 남면 달산리를 찾은 한 관광객이 도로변에 만개한 벚꽃을 카메라로 찍고 있다.삼면이 바다인 충남 태안은 해양성 기후라 내륙보다 벚꽃이 일주일 이상 늦게 핀다./태안=연합뉴스[서울경제] /안현덕 기자 always@sedaily.com▶ 상위 1% 투자자 픽![주식 초고수는 지금]▶ 서울경제 더 폴리틱스 뉴스를 만나보세요!▶ 네이버 채널에서 '서울경제' 구독해주세요!저작권자 ⓒ 서울경제, 무단 전재 및 재배포 금지\t\n",
+      "\n",
+      "[서울=뉴시스]이호승 청와대 정책실장이 7일 오후 서울 중구 대한상공회의소를 방문해 최태원 대한상의회장과 면담하기 앞서 기념촬영을 하고 있다.photo@newsis.com *재판매 및 DB 금지[서울=뉴시스] 박정규 기자 = 최태원 대한상공회의소 회장이 7일 이호승 신임 청와대 정책실장과 만나 \"소통의 플랫폼 역할을 하겠다\"고 말했다.이에 이 실장은 \"앞으로 상의, 기업과 자주 만나겠다\"고 약속했다.이날 최 회장과의 면담을 시작으로 이 실장은 재계와의 만남을 이어나갈 예정이다.\n",
+      "그 생각만 하면 너무 슬프고 자존심 상합니다.”국내 라이브 클럽의 성지로 불리는 홍대 앞에서 20년 가까이 라이브 클럽을 운영 중인 황 모 대표는 근황을 묻자 “클럽이 공연을 못하니 좋을 수 있겠냐”며 길게 한숨을 내쉬었다.\n",
+      "(서울=연합뉴스) 이호승 청와대 정책실장(왼쪽 두번째)이 7일 오후 서울 중구 대한상공회의소를 방문해 최태원 대한상의회장(오른쪽 두번째)과 면담하고 있다.2021.4.7 [청와대 제공.재판매 및 DB금지]    photo@yna.co.kr▶네이버에서도 뉴스는 연합뉴스[구독 클릭]▶[팩트체크] 박영선-오세훈 TV토론 말말말▶제보하기<저작권자(c) 연합뉴스(https://www.yna.co.kr/), 무단 전재-재배포 금지>\t\n"
+     ]
+    },
+    {
+     "ename": "KeyboardInterrupt",
+     "evalue": "",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[1;31mKeyboardInterrupt\u001b[0m                         Traceback (most recent call last)",
+      "\u001b[1;32m<ipython-input-6-60e6b788ed7f>\u001b[0m in \u001b[0;36m<module>\u001b[1;34m\u001b[0m\n\u001b[0;32m      1\u001b[0m \u001b[1;32mif\u001b[0m \u001b[0m__name__\u001b[0m \u001b[1;33m==\u001b[0m \u001b[1;34m'__main__'\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m----> 2\u001b[1;33m     \u001b[0mCrawling_naver_news_category\u001b[0m\u001b[1;33m(\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[1;32m<ipython-input-5-7c35cb65d0d2>\u001b[0m in \u001b[0;36mCrawling_naver_news_category\u001b[1;34m()\u001b[0m\n\u001b[0;32m     22\u001b[0m     \u001b[1;31m#             + \"&page=\"+page_num\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m     23\u001b[0m             )\n\u001b[1;32m---> 24\u001b[1;33m             \u001b[0mCrawling_URL\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0murl\u001b[0m\u001b[1;33m,\u001b[0m\u001b[0msid2_num\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[1;32m<ipython-input-4-ea487a791468>\u001b[0m in \u001b[0;36mCrawling_URL\u001b[1;34m(url, sid2)\u001b[0m\n\u001b[0;32m     17\u001b[0m \u001b[1;31m#             else:\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m     18\u001b[0m \u001b[1;31m#                 print(crw_url)\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m---> 19\u001b[1;33m             \u001b[0mCrawling_Article\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0murl_list\u001b[0m\u001b[1;33m[\u001b[0m\u001b[0mi\u001b[0m\u001b[1;33m]\u001b[0m\u001b[1;33m[\u001b[0m\u001b[1;34m\"href\"\u001b[0m\u001b[1;33m]\u001b[0m\u001b[1;33m,\u001b[0m\u001b[0msid2\u001b[0m\u001b[1;33m)\u001b[0m \u001b[1;31m#crawing article with crawled url\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[1;32m<ipython-input-3-eecaa7c749f8>\u001b[0m in \u001b[0;36mCrawling_Article\u001b[1;34m(url, sid2)\u001b[0m\n\u001b[0;32m      1\u001b[0m \u001b[1;32mdef\u001b[0m \u001b[0mCrawling_Article\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0murl\u001b[0m\u001b[1;33m,\u001b[0m\u001b[0msid2\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m:\u001b[0m \u001b[1;31m# get one articla data\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m      2\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m----> 3\u001b[1;33m     \u001b[0mresponse\u001b[0m \u001b[1;33m=\u001b[0m \u001b[0mrequests\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mget\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0murl\u001b[0m\u001b[1;33m,\u001b[0m \u001b[0mheaders\u001b[0m\u001b[1;33m=\u001b[0m\u001b[1;33m{\u001b[0m\u001b[1;34m'User-Agent'\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;34m'Mozilla/5.0'\u001b[0m\u001b[1;33m}\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m      4\u001b[0m     \u001b[1;32mif\u001b[0m \u001b[0mresponse\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mstatus_code\u001b[0m\u001b[1;33m==\u001b[0m\u001b[1;36m200\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m      5\u001b[0m         \u001b[0mbsoup\u001b[0m \u001b[1;33m=\u001b[0m \u001b[0mBeautifulSoup\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mresponse\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mcontent\u001b[0m\u001b[1;33m,\u001b[0m \u001b[1;34m\"html.parser\"\u001b[0m\u001b[1;33m,\u001b[0m \u001b[0mfrom_encoding\u001b[0m\u001b[1;33m=\u001b[0m\u001b[1;34m'utf-8'\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;32mc:\\users\\wjstm\\anaconda3\\envs\\tensorflow\\lib\\site-packages\\requests\\api.py\u001b[0m in \u001b[0;36mget\u001b[1;34m(url, params, **kwargs)\u001b[0m\n\u001b[0;32m     74\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m     75\u001b[0m     \u001b[0mkwargs\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0msetdefault\u001b[0m\u001b[1;33m(\u001b[0m\u001b[1;34m'allow_redirects'\u001b[0m\u001b[1;33m,\u001b[0m \u001b[1;32mTrue\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m---> 76\u001b[1;33m     \u001b[1;32mreturn\u001b[0m \u001b[0mrequest\u001b[0m\u001b[1;33m(\u001b[0m\u001b[1;34m'get'\u001b[0m\u001b[1;33m,\u001b[0m \u001b[0murl\u001b[0m\u001b[1;33m,\u001b[0m \u001b[0mparams\u001b[0m\u001b[1;33m=\u001b[0m\u001b[0mparams\u001b[0m\u001b[1;33m,\u001b[0m \u001b[1;33m**\u001b[0m\u001b[0mkwargs\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m     77\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m     78\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;32mc:\\users\\wjstm\\anaconda3\\envs\\tensorflow\\lib\\site-packages\\requests\\api.py\u001b[0m in \u001b[0;36mrequest\u001b[1;34m(method, url, **kwargs)\u001b[0m\n\u001b[0;32m     59\u001b[0m     \u001b[1;31m# cases, and look like a memory leak in others.\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m     60\u001b[0m     \u001b[1;32mwith\u001b[0m \u001b[0msessions\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mSession\u001b[0m\u001b[1;33m(\u001b[0m\u001b[1;33m)\u001b[0m \u001b[1;32mas\u001b[0m \u001b[0msession\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m---> 61\u001b[1;33m         \u001b[1;32mreturn\u001b[0m \u001b[0msession\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mrequest\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mmethod\u001b[0m\u001b[1;33m=\u001b[0m\u001b[0mmethod\u001b[0m\u001b[1;33m,\u001b[0m \u001b[0murl\u001b[0m\u001b[1;33m=\u001b[0m\u001b[0murl\u001b[0m\u001b[1;33m,\u001b[0m \u001b[1;33m**\u001b[0m\u001b[0mkwargs\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m     62\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m     63\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;32mc:\\users\\wjstm\\anaconda3\\envs\\tensorflow\\lib\\site-packages\\requests\\sessions.py\u001b[0m in \u001b[0;36mrequest\u001b[1;34m(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)\u001b[0m\n\u001b[0;32m    528\u001b[0m         }\n\u001b[0;32m    529\u001b[0m         \u001b[0msend_kwargs\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mupdate\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0msettings\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m--> 530\u001b[1;33m         \u001b[0mresp\u001b[0m \u001b[1;33m=\u001b[0m \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0msend\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mprep\u001b[0m\u001b[1;33m,\u001b[0m \u001b[1;33m**\u001b[0m\u001b[0msend_kwargs\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m    531\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    532\u001b[0m         \u001b[1;32mreturn\u001b[0m \u001b[0mresp\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;32mc:\\users\\wjstm\\anaconda3\\envs\\tensorflow\\lib\\site-packages\\requests\\sessions.py\u001b[0m in \u001b[0;36msend\u001b[1;34m(self, request, **kwargs)\u001b[0m\n\u001b[0;32m    683\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    684\u001b[0m         \u001b[1;32mif\u001b[0m \u001b[1;32mnot\u001b[0m \u001b[0mstream\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m--> 685\u001b[1;33m             \u001b[0mr\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mcontent\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m    686\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    687\u001b[0m         \u001b[1;32mreturn\u001b[0m \u001b[0mr\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;32mc:\\users\\wjstm\\anaconda3\\envs\\tensorflow\\lib\\site-packages\\requests\\models.py\u001b[0m in \u001b[0;36mcontent\u001b[1;34m(self)\u001b[0m\n\u001b[0;32m    827\u001b[0m                 \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0m_content\u001b[0m \u001b[1;33m=\u001b[0m \u001b[1;32mNone\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    828\u001b[0m             \u001b[1;32melse\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m--> 829\u001b[1;33m                 \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0m_content\u001b[0m \u001b[1;33m=\u001b[0m \u001b[1;34mb''\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mjoin\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0miter_content\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mCONTENT_CHUNK_SIZE\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m)\u001b[0m \u001b[1;32mor\u001b[0m \u001b[1;34mb''\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m    830\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    831\u001b[0m         \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0m_content_consumed\u001b[0m \u001b[1;33m=\u001b[0m \u001b[1;32mTrue\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;32mc:\\users\\wjstm\\anaconda3\\envs\\tensorflow\\lib\\site-packages\\requests\\models.py\u001b[0m in \u001b[0;36mgenerate\u001b[1;34m()\u001b[0m\n\u001b[0;32m    749\u001b[0m             \u001b[1;32mif\u001b[0m \u001b[0mhasattr\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mraw\u001b[0m\u001b[1;33m,\u001b[0m \u001b[1;34m'stream'\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    750\u001b[0m                 \u001b[1;32mtry\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m--> 751\u001b[1;33m                     \u001b[1;32mfor\u001b[0m \u001b[0mchunk\u001b[0m \u001b[1;32min\u001b[0m \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mraw\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mstream\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mchunk_size\u001b[0m\u001b[1;33m,\u001b[0m \u001b[0mdecode_content\u001b[0m\u001b[1;33m=\u001b[0m\u001b[1;32mTrue\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m    752\u001b[0m                         \u001b[1;32myield\u001b[0m \u001b[0mchunk\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    753\u001b[0m                 \u001b[1;32mexcept\u001b[0m \u001b[0mProtocolError\u001b[0m \u001b[1;32mas\u001b[0m \u001b[0me\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;32mc:\\users\\wjstm\\anaconda3\\envs\\tensorflow\\lib\\site-packages\\urllib3\\response.py\u001b[0m in \u001b[0;36mstream\u001b[1;34m(self, amt, decode_content)\u001b[0m\n\u001b[0;32m    569\u001b[0m         \"\"\"\n\u001b[0;32m    570\u001b[0m         \u001b[1;32mif\u001b[0m \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mchunked\u001b[0m \u001b[1;32mand\u001b[0m \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0msupports_chunked_reads\u001b[0m\u001b[1;33m(\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m--> 571\u001b[1;33m             \u001b[1;32mfor\u001b[0m \u001b[0mline\u001b[0m \u001b[1;32min\u001b[0m \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mread_chunked\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mamt\u001b[0m\u001b[1;33m,\u001b[0m \u001b[0mdecode_content\u001b[0m\u001b[1;33m=\u001b[0m\u001b[0mdecode_content\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m    572\u001b[0m                 \u001b[1;32myield\u001b[0m \u001b[0mline\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    573\u001b[0m         \u001b[1;32melse\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;32mc:\\users\\wjstm\\anaconda3\\envs\\tensorflow\\lib\\site-packages\\urllib3\\response.py\u001b[0m in \u001b[0;36mread_chunked\u001b[1;34m(self, amt, decode_content)\u001b[0m\n\u001b[0;32m    761\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    762\u001b[0m             \u001b[1;32mwhile\u001b[0m \u001b[1;32mTrue\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m--> 763\u001b[1;33m                 \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0m_update_chunk_length\u001b[0m\u001b[1;33m(\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m    764\u001b[0m                 \u001b[1;32mif\u001b[0m \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mchunk_left\u001b[0m \u001b[1;33m==\u001b[0m \u001b[1;36m0\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    765\u001b[0m                     \u001b[1;32mbreak\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;32mc:\\users\\wjstm\\anaconda3\\envs\\tensorflow\\lib\\site-packages\\urllib3\\response.py\u001b[0m in \u001b[0;36m_update_chunk_length\u001b[1;34m(self)\u001b[0m\n\u001b[0;32m    691\u001b[0m         \u001b[1;32mif\u001b[0m \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mchunk_left\u001b[0m \u001b[1;32mis\u001b[0m \u001b[1;32mnot\u001b[0m \u001b[1;32mNone\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    692\u001b[0m             \u001b[1;32mreturn\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m--> 693\u001b[1;33m         \u001b[0mline\u001b[0m \u001b[1;33m=\u001b[0m \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0m_fp\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mfp\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mreadline\u001b[0m\u001b[1;33m(\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m    694\u001b[0m         \u001b[0mline\u001b[0m \u001b[1;33m=\u001b[0m \u001b[0mline\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0msplit\u001b[0m\u001b[1;33m(\u001b[0m\u001b[1;34mb\";\"\u001b[0m\u001b[1;33m,\u001b[0m \u001b[1;36m1\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m[\u001b[0m\u001b[1;36m0\u001b[0m\u001b[1;33m]\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    695\u001b[0m         \u001b[1;32mtry\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;32mc:\\users\\wjstm\\anaconda3\\envs\\tensorflow\\lib\\socket.py\u001b[0m in \u001b[0;36mreadinto\u001b[1;34m(self, b)\u001b[0m\n\u001b[0;32m    574\u001b[0m         \u001b[1;32mwhile\u001b[0m \u001b[1;32mTrue\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    575\u001b[0m             \u001b[1;32mtry\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m--> 576\u001b[1;33m                 \u001b[1;32mreturn\u001b[0m \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0m_sock\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mrecv_into\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mb\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m    577\u001b[0m             \u001b[1;32mexcept\u001b[0m \u001b[0mtimeout\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    578\u001b[0m                 \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0m_timeout_occurred\u001b[0m \u001b[1;33m=\u001b[0m \u001b[1;32mTrue\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;32mc:\\users\\wjstm\\anaconda3\\envs\\tensorflow\\lib\\ssl.py\u001b[0m in \u001b[0;36mrecv_into\u001b[1;34m(self, buffer, nbytes, flags)\u001b[0m\n\u001b[0;32m    935\u001b[0m                   \u001b[1;34m\"non-zero flags not allowed in calls to recv_into() on %s\"\u001b[0m \u001b[1;33m%\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    936\u001b[0m                   self.__class__)\n\u001b[1;32m--> 937\u001b[1;33m             \u001b[1;32mreturn\u001b[0m \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mread\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mnbytes\u001b[0m\u001b[1;33m,\u001b[0m \u001b[0mbuffer\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m    938\u001b[0m         \u001b[1;32melse\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    939\u001b[0m             \u001b[1;32mreturn\u001b[0m \u001b[0msocket\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mrecv_into\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mself\u001b[0m\u001b[1;33m,\u001b[0m \u001b[0mbuffer\u001b[0m\u001b[1;33m,\u001b[0m \u001b[0mnbytes\u001b[0m\u001b[1;33m,\u001b[0m \u001b[0mflags\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;32mc:\\users\\wjstm\\anaconda3\\envs\\tensorflow\\lib\\ssl.py\u001b[0m in \u001b[0;36mread\u001b[1;34m(self, len, buffer)\u001b[0m\n\u001b[0;32m    797\u001b[0m             \u001b[1;32mraise\u001b[0m \u001b[0mValueError\u001b[0m\u001b[1;33m(\u001b[0m\u001b[1;34m\"Read on closed or unwrapped SSL socket.\"\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    798\u001b[0m         \u001b[1;32mtry\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m--> 799\u001b[1;33m             \u001b[1;32mreturn\u001b[0m \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0m_sslobj\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mread\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mlen\u001b[0m\u001b[1;33m,\u001b[0m \u001b[0mbuffer\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m    800\u001b[0m         \u001b[1;32mexcept\u001b[0m \u001b[0mSSLError\u001b[0m \u001b[1;32mas\u001b[0m \u001b[0mx\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    801\u001b[0m             \u001b[1;32mif\u001b[0m \u001b[0mx\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0margs\u001b[0m\u001b[1;33m[\u001b[0m\u001b[1;36m0\u001b[0m\u001b[1;33m]\u001b[0m \u001b[1;33m==\u001b[0m \u001b[0mSSL_ERROR_EOF\u001b[0m \u001b[1;32mand\u001b[0m \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0msuppress_ragged_eofs\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;32mc:\\users\\wjstm\\anaconda3\\envs\\tensorflow\\lib\\ssl.py\u001b[0m in \u001b[0;36mread\u001b[1;34m(self, len, buffer)\u001b[0m\n\u001b[0;32m    581\u001b[0m         \"\"\"\n\u001b[0;32m    582\u001b[0m         \u001b[1;32mif\u001b[0m \u001b[0mbuffer\u001b[0m \u001b[1;32mis\u001b[0m \u001b[1;32mnot\u001b[0m \u001b[1;32mNone\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m--> 583\u001b[1;33m             \u001b[0mv\u001b[0m \u001b[1;33m=\u001b[0m \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0m_sslobj\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mread\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mlen\u001b[0m\u001b[1;33m,\u001b[0m \u001b[0mbuffer\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m    584\u001b[0m         \u001b[1;32melse\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m    585\u001b[0m             \u001b[0mv\u001b[0m \u001b[1;33m=\u001b[0m \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0m_sslobj\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mread\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mlen\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;31mKeyboardInterrupt\u001b[0m: "
+     ]
+    }
+   ],
+   "source": [
+    "if __name__ == '__main__':\n",
+    "    Crawling_naver_news_category()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.5.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
